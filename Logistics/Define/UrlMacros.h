@@ -11,7 +11,8 @@
 /*********************BaseUrl**********************/
 #if DEBUG
 //测试环境
-#define FC_HostName     @"http://s.zjyx833.com/webserviceApp.ashx"
+//#define FC_HostName     @"http://s.zjyx833.com/webserviceApp.ashx"
+#define FC_HostName  @"http://120.27.36.155:6060/webserviceInside.ashx"
 //提测环境
 //#define FC_HostName     @"http://s.zjyx833.com/webserviceApp.ashx"
 

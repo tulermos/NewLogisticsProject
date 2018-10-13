@@ -46,7 +46,8 @@
 #import "UserManager.h"
 #import "JPushManager.h"
 
-
+#import "UIView+Frame.h"
+#import "HSLimitText.h"
 
 
 #endif /* PrefixHeader_pch */

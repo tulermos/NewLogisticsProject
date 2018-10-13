@@ -124,6 +124,13 @@
 		E7D420562170FB0100FD22F6 /* ReceivingRegistrationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420552170FB0100FD22F6 /* ReceivingRegistrationModel.m */; };
 		E7D420592170FB7200FD22F6 /* ConsignmentNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420582170FB7200FD22F6 /* ConsignmentNoteCell.m */; };
 		E7D4205C2170FB8500FD22F6 /* ConsignmentNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4205B2170FB8500FD22F6 /* ConsignmentNoteModel.m */; };
+		E7D4205F21719DFC00FD22F6 /* LMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4205E21719DFC00FD22F6 /* LMSearchBar.m */; };
+		E7D4206221719FDC00FD22F6 /* HSLimitText.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4206021719FDC00FD22F6 /* HSLimitText.m */; };
+		E7D420652171A17F00FD22F6 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420642171A17F00FD22F6 /* UIView+Frame.m */; };
+		E7D420682171A68F00FD22F6 /* DeleteArticleNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420672171A68F00FD22F6 /* DeleteArticleNumberViewController.m */; };
+		E7D4206B2171B31200FD22F6 /* ArticleNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4206A2171B31200FD22F6 /* ArticleNumberCell.m */; };
+		E7D4206E217203CA00FD22F6 /* ArticleNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4206D217203CA00FD22F6 /* ArticleNumberModel.m */; };
+		E7D420712172057E00FD22F6 /* WaitOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420702172057E00FD22F6 /* WaitOrderViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +392,20 @@
 		E7D420582170FB7200FD22F6 /* ConsignmentNoteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConsignmentNoteCell.m; sourceTree = "<group>"; };
 		E7D4205A2170FB8500FD22F6 /* ConsignmentNoteModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsignmentNoteModel.h; sourceTree = "<group>"; };
 		E7D4205B2170FB8500FD22F6 /* ConsignmentNoteModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConsignmentNoteModel.m; sourceTree = "<group>"; };
+		E7D4205D21719DFC00FD22F6 /* LMSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMSearchBar.h; sourceTree = "<group>"; };
+		E7D4205E21719DFC00FD22F6 /* LMSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMSearchBar.m; sourceTree = "<group>"; };
+		E7D4206021719FDC00FD22F6 /* HSLimitText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSLimitText.m; sourceTree = "<group>"; };
+		E7D4206121719FDC00FD22F6 /* HSLimitText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSLimitText.h; sourceTree = "<group>"; };
+		E7D420632171A17F00FD22F6 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		E7D420642171A17F00FD22F6 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		E7D420662171A68F00FD22F6 /* DeleteArticleNumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeleteArticleNumberViewController.h; sourceTree = "<group>"; };
+		E7D420672171A68F00FD22F6 /* DeleteArticleNumberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeleteArticleNumberViewController.m; sourceTree = "<group>"; };
+		E7D420692171B31200FD22F6 /* ArticleNumberCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleNumberCell.h; sourceTree = "<group>"; };
+		E7D4206A2171B31200FD22F6 /* ArticleNumberCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleNumberCell.m; sourceTree = "<group>"; };
+		E7D4206C217203CA00FD22F6 /* ArticleNumberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleNumberModel.h; sourceTree = "<group>"; };
+		E7D4206D217203CA00FD22F6 /* ArticleNumberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleNumberModel.m; sourceTree = "<group>"; };
+		E7D4206F2172057E00FD22F6 /* WaitOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaitOrderViewController.h; sourceTree = "<group>"; };
+		E7D420702172057E00FD22F6 /* WaitOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaitOrderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +484,8 @@
 				E7D420522170FA6200FD22F6 /* ReceivingRegistrationCell.m */,
 				E7D420572170FB7200FD22F6 /* ConsignmentNoteCell.h */,
 				E7D420582170FB7200FD22F6 /* ConsignmentNoteCell.m */,
+				E7D420692171B31200FD22F6 /* ArticleNumberCell.h */,
+				E7D4206A2171B31200FD22F6 /* ArticleNumberCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -490,6 +513,8 @@
 				E7D420552170FB0100FD22F6 /* ReceivingRegistrationModel.m */,
 				E7D4205A2170FB8500FD22F6 /* ConsignmentNoteModel.h */,
 				E7D4205B2170FB8500FD22F6 /* ConsignmentNoteModel.m */,
+				E7D4206C217203CA00FD22F6 /* ArticleNumberModel.h */,
+				E7D4206D217203CA00FD22F6 /* ArticleNumberModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -609,6 +634,10 @@
 				E7D420432170D76D00FD22F6 /* NewHomeViewController.m */,
 				E7D4204E2170F55400FD22F6 /* ConsignmentNoteViewController.h */,
 				E7D4204F2170F55400FD22F6 /* ConsignmentNoteViewController.m */,
+				E7D420662171A68F00FD22F6 /* DeleteArticleNumberViewController.h */,
+				E7D420672171A68F00FD22F6 /* DeleteArticleNumberViewController.m */,
+				E7D4206F2172057E00FD22F6 /* WaitOrderViewController.h */,
+				E7D420702172057E00FD22F6 /* WaitOrderViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -923,11 +952,17 @@
 		A9033641208A250600823D3C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E7D420632171A17F00FD22F6 /* UIView+Frame.h */,
+				E7D420642171A17F00FD22F6 /* UIView+Frame.m */,
+				E7D4206121719FDC00FD22F6 /* HSLimitText.h */,
+				E7D4206021719FDC00FD22F6 /* HSLimitText.m */,
 				A9033642208A250600823D3C /* CHAlertAction */,
 				A9033649208A250600823D3C /* EncodeTarget.h */,
 				A903364A208A250600823D3C /* EncodeTarget.m */,
 				A903364B208A250600823D3C /* FCProgressHUD.h */,
 				A903364C208A250600823D3C /* FCProgressHUD.m */,
+				E7D4205D21719DFC00FD22F6 /* LMSearchBar.h */,
+				E7D4205E21719DFC00FD22F6 /* LMSearchBar.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1209,6 +1244,7 @@
 				A903366A208A250700823D3C /* UIImage+Gif.m in Sources */,
 				A94669D72099A95200CB2583 /* JPushModel.m in Sources */,
 				A903365E208A250700823D3C /* ViewController.m in Sources */,
+				E7D420652171A17F00FD22F6 /* UIView+Frame.m in Sources */,
 				A92D71FA20905DDC000F7B7D /* AddressBookAlertCell.m in Sources */,
 				A9033667208A250700823D3C /* NSString+WJ.m in Sources */,
 				A972BA99208DC9CA00CFF30C /* WaybillDetailHeaderView.m in Sources */,
@@ -1234,6 +1270,8 @@
 				A972BAA4208F130B00CFF30C /* AddressBookTableViewCell.m in Sources */,
 				E7D420442170D76D00FD22F6 /* NewHomeViewController.m in Sources */,
 				A92D720220907F9E000F7B7D /* WaybillSearchBar.m in Sources */,
+				E7D4206E217203CA00FD22F6 /* ArticleNumberModel.m in Sources */,
+				E7D420682171A68F00FD22F6 /* DeleteArticleNumberViewController.m in Sources */,
 				A9033666208A250700823D3C /* NSString+Hash.m in Sources */,
 				A9033695208A2D0300823D3C /* RegisterViewController.m in Sources */,
 				A903367A208A250700823D3C /* UserManager.m in Sources */,
@@ -1282,9 +1320,11 @@
 				A9033657208A250700823D3C /* UITableView+Gzw.m in Sources */,
 				A90F76D020932A4A00BC6A5D /* SettingViewController.m in Sources */,
 				A90F76C12093031B00BC6A5D /* PriceSumViewController.m in Sources */,
+				E7D420712172057E00FD22F6 /* WaitOrderViewController.m in Sources */,
 				E7D420562170FB0100FD22F6 /* ReceivingRegistrationModel.m in Sources */,
 				A92D72082091724B000F7B7D /* AppUpadateModel.m in Sources */,
 				A9033661208A250700823D3C /* NSDate+Extension.m in Sources */,
+				E7D4206221719FDC00FD22F6 /* HSLimitText.m in Sources */,
 				A9033679208A250700823D3C /* FCNetWorkManager.m in Sources */,
 				A903367B208A250700823D3C /* CHAlertAction.m in Sources */,
 				A92D71F72090508A000F7B7D /* AddressBookAlertView.m in Sources */,
@@ -1299,6 +1339,7 @@
 				A903365A208A250700823D3C /* FCStartApp.m in Sources */,
 				A9033671208A250700823D3C /* UIScrollView+Extension.m in Sources */,
 				A9033652208A250700823D3C /* MessageViewController.m in Sources */,
+				E7D4205F21719DFC00FD22F6 /* LMSearchBar.m in Sources */,
 				A9022F59208C192200886D95 /* WaybillDetailViewController.m in Sources */,
 				E7D420502170F55400FD22F6 /* ConsignmentNoteViewController.m in Sources */,
 				A9033692208A2CF300823D3C /* ForgetViewController.m in Sources */,
@@ -1307,6 +1348,7 @@
 				A9033675208A250700823D3C /* UIViewController+Message.m in Sources */,
 				A9033676208A250700823D3C /* FCBaseNetWork.m in Sources */,
 				A903366C208A250700823D3C /* UIResponder+Responder.m in Sources */,
+				E7D4206B2171B31200FD22F6 /* ArticleNumberCell.m in Sources */,
 				A90F76CD209306F300BC6A5D /* CompanyInfoSectionModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

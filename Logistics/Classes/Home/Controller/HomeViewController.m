@@ -14,14 +14,19 @@
 #import "QueryViewController.h"
 #import <SDCycleScrollView.h>
 #import "ConsignmentNoteViewController.h"
+#import "HSLimitText.h"
+#import "DeleteArticleNumberViewController.h"
+#import "WaitOrderViewController.h"
 #define kCollectionViewKey  @"kCollectionViewKey"
 
-@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,HSLimitTextDelegate>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)NSArray *iconArray;
 @property (nonatomic, strong)NSArray *titleArray;
-@property (nonatomic, strong) NSDictionary * dataDic;
+@property (nonatomic, strong)NSDictionary * dataDic;
+@property (nonatomic, strong)HSLimitText *searchBar;
+@property (nonatomic, strong)UIButton *ercodeBtn;
 
 @end
 
@@ -106,9 +111,11 @@
         }
     }else{
         if (indexPath.item == 0) {
-       
+            DeleteArticleNumberViewController * vc = [DeleteArticleNumberViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if(indexPath.item == 1) {
-    
+            WaitOrderViewController * vc = [WaitOrderViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
   
@@ -124,6 +131,35 @@
         UIImageView*topImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, FCWidth, FCWidth*0.45)];
         topImgView.image = [UIImage imageNamed:@"home_topImg"];
         [headerView addSubview:topImgView];
+//        _searchBar = [[UITextField alloc]initWithFrame:CGRectMake(15, 27, FCWidth-71, 28)];
+//        _searchBar.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+//
+        HSLimitText *textView = [[HSLimitText alloc] initWithFrame:CGRectMake(15, 27, FCWidth-71, 28) type:TextInputTypeTextfield];
+        textView.placeholder = @"请输入运单号/收货人姓名";
+        textView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+        textView.labPlaceHolder.textColor = [UIColor colorWithHexString:@"0x999999"];
+        textView.labPlaceHolder.font = [UIFont systemFontOfSize:15];
+        textView.textField.textColor = [UIColor blackColor];
+        textView.textField.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+        textView.textField.returnKeyType = UIReturnKeySearch;
+        textView.delegate = self;
+        textView.textField.delegate = self;
+        // 通过init初始化的控件大多都没有尺寸
+        UIImageView *searchIcon = [[UIImageView alloc] init];
+        searchIcon.image = [UIImage imageNamed:@"sousuo"];
+        // contentMode：default is UIViewContentModeScaleToFill，要设置为UIViewContentModeCenter：使图片居中，防止图片填充整个imageView
+        searchIcon.contentMode = UIViewContentModeCenter;
+        searchIcon.size = CGSizeMake(30, 30);
+        textView.textField.leftView = searchIcon;
+        textView.textField.leftViewMode = UITextFieldViewModeAlways;
+        [topImgView addSubview:textView];
+        _searchBar = textView;
+        
+        _ercodeBtn = [UIButton buttonWithType:0];
+        _ercodeBtn.frame = CGRectMake(CGRectGetMaxX(textView.frame), 0, 56, 81);
+        [_ercodeBtn setImage:[UIImage imageNamed:@"二维码"] forState:0];
+        [topImgView addSubview:_ercodeBtn];
+        
         UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(topImgView.frame), FCWidth, 38)];
         bgView.backgroundColor = [UIColor colorWithHexString:@"0xefeff4"];
         [headerView addSubview:bgView];
@@ -188,22 +224,45 @@
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
 }
-//货物跟踪的接口
-- (void)getCargoTrackingData{
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.searchBar.textField)
+    {
+        if (textField.text.length) {
+            [self getSearchWithText:textField.text];
+       
+        }else{
+            
+        }
+       
+    }
+    return YES;
+}
+
+
+//搜索
+-(void)getSearchWithText:(NSString *)text
+{
     
-    NSDictionary *param = [NSDictionary requestWithUrl:@"cargotrack" param:nil];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"shipdetail" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"entNumber":@"G333-061216-36"}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
-        
+
         if (response.isSuccess) {
             
         }else {
             
         }
-        
         NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
 }
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
+
 @end

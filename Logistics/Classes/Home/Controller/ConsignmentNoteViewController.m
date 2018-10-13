@@ -56,7 +56,7 @@
 }
 -(void)getData
 {
-    NSDictionary *param = [NSDictionary requestWithUrl:@"GetConsignmentData" param:nil];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"GetConsignmentData" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b"}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
         if (response.isSuccess) {
