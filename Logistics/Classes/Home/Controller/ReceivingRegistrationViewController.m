@@ -1,35 +1,35 @@
 //
-//  DeleteArticleNumberViewController.m
+//  ReceivingRegistrationViewController.m
 //  Logistics
 //
 //  Created by tulemos on 2018/10/13.
 //  Copyright © 2018 meng wang. All rights reserved.
 //
 
-#import "DeleteArticleNumberViewController.h"
-#import "ArticleNumberCell.h"
-#define kArticleNumberCell  @"kArticleNumberCell"
-@interface DeleteArticleNumberViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate>
+#import "ReceivingRegistrationViewController.h"
+#import "ReceivingRegistrationCell.h"
+#define kReceivingRegistrationCell @"kReceivingRegistrationCell"
+@interface ReceivingRegistrationViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) HSLimitText *searchBar;
 @property (nonatomic, strong) UIButton *searchBtn;
 @end
 
-@implementation DeleteArticleNumberViewController
+@implementation ReceivingRegistrationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataArr = [NSMutableArray array];
     self.view.backgroundColor = kGlobalViewBgColor;
-    self.title = @"删除货号";
-    UIButton *deleteBtn=[UIButton buttonWithType:(UIButtonTypeCustom)];
-    [deleteBtn setTitle:@"删除" forState:(UIControlStateNormal)];
-    [deleteBtn setFrame:CGRectMake(15.0, 0.0, 70, 16)];
-    [deleteBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-    deleteBtn.titleLabel.font=[UIFont systemFontOfSize:15];
-    deleteBtn.backgroundColor=[UIColor clearColor];
-    [deleteBtn addTarget:self action:@selector(deleteBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.title = @"收货登记";
+    UIButton *highSearchBtn=[UIButton buttonWithType:(UIButtonTypeCustom)];
+    [highSearchBtn setTitle:@"高级查询" forState:(UIControlStateNormal)];
+    [highSearchBtn setFrame:CGRectMake(15.0, 0.0, 70, 16)];
+    [highSearchBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    highSearchBtn.titleLabel.font=[UIFont systemFontOfSize:15];
+    highSearchBtn.backgroundColor=[UIColor clearColor];
+    [highSearchBtn addTarget:self action:@selector(highSearchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
     
     UIButton *refreshBtn=[UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -40,16 +40,14 @@
     refreshBtn.backgroundColor=[UIColor clearColor];
     [refreshBtn addTarget:self action:@selector(refreshBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    deleteBtn.frame = CGRectMake(0, 0, 70, 16);
+    highSearchBtn.frame = CGRectMake(0, 0, 70, 16);
     refreshBtn.frame=CGRectMake(0, 0, 35, 16);
     
-    UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithCustomView:deleteBtn];
+    UIBarButtonItem *highSearch = [[UIBarButtonItem alloc] initWithCustomView:highSearchBtn];
     UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithCustomView:refreshBtn];
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:refresh , delete,nil]];
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: refresh, highSearch,nil]];
     [self setUpUI];
-//    [self getData];
 }
-
 -(void)setUpUI
 {
     HSLimitText *textView = [[HSLimitText alloc] initWithFrame:CGRectMake(12,Navigation_Height+8, FCWidth-71, 28) type:TextInputTypeTextfield];
@@ -85,9 +83,8 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
-    [_tableView registerClass:[ArticleNumberCell class] forCellReuseIdentifier:kArticleNumberCell];
-    
-    
+    [_tableView registerClass:[ReceivingRegistrationCell class] forCellReuseIdentifier:kReceivingRegistrationCell];
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -104,7 +101,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ArticleNumberCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleNumberCell forIndexPath:indexPath];
+    ReceivingRegistrationCell *cell = [tableView dequeueReusableCellWithIdentifier:kReceivingRegistrationCell forIndexPath:indexPath];
     return cell;
 }
 
@@ -112,8 +109,8 @@
 {
     
 }
-//删除
--(void)deleteBtnAction:(UIButton*)btn
+//高级查询
+-(void)highSearchBtnAction:(UIButton*)btn
 {
     
 }
@@ -148,16 +145,13 @@
 -(void)getSearchWithText:(NSString *)text
 {
     
-    NSDictionary *param = [NSDictionary requestWithUrl:@"QueryConsignmentData" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"KL891896-21"}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"deletebill" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"G333-061216-36"}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
-        NSDictionary *dic = response.json;
-        NSLog(@"%@",dic[@"state"]);
-        if ([dic[@"state"] isEqualToString:@"success"]) {
-          
-        }else{
-            NSDictionary *dict =dic[@"data"][0];
-            [FCProgressHUD showText:dict[@"errorMsg"]];
+        if (response.isSuccess) {
+            
+        }else {
+            
         }
         NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
@@ -165,5 +159,6 @@
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
 }
+
 
 @end

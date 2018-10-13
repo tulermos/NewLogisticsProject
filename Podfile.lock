@@ -16,13 +16,13 @@ PODS:
     - AFNetworking/NSURLSession
   - CYLTabBarController (1.14.2)
   - IQKeyboardManager (5.0.8)
-  - JCore (1.2.2)
+  - JCore (1.2.0)
   - JPush (3.0.9):
     - JCore (~> 1.2.0)
-  - LJContactManager (1.0.6)
+  - LJContactManager (1.0.4)
   - Masonry (1.1.0)
   - MBProgressHUD (1.0.0)
-  - MJRefresh (3.1.15.7)
+  - MJRefresh (3.1.14)
   - SDCycleScrollView (1.75):
     - SDWebImage (>= 4.0.0)
   - SDWebImage (4.1.2):
@@ -36,7 +36,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - CYLTabBarController (~> 1.14.1)
   - IQKeyboardManager (~> 5.0.3)
-  - JPush (~> 3.0.8)
+  - JPush (~> 3.0.9)
   - LJContactManager
   - Masonry (~> 1.1.0)
   - MBProgressHUD (~> 1.0.0)
@@ -68,18 +68,18 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CYLTabBarController: 5eac1940e20aa934a609ecec38837da63a41dcfe
   IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
-  JCore: f14c0549968a63c22e246a4875aa9d428446f373
+  JCore: b52e3dd73625eec70afd1244bb9c41038aa06087
   JPush: 48041e8c5ad2ef9b48709eb0888af9640b36e9b0
-  LJContactManager: dbc29ba9d837039c9048f48412ad493f60806a79
+  LJContactManager: 13fc9c45e4c3b6b5482becb0e9eaa01c668148e2
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  MJRefresh: 6642e35b3227a5447b9fd5e17c552c90196c9859
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: d9799c4e3ee4c2dfb4f838aa653be41534cc49a7
+PODFILE CHECKSUM: 3582bc2c3e9de67154e4fbfdf34b48c9e2c02956
 
 COCOAPODS: 1.5.3

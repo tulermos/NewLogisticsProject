@@ -14,6 +14,6 @@ target 'Logistics' do
    pod 'YYText'
    pod 'LJContactManager'
    pod 'SDCycleScrollView'
-   pod 'JPush', '~> 3.0.8'
+   pod 'JPush', '~> 3.0.9'
 
 end

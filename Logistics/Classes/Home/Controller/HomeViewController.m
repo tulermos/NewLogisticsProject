@@ -17,6 +17,8 @@
 #import "HSLimitText.h"
 #import "DeleteArticleNumberViewController.h"
 #import "WaitOrderViewController.h"
+#import "WaybillDetailViewController.h"
+#import "ReceivingRegistrationViewController.h"
 #define kCollectionViewKey  @"kCollectionViewKey"
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,HSLimitTextDelegate>
@@ -93,7 +95,8 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         if (indexPath.item == 0){
-           
+            ReceivingRegistrationViewController *vc = [ReceivingRegistrationViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if(indexPath.item == 1) {
 
         }else if (indexPath.item == 2) {
@@ -134,7 +137,7 @@
 //        _searchBar = [[UITextField alloc]initWithFrame:CGRectMake(15, 27, FCWidth-71, 28)];
 //        _searchBar.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
 //
-        HSLimitText *textView = [[HSLimitText alloc] initWithFrame:CGRectMake(15, 27, FCWidth-71, 28) type:TextInputTypeTextfield];
+        HSLimitText *textView = [[HSLimitText alloc] initWithFrame:CGRectMake(15, 27+TB_StatusBarHeightSegment, FCWidth-71, 28) type:TextInputTypeTextfield];
         textView.placeholder = @"请输入运单号/收货人姓名";
         textView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
         textView.labPlaceHolder.textColor = [UIColor colorWithHexString:@"0x999999"];
@@ -156,7 +159,7 @@
         _searchBar = textView;
         
         _ercodeBtn = [UIButton buttonWithType:0];
-        _ercodeBtn.frame = CGRectMake(CGRectGetMaxX(textView.frame), 0, 56, 81);
+        _ercodeBtn.frame = CGRectMake(CGRectGetMaxX(textView.frame), TB_StatusBarHeightSegment, 56, 81);
         [_ercodeBtn setImage:[UIImage imageNamed:@"二维码"] forState:0];
         [topImgView addSubview:_ercodeBtn];
         
@@ -245,13 +248,21 @@
 -(void)getSearchWithText:(NSString *)text
 {
     
-    NSDictionary *param = [NSDictionary requestWithUrl:@"shipdetail" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"entNumber":@"G333-061216-36"}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"shipdetail" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"KL891896-21"}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
 
-        if (response.isSuccess) {
-            
-        }else {
-            
+//        if (response.json) {
+//
+//        }else {
+//
+//        }\
+        id poi = dic[@"poi"];
+        NSDictionary *dic = response.json[0];
+        NSLog(@"%@",dic[@"state"]);
+        if ([dic[@"state"] isEqualToString:@"success"]) {
+            WaybillDetailViewController *detailVc = [[WaybillDetailViewController alloc]init];
+            detailVc.EntNumber = @"KL891896-21";
+            [self.navigationController pushViewController:detailVc animated:YES];
         }
         NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {

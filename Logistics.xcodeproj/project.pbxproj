@@ -131,6 +131,7 @@
 		E7D4206B2171B31200FD22F6 /* ArticleNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4206A2171B31200FD22F6 /* ArticleNumberCell.m */; };
 		E7D4206E217203CA00FD22F6 /* ArticleNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4206D217203CA00FD22F6 /* ArticleNumberModel.m */; };
 		E7D420712172057E00FD22F6 /* WaitOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420702172057E00FD22F6 /* WaitOrderViewController.m */; };
+		E7D4207721720EEE00FD22F6 /* ReceivingRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4207621720EEE00FD22F6 /* ReceivingRegistrationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -406,6 +407,8 @@
 		E7D4206D217203CA00FD22F6 /* ArticleNumberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleNumberModel.m; sourceTree = "<group>"; };
 		E7D4206F2172057E00FD22F6 /* WaitOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaitOrderViewController.h; sourceTree = "<group>"; };
 		E7D420702172057E00FD22F6 /* WaitOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaitOrderViewController.m; sourceTree = "<group>"; };
+		E7D4207521720EEE00FD22F6 /* ReceivingRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceivingRegistrationViewController.h; sourceTree = "<group>"; };
+		E7D4207621720EEE00FD22F6 /* ReceivingRegistrationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceivingRegistrationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -638,6 +641,8 @@
 				E7D420672171A68F00FD22F6 /* DeleteArticleNumberViewController.m */,
 				E7D4206F2172057E00FD22F6 /* WaitOrderViewController.h */,
 				E7D420702172057E00FD22F6 /* WaitOrderViewController.m */,
+				E7D4207521720EEE00FD22F6 /* ReceivingRegistrationViewController.h */,
+				E7D4207621720EEE00FD22F6 /* ReceivingRegistrationViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1311,6 +1316,7 @@
 				A9033663208A250700823D3C /* NSDictionary+JsonLogHelp.m in Sources */,
 				A903366F208A250700823D3C /* UILabel+Extension.m in Sources */,
 				A9033678208A250700823D3C /* FCNetWorkError.m in Sources */,
+				E7D4207721720EEE00FD22F6 /* ReceivingRegistrationViewController.m in Sources */,
 				A903364E208A250700823D3C /* LoginViewController.m in Sources */,
 				A90F76C42093032F00BC6A5D /* PackViewController.m in Sources */,
 				A903366B208A250700823D3C /* UIImage+M9Category.m in Sources */,

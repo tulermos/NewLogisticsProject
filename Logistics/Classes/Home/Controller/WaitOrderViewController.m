@@ -47,7 +47,7 @@
     
     UIBarButtonItem *order = [[UIBarButtonItem alloc] initWithCustomView:orderBtn];
     UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithCustomView:refreshBtn];
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: order, refresh,nil]];
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: refresh, order,nil]];
     [self setUpUI];
 }
 -(void)setUpUI

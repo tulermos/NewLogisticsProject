@@ -94,7 +94,7 @@
     NSDictionary *fourthTabBarItemsAttributes = @{
                                                   CYLTabBarItemTitle : NSLocalizedString(@"TabBar_Profile", nil),
                                                   CYLTabBarItemImage : @"settingIcon",
-                                                  CYLTabBarItemSelectedImage : @"settingIconSelected"
+                                                  CYLTabBarItemSelectedImage : @"settingSelectedIcon"
                                                   };
     
     NSArray *tabBarItemsAttributes = @[firstTabBarItemsAttributes,

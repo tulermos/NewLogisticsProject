@@ -18,6 +18,7 @@
 #define FCHeight   [UIScreen mainScreen].bounds.size.height
 #define  TB_iPhoneX (FCWidth == 375.f && FCHeight == 812.f ? YES : NO)
 #define  Navigation_Height                 (TB_iPhoneX ? 88.f : 64.f)
+#define  TB_StatusBarHeightSegment              (TB_iPhoneX ? 22.f : 0)
 #define kAutoWidth                  (FCWidth/375)
 #define kAutoHeight                 (TB_iPhoneX ? (FCWidth/812) : (FCHeight/667))
 /************************Tabbar和NavgationBar字体颜色********************************/

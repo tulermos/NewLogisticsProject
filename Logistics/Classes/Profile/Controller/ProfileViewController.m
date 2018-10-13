@@ -42,9 +42,7 @@
 
 - (void)setupUI {
     
-    self.iconArray = @[@"yijianfankui",@"xitongbanben"];
-    self.titleArray = @[NSLocalizedString(@"Profile_fankui", nil),
-                        NSLocalizedString(@"Profile_banben", nil)];
+    self.iconArray = @[@"系统设置"];
     self.accessArray = @[[UIImage imageNamed:@"gengduo"],
                          [NSString stringWithFormat:@"v %@",[NSString appVersion]]];
     [self.view addSubview:self.tableView];
@@ -76,7 +74,7 @@
     if (!cell) {
         cell = [[ProfileTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellId"];
     }
-    [cell setupIcon:self.iconArray[indexPath.row] title:self.titleArray[indexPath.row] accessView:self.accessArray[indexPath.row]];
+    [cell setupIcon:self.iconArray[indexPath.row] title:self.iconArray[indexPath.row] accessView:self.accessArray[indexPath.row]];
     [cell showRedBadge:NO];
     if (indexPath.row == 1) {
         [cell showRedBadge:[UserManager sharedManager].isUpdate];
@@ -99,9 +97,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
-        FeedbackViewController *vc = [FeedbackViewController feedbackViewController];
-        [self.navigationController pushViewController:vc animated:YES];
-    }else if (indexPath.row == 3) {
         SettingViewController *vc = [[SettingViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }else {
