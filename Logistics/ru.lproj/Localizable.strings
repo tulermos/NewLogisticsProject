@@ -1,0 +1,114 @@
+/* 
+  Localizable.strings
+  Logistics
+
+  Created by meng wang on 2018/4/20.
+  Copyright © 2018年 meng wang. All rights reserved.
+*/
+//***************************Tabbar******************************
+"TabBar_Home" = "главная страница";
+"TabBar_Logistics" = "карго";
+"TabBar_Message" = "новости";
+"TabBar_Profile" = "личный кабинет";
+
+//***************************LoginAndRegister******************************
+"Nav_Login_register" = "регистрация учетной записи";
+"Login_User" = "введите имя пользователя";
+"Login_Pwd" = "введите пароль";
+"Login_tip_no_user" = "имя пользователя не может быть пустым";
+"Login_tip_no_pwd" = "пароль пользователя не может быть пустым";
+"Login_tip_no_phone" = "пароль пользователя не может быть пустым";
+"Login_tip_no_code" = "проверочный код пользователя не может быть пустым";
+"Login_tip_no_contacter" = "контакт пользователя не может быть пустым";
+"Login_tip_no_again_pwd" = "Подтверждение пароля не может быть пустым";
+"Login_tip_pwd_agein_error" = "введите пароль повторно";
+"Login_tip_phone_error" = "номер телефона не соответствует правилам заполнения";
+"Login_Remember_Pwd" = "запомнить пароль";
+"Login_Title" = "вход";
+"Login_forget_pwd" = "забыли пароль";
+"Login_register" = "зарегистрируйтесь сейчас";
+"Login_place_phone" = "введите номер телефона";
+"Login_place_code" = " Введите код подтверждения";
+"Login_place_contact" = "заполните контактную информацию";
+"Login_place_company" = "введите название компании";
+"Login_place_pwd" = "введите пароль не менее 6 символов";
+"Login_place_again_pwd" = "подтвердите пароль";
+"Login_btn_submit" = "отправить";
+"Login_btn_register" = "регистрация";
+"Login_nav_fine_pwd" = "восстановить пароль";
+"Login_btn_get_code" = "получить код подтверждения";
+"Login_title_had_account" = "войдите в систему";
+"Login_count_had" = "уже счета，";
+//***************************Home******************************
+"Home_yundanchaxun" = "Запрос накладной";
+"Home_wangdianchaxun" = "информация о филиалах";
+"Home_yewuzhushou" = "Помощь бизнесу";
+"Home_jingqingqidai" = "Подробный список";
+"Help_yaoqiu" = "требования к транспорту";
+"Help_jiage" = "цена";
+"Help_baozhuang" = "описание упаковки";
+"Help_yunshu" = "описание транспорта";
+"Help_kuanhao" = "Артику";
+"Help_danju" = "Накладная";
+//***************************运单查询******************************
+"Home_jianshu" = "количество";
+"Home_weight" = "общий вес";
+"Home_lifang" = "общий объем";
+"Home_jianshu_units" = "место";
+"Home_weight_units" = "кг";
+"Home_lifang_units" = "объем";
+"Home_zongfeiyong" = "товары стоит";
+//***************************运单详情******************************
+"Home_start" = "грузоотправитель";
+"Home_end" = "получатель";
+"Home_finace" = "информация о стоимости";
+"Home_goods" = "информация о грузе";
+"Home_start_station" = "пункт отправления";
+"Home_sender_name" = "имя грузоотправителя";
+"Home_sender_tel" = "телефон грузоотправителя";
+"Home_sender_address" = "адрес грузоотправителя";
+"Home_sender_house" = "номер магазина";
+"Home_end_station" = "пункт назначения";
+"Home_receive_name" = "имя получателя";
+"Home_receive_tel" = "телефон получателя";
+"Home_receive_address" = "адрес получателя";
+"Home_goods_no" = "номер заказа";
+"Home_goods_name" = "название товара";
+"Home_goods_pinpai" = "бренд";
+"Home_goods_caizhi" = "материал";
+"Home_goods_baoshu" = "место";
+"Home_goods_tiji" = "обьем";
+"Home_goods_zhongliang" = "вес";
+"Home_goods_shuliang" = "количество";
+"Home_goods_zhuangtai" = "Государства";
+"Home_goods_time" = "ожидается прибытие  еще";
+"Home_finace_huilv" = "курс (USD/CNY)";
+"Home_finace_yunfei" = "итого к оплате $";
+"Home_finace_baoxian" = "страховка, юаней";
+"Home_finace_jiekuan" = "долг клиента";
+"Home_finace_daifu" = "внутренний платеж";
+"Home_finace_daishou" = "оплата доставки по Китаю";
+"Home_finace_other" = "прочие расходы";
+"Home_finace_price" = "общая стоимость";
+"Home_feiyong_price" = "общая стоимость";
+"Home_goods_state_send" = "груз отправлен";
+"Home_goods_state_route" = "груз в пути";
+"Home_goods_state_end" = "груз прибыл";
+"Home_goods_state_arriving" = "К подходу";
+"Home_goods_state_Depart" = "Товары выход";
+"Home_place_search" = "Введите ключевые слова для поиска";
+"Home_footer_yf" = "итого к оплате";
+"Home_footer_js" = "количество";
+"Home_footer_dsk" = "получение денег";
+"Home_footer_zl" = "вес";
+"Home_footer_dsyf" = "сборный груз";
+"Home_footer_tj" = "объем";
+//***************************个人中心******************************
+"Profile_shezhi" = "системные настройки";
+"Profile_fankui" = "отзывы";
+"Profile_banben" = "версия системы";
+"Profile_loginOut" = "выйти";
+"Profile_place_feedback" = "Пожалуйста, заполните свои комментарии, чтобы помочь нам улучшить работу";
+"Profile_place_title" = " Заполните пожалуйста заголовок";
+"Profile_tip_feedback" = "Сначала заполните свои комментарии, затем нажмите кнопку «Отправить»";
+"Tip_no_data" = "Нет данных";

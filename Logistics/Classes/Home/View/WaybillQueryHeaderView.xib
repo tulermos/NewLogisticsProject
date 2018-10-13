@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="wC7-j3-uy5" customClass="WaybillQueryHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kth-hx-7iH">
+                    <rect key="frame" x="0.0" y="0.0" width="121.5" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hL-cv-618">
+                            <rect key="frame" x="22.5" y="16" width="37.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gengduo" translatesAutoresizingMaskIntoConstraints="NO" id="cF5-sI-qwG">
+                            <rect key="frame" x="60" y="14" width="22" height="22"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="cF5-sI-qwG" firstAttribute="centerY" secondItem="2hL-cv-618" secondAttribute="centerY" id="4ek-tG-dCq"/>
+                        <constraint firstItem="2hL-cv-618" firstAttribute="centerY" secondItem="Kth-hx-7iH" secondAttribute="centerY" id="Xdc-sw-T0M"/>
+                        <constraint firstItem="2hL-cv-618" firstAttribute="centerX" secondItem="Kth-hx-7iH" secondAttribute="centerX" constant="-20" id="hn4-Wp-nlG"/>
+                        <constraint firstAttribute="height" constant="50" id="lVf-vl-jfX"/>
+                        <constraint firstItem="cF5-sI-qwG" firstAttribute="leading" secondItem="2hL-cv-618" secondAttribute="trailing" id="rFT-df-6gS"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mc1-2d-lAT">
+                    <rect key="frame" x="242.5" y="0.0" width="121.5" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFc-I2-hRr">
+                            <rect key="frame" x="22" y="16" width="37.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gengduo" translatesAutoresizingMaskIntoConstraints="NO" id="BAg-PC-Xdv">
+                            <rect key="frame" x="59.5" y="14" width="22" height="22"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="BAg-PC-Xdv" firstAttribute="leading" secondItem="QFc-I2-hRr" secondAttribute="trailing" id="WyP-3y-AWF"/>
+                        <constraint firstItem="BAg-PC-Xdv" firstAttribute="centerY" secondItem="QFc-I2-hRr" secondAttribute="centerY" id="Ya1-Wv-ip8"/>
+                        <constraint firstItem="QFc-I2-hRr" firstAttribute="centerY" secondItem="mc1-2d-lAT" secondAttribute="centerY" id="tia-7n-US6"/>
+                        <constraint firstItem="QFc-I2-hRr" firstAttribute="centerX" secondItem="mc1-2d-lAT" secondAttribute="centerX" constant="-20" id="z0b-HC-ahm"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbj-Uz-3l2">
+                    <rect key="frame" x="121.5" y="0.0" width="121" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUs-T6-c7G">
+                            <rect key="frame" x="22" y="16" width="37.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gengduo" translatesAutoresizingMaskIntoConstraints="NO" id="XbS-sT-B6g">
+                            <rect key="frame" x="59.5" y="14" width="22" height="22"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="dUs-T6-c7G" firstAttribute="centerY" secondItem="tbj-Uz-3l2" secondAttribute="centerY" id="4Wf-Yl-Rjp"/>
+                        <constraint firstItem="XbS-sT-B6g" firstAttribute="centerY" secondItem="dUs-T6-c7G" secondAttribute="centerY" id="Lcb-9I-keW"/>
+                        <constraint firstItem="XbS-sT-B6g" firstAttribute="leading" secondItem="dUs-T6-c7G" secondAttribute="trailing" id="oYD-GC-rRL"/>
+                        <constraint firstItem="dUs-T6-c7G" firstAttribute="centerX" secondItem="tbj-Uz-3l2" secondAttribute="centerX" constant="-20" id="vw6-Dt-YMj"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="mc1-2d-lAT" secondAttribute="trailing" id="EVM-1u-d3g"/>
+                <constraint firstItem="Kth-hx-7iH" firstAttribute="height" secondItem="tbj-Uz-3l2" secondAttribute="height" id="ON3-9S-8rq"/>
+                <constraint firstItem="Kth-hx-7iH" firstAttribute="height" secondItem="mc1-2d-lAT" secondAttribute="height" id="Urk-Al-hLG"/>
+                <constraint firstItem="tbj-Uz-3l2" firstAttribute="leading" secondItem="Kth-hx-7iH" secondAttribute="trailing" id="Voz-OY-Ro4"/>
+                <constraint firstItem="mc1-2d-lAT" firstAttribute="leading" secondItem="tbj-Uz-3l2" secondAttribute="trailing" id="Y4t-rQ-0xR"/>
+                <constraint firstItem="mc1-2d-lAT" firstAttribute="width" secondItem="tbj-Uz-3l2" secondAttribute="width" id="dhG-lr-e81"/>
+                <constraint firstItem="tbj-Uz-3l2" firstAttribute="width" secondItem="Kth-hx-7iH" secondAttribute="width" id="hSS-VR-CHl"/>
+                <constraint firstItem="tbj-Uz-3l2" firstAttribute="top" secondItem="wC7-j3-uy5" secondAttribute="top" id="pdt-7k-qkZ"/>
+                <constraint firstItem="Kth-hx-7iH" firstAttribute="leading" secondItem="wC7-j3-uy5" secondAttribute="leading" id="snQ-mi-u8g"/>
+                <constraint firstItem="Kth-hx-7iH" firstAttribute="top" secondItem="wC7-j3-uy5" secondAttribute="top" id="w5S-qI-2u3"/>
+                <constraint firstItem="mc1-2d-lAT" firstAttribute="top" secondItem="wC7-j3-uy5" secondAttribute="top" id="zCK-Xf-gCq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="overIcon" destination="XbS-sT-B6g" id="7Xc-sO-r3p"/>
+                <outlet property="overLabel" destination="dUs-T6-c7G" id="knW-U1-JIh"/>
+                <outlet property="overView" destination="tbj-Uz-3l2" id="iOB-U5-Rb1"/>
+                <outlet property="stockIcon" destination="cF5-sI-qwG" id="XCv-n3-x4D"/>
+                <outlet property="stockLabel" destination="2hL-cv-618" id="pMd-l2-AqX"/>
+                <outlet property="stockView" destination="Kth-hx-7iH" id="Iax-qf-N1u"/>
+                <outlet property="timeIcon" destination="BAg-PC-Xdv" id="866-eh-Zbd"/>
+                <outlet property="timeLabel" destination="QFc-I2-hRr" id="QBS-79-ezh"/>
+                <outlet property="timeView" destination="mc1-2d-lAT" id="lW8-N2-tkk"/>
+            </connections>
+            <point key="canvasLocation" x="7" y="8"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="gengduo" width="22" height="22"/>
+    </resources>
+</document>

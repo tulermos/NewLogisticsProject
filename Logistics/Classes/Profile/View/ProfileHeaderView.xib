@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iIm-6v-VWX" customClass="ProfileHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="518" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wode_bg" translatesAutoresizingMaskIntoConstraints="NO" id="o2d-ky-vXg">
+                    <rect key="frame" x="0.0" y="0.0" width="518" height="100"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic" translatesAutoresizingMaskIntoConstraints="NO" id="8pu-wq-okD">
+                    <rect key="frame" x="15" y="35" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="YBB-kJ-hda"/>
+                        <constraint firstAttribute="width" constant="50" id="hHK-9p-rFD"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2m-8F-g1F">
+                    <rect key="frame" x="80" y="51.5" width="61.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="O2m-8F-g1F" firstAttribute="centerY" secondItem="8pu-wq-okD" secondAttribute="centerY" id="9Xw-k3-KPu"/>
+                <constraint firstItem="8pu-wq-okD" firstAttribute="leading" secondItem="iIm-6v-VWX" secondAttribute="leading" constant="15" id="GBh-49-o1n"/>
+                <constraint firstItem="o2d-ky-vXg" firstAttribute="top" secondItem="iIm-6v-VWX" secondAttribute="top" id="Ork-8h-Rtg"/>
+                <constraint firstAttribute="trailing" secondItem="o2d-ky-vXg" secondAttribute="trailing" id="Uoj-cP-UJG"/>
+                <constraint firstItem="o2d-ky-vXg" firstAttribute="leading" secondItem="iIm-6v-VWX" secondAttribute="leading" id="acX-BW-K7i"/>
+                <constraint firstItem="O2m-8F-g1F" firstAttribute="leading" secondItem="8pu-wq-okD" secondAttribute="trailing" constant="15" id="bT1-WR-XBj"/>
+                <constraint firstAttribute="bottom" secondItem="8pu-wq-okD" secondAttribute="bottom" constant="15" id="jmL-uJ-LMZ"/>
+                <constraint firstItem="o2d-ky-vXg" firstAttribute="bottom" secondItem="iIm-6v-VWX" secondAttribute="bottom" id="xd6-ll-Lg2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="icon" destination="8pu-wq-okD" id="DrS-Bg-CGj"/>
+                <outlet property="nameLabel" destination="O2m-8F-g1F" id="dzG-Lm-sHC"/>
+            </connections>
+            <point key="canvasLocation" x="42" y="505"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pic" width="55" height="55"/>
+        <image name="wode_bg" width="375" height="140"/>
+    </resources>
+</document>

@@ -1,0 +1,113 @@
+/* 
+  Localizable.strings
+  Logistics
+
+  Created by meng wang on 2018/4/20.
+  Copyright © 2018年 meng wang. All rights reserved.
+*/
+//***************************Tabbar******************************
+"TabBar_Home" = "首页";
+"TabBar_Logistics" = "消息";
+"TabBar_Message" = "通讯录";
+"TabBar_Profile" = "设置";
+//***************************LoginAndRegister******************************
+"Nav_Login_register" = "注册账号";
+"Login_User" = "请输入用户名";
+"Login_Pwd" = "请输入密码";
+"Login_tip_no_user" = "用户名不可为空";
+"Login_tip_no_pwd" = "密码不可为空";
+"Login_tip_no_phone" = "手机号不可为空";
+"Login_tip_no_code" = "验证码不可为空";
+"Login_tip_no_contacter" = "联系人不可为空";
+"Login_tip_no_again_pwd" = "确认密码不可为空";
+"Login_tip_pwd_agein_error" = "两次输入密码不同，请重新输入";
+"Login_tip_phone_error" = "手机号不符合规则";
+"Login_Remember_Pwd" = "记住密码";
+"Login_Title" = "登录";
+"Login_forget_pwd" = "忘记密码";
+"Login_register" = "马上注册";
+"Login_place_phone" = "请填写手机号";
+"Login_place_code" = "请填写验证码";
+"Login_place_contact" = "请填写联系人";
+"Login_place_company" = "请填写公司名称";
+"Login_place_pwd" = "请填写密码,至少6位";
+"Login_place_again_pwd" = "请确认密码";
+"Login_btn_submit" = "提交";
+"Login_btn_register" = "注册";
+"Login_nav_fine_pwd" = "找回密码";
+"Login_btn_get_code" = "获取验证码";
+"Login_title_had_account" = "立即登录";
+//***************************Home******************************
+"Home_yundanchaxun" = "运单查询";
+"Home_wangdianchaxun" = "网点信息";
+"Home_yewuzhushou" = "业务助手";
+"Home_jingqingqidai" = "托运详单";
+"Help_yaoqiu" = "运输要求";
+"Help_jiage" = "价格估算";
+"Help_baozhuang" = "包装介绍";
+"Help_yunshu" = "运输介绍";
+"Help_kuanhao" = "款号";
+"Help_danju" = "单据";
+//***************************运单查询******************************
+"Home_jianshu" = "件数";
+"Home_weight" = "总重量";
+"Home_lifang" = "总立方";
+"Home_jianshu_units" = "件";
+"Home_weight_units" = "Kg";
+"Home_lifang_units" = "m³";
+"Home_zongfeiyong" = "货值";
+//***************************运单详情******************************
+"Home_start" = "发货方";
+"Home_end" = "收货方";
+"Home_finace" = "费用信息";
+"Home_goods" = "货物信息";
+"Home_start_station" = "发货站";
+"Home_sender_name" = "发货方名称";
+"Home_sender_tel" = "发货方电话";
+"Home_sender_address" = "发货方地址";
+"Home_sender_house" = "发货方房间号";
+"Home_end_station" = "收货站";
+"Home_receive_name" = "收货方名称";
+"Home_receive_tel" = "收货方电话";
+"Home_receive_address" = "收货方地址";
+"Home_goods_no" = "序号";
+"Home_goods_name" = "名称";
+"Home_goods_pinpai" = "品牌";
+"Home_goods_caizhi" = "材质";
+"Home_goods_baoshu" = "包数";
+"Home_goods_tiji" = "体积(m³)";
+"Home_goods_zhongliang" = "重量(kg)";
+"Home_goods_shuliang" = "数量(pcs)";
+"Home_goods_zhuangtai" = "状态";
+"Home_goods_time" = "预计到达还有";
+"Home_finace_huilv" = "汇率(USD美元/CNY人民币)";
+"Home_finace_yunfei" = "运费(USD美元)";
+"Home_finace_baoxian" = "保险费(CNY人民币)";
+"Home_finace_jiekuan" = "客户借款(USD美元)";
+"Home_finace_daifu" = "国内代付(CNY人民币)";
+"Home_finace_daishou" = "国内代收(CNY人民币)";
+"Home_finace_other" = "其他费用(CNY人民币)";
+"Home_finace_price" = "费用合计(CNY人民币)";
+"Home_feiyong_price" = "费用合计";
+"Home_goods_state_send" = "货物已发出";
+"Home_goods_state_route" = "货物在途";
+"Home_goods_state_end" = "货物到达";
+"Home_goods_state_arriving" = "即将到达";
+"Home_goods_state_Depart" = "货物出境";
+"Home_place_search" = "请输入搜索关键词";
+"Home_footer_yf" = "运费：$";
+"Home_footer_js" = "件数：";
+"Home_footer_dsk" = "代收款：$";
+"Home_footer_zl" = "重量：";
+"Home_footer_dsyf" = "代收运费：$";
+"Home_footer_tj" = "体积：";
+//***************************个人中心******************************
+"Profile_shezhi" = "系统设置";
+"Profile_fankui" = "意见反馈";
+"Profile_banben" = "系统版本";
+"Profile_loginOut" = "退出登录";
+"Profile_place_feedback" = "请填写您的意见，帮助我们提升用户体验";
+"Profile_place_title" = "请填写标题";
+"Profile_tip_feedback" = "请先填写您的意见，再点击提交";
+"Tip_no_data" = "暂无数据";
+
