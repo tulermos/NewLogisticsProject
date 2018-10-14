@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ConsignmentNoteModel;
+#import "ConsignmentNoteModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ArticleNumberCell : UITableViewCell

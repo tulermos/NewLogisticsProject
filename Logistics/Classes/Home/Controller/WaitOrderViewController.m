@@ -7,12 +7,12 @@
 //
 
 #import "WaitOrderViewController.h"
-
+#import "ConsignmentNoteModel.h"
 #import "ArticleNumberCell.h"
 #define kArticleNumberCell  @"kArticleNumberCell"
 @interface WaitOrderViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArr;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) BaseTableView *tableView;
 @property (nonatomic, strong) HSLimitText *searchBar;
 @property (nonatomic, strong) UIButton *searchBtn;
 
@@ -80,7 +80,7 @@
     _searchBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
     [_searchBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:1<<6];
     [self.view addSubview:_searchBtn];
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(textView.frame)+8, FCWidth, FCHeight-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height) style:0];
+    _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(textView.frame)+8, FCWidth, FCHeight-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height) style:0];
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -95,7 +95,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return _tableView.dataArray.count;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -105,17 +105,64 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ArticleNumberCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleNumberCell forIndexPath:indexPath];
+    ConsignmentNoteModel *model = _tableView.dataArray[indexPath.row];
+    cell.model = model;
+    cell.selectionStyle = 0;
     return cell;
 }
-
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 15, 3, 15)];
+    lineView.backgroundColor = [UIColor colorWithHexString:@"#567CD4"];
+    
+    
+    UILabel *titleLabel = [UILabel labelWithFont:16 textColor:[UIColor colorWithHex:0x333333] text:nil];
+    titleLabel.frame = CGRectMake(26, 11, 200, 22);
+    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0,0, FCWidth, 38)];
+    bgView.backgroundColor = [UIColor whiteColor];
+    UIView *bottomLineView = [[UIView alloc]initWithFrame:CGRectMake(0,38,FCWidth, 1)];
+    bottomLineView.backgroundColor = [UIColor colorWithHexString:@"#dddddd"];
+    [bgView addSubview:lineView];
+    titleLabel.text = @"查询结果";
+    [bgView addSubview:titleLabel];
+    [bgView addSubview:bottomLineView];
+    return  bgView;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 38;
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
 }
-//删除
--(void)deleteBtnAction:(UIButton*)btn
+//开单
+-(void)orderBtnAction:(UIButton*)btn
 {
-    
+    NSDictionary *param = [NSDictionary requestWithUrl:@"changebill" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"PM1-171217-35"}];
+    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
+        
+        NSDictionary *dic = response.json;
+        NSLog(@"%@",dic[@"state"]);
+        if ([dic[@"state"] isEqualToString:@"success"]) {
+            NSDictionary *adic = dic[@"data"][0];
+            if ([[NSString stringWithFormat:@"%@",adic[@"responseCode"]] isEqualToString:@"0"]) {
+                [FCProgressHUD showText:@"开单成功"];
+                [self.tableView.dataArray removeAllObjects];
+                [self.tableView reloadEmptyData];
+            }else{
+                [FCProgressHUD showText:adic[@"responseMsg"]];
+            }
+            
+        }else{
+            
+        }
+        [_tableView reloadData];
+        NSLog(@"%@成功",response);
+    } failure:^(FCBaseResponse *response) {
+        NSDictionary *dict = ((NSArray *)response.data).firstObject;
+        [FCProgressHUD showText:dict[@"errorMsg"]];
+    }];
 }
 //刷新
 -(void)refreshBtnAction:(UIButton*)btn
@@ -148,20 +195,29 @@
 -(void)getSearchWithText:(NSString *)text
 {
     
-    NSDictionary *param = [NSDictionary requestWithUrl:@"deletebill" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"G333-061216-36"}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"QueryConsignmentData" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"KL891896-21"}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
-        if (response.isSuccess) {
-            
-        }else {
-            
+        NSDictionary *dic = response.json;
+        NSLog(@"%@",dic[@"state"]);
+        if ([dic[@"state"] isEqualToString:@"success"]) {
+            NSDictionary *adic = dic[@"data"][0];
+            NSLog(@"%@",adic[@"billinfo"]);
+            //            _dataArr = [ConsignmentNoteModel yy_modelWithJSON:adic[@"billinfo"]];
+            [_dataArr  addObject:[ConsignmentNoteModel yy_modelWithJSON:adic[@"billinfo"]]];
+            [self.tableView reloadDataWithArray:_dataArr];
+            [self.tableView reloadEmptyData];
+        }else{
+            NSDictionary *dict =dic[@"data"][0];
+            [FCProgressHUD showText:dict[@"errorMsg"]];
         }
+        [_tableView reloadData];
         NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
+        [_dataArr removeAllObjects];
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
 }
-
 
 @end

@@ -19,6 +19,7 @@
 #import "WaitOrderViewController.h"
 #import "WaybillDetailViewController.h"
 #import "ReceivingRegistrationViewController.h"
+#import "CustomerStatisticsViewController.h"
 #define kCollectionViewKey  @"kCollectionViewKey"
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,HSLimitTextDelegate>
@@ -64,8 +65,15 @@
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    gestureRecognizer.numberOfTapsRequired = 1;
+    gestureRecognizer.cancelsTouchesInView = NO;
+    [self.collectionView addGestureRecognizer:gestureRecognizer];
 }
-
+-(void)hideKeyboard
+{
+    [_searchBar.textField resignFirstResponder];
+}
 #pragma mark - UICollectionviewDataSource/delegate
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 3;
@@ -110,7 +118,8 @@
         if (indexPath.item == 0) {
            
         }else if(indexPath.item == 1) {
-         
+            CustomerStatisticsViewController *vc = [CustomerStatisticsViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }else{
         if (indexPath.item == 0) {
@@ -271,9 +280,7 @@
     }];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
+
 
 
 @end

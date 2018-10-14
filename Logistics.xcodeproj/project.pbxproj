@@ -132,6 +132,10 @@
 		E7D4206E217203CA00FD22F6 /* ArticleNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4206D217203CA00FD22F6 /* ArticleNumberModel.m */; };
 		E7D420712172057E00FD22F6 /* WaitOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420702172057E00FD22F6 /* WaitOrderViewController.m */; };
 		E7D4207721720EEE00FD22F6 /* ReceivingRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4207621720EEE00FD22F6 /* ReceivingRegistrationViewController.m */; };
+		E7D4207A21736A0300FD22F6 /* CustomerStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4207921736A0300FD22F6 /* CustomerStatisticsViewController.m */; };
+		E7D4208221736BD800FD22F6 /* CustomerStatisticsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4208121736BD800FD22F6 /* CustomerStatisticsModel.m */; };
+		E7D4208521736C6200FD22F6 /* CustomerStatisticsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4208421736C6200FD22F6 /* CustomerStatisticsCell.m */; };
+		E7D4208C217374F100FD22F6 /* AddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4208B217374F100FD22F6 /* AddressBookViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,6 +413,14 @@
 		E7D420702172057E00FD22F6 /* WaitOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaitOrderViewController.m; sourceTree = "<group>"; };
 		E7D4207521720EEE00FD22F6 /* ReceivingRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceivingRegistrationViewController.h; sourceTree = "<group>"; };
 		E7D4207621720EEE00FD22F6 /* ReceivingRegistrationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceivingRegistrationViewController.m; sourceTree = "<group>"; };
+		E7D4207821736A0300FD22F6 /* CustomerStatisticsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerStatisticsViewController.h; sourceTree = "<group>"; };
+		E7D4207921736A0300FD22F6 /* CustomerStatisticsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerStatisticsViewController.m; sourceTree = "<group>"; };
+		E7D4208021736BD800FD22F6 /* CustomerStatisticsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerStatisticsModel.h; sourceTree = "<group>"; };
+		E7D4208121736BD800FD22F6 /* CustomerStatisticsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerStatisticsModel.m; sourceTree = "<group>"; };
+		E7D4208321736C6200FD22F6 /* CustomerStatisticsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerStatisticsCell.h; sourceTree = "<group>"; };
+		E7D4208421736C6200FD22F6 /* CustomerStatisticsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerStatisticsCell.m; sourceTree = "<group>"; };
+		E7D4208A217374F100FD22F6 /* AddressBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookViewController.h; sourceTree = "<group>"; };
+		E7D4208B217374F100FD22F6 /* AddressBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +501,8 @@
 				E7D420582170FB7200FD22F6 /* ConsignmentNoteCell.m */,
 				E7D420692171B31200FD22F6 /* ArticleNumberCell.h */,
 				E7D4206A2171B31200FD22F6 /* ArticleNumberCell.m */,
+				E7D4208321736C6200FD22F6 /* CustomerStatisticsCell.h */,
+				E7D4208421736C6200FD22F6 /* CustomerStatisticsCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -518,6 +532,8 @@
 				E7D4205B2170FB8500FD22F6 /* ConsignmentNoteModel.m */,
 				E7D4206C217203CA00FD22F6 /* ArticleNumberModel.h */,
 				E7D4206D217203CA00FD22F6 /* ArticleNumberModel.m */,
+				E7D4208021736BD800FD22F6 /* CustomerStatisticsModel.h */,
+				E7D4208121736BD800FD22F6 /* CustomerStatisticsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -598,6 +614,7 @@
 		A90335C4208A250600823D3C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E7D42086217374B400FD22F6 /* AddressBook */,
 				A90F76BA209302F600BC6A5D /* Business */,
 				A90335C5208A250600823D3C /* Home */,
 				A90335C9208A250600823D3C /* Login */,
@@ -643,6 +660,8 @@
 				E7D420702172057E00FD22F6 /* WaitOrderViewController.m */,
 				E7D4207521720EEE00FD22F6 /* ReceivingRegistrationViewController.h */,
 				E7D4207621720EEE00FD22F6 /* ReceivingRegistrationViewController.m */,
+				E7D4207821736A0300FD22F6 /* CustomerStatisticsViewController.h */,
+				E7D4207921736A0300FD22F6 /* CustomerStatisticsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1052,6 +1071,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E7D42086217374B400FD22F6 /* AddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				E7D42087217374DD00FD22F6 /* Controller */,
+				E7D42088217374DD00FD22F6 /* Model */,
+				E7D42089217374DD00FD22F6 /* View */,
+			);
+			path = AddressBook;
+			sourceTree = "<group>";
+		};
+		E7D42087217374DD00FD22F6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E7D4208A217374F100FD22F6 /* AddressBookViewController.h */,
+				E7D4208B217374F100FD22F6 /* AddressBookViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E7D42088217374DD00FD22F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E7D42089217374DD00FD22F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1273,6 +1325,7 @@
 				A90F76BE2093030D00BC6A5D /* TransportViewController.m in Sources */,
 				A972BA8E208D7D9100CFF30C /* WaybillSenderItem.m in Sources */,
 				A972BAA4208F130B00CFF30C /* AddressBookTableViewCell.m in Sources */,
+				E7D4207A21736A0300FD22F6 /* CustomerStatisticsViewController.m in Sources */,
 				E7D420442170D76D00FD22F6 /* NewHomeViewController.m in Sources */,
 				A92D720220907F9E000F7B7D /* WaybillSearchBar.m in Sources */,
 				E7D4206E217203CA00FD22F6 /* ArticleNumberModel.m in Sources */,
@@ -1285,6 +1338,7 @@
 				A9022F6E208CCFF900886D95 /* WaybillDetailUnitView.m in Sources */,
 				A903367E208A250700823D3C /* EncodeTarget.m in Sources */,
 				A9033670208A250700823D3C /* UINavigationController+pop.m in Sources */,
+				E7D4208521736C6200FD22F6 /* CustomerStatisticsCell.m in Sources */,
 				A9022F4E208B342700886D95 /* WaybillTableViewCell.m in Sources */,
 				A9033653208A250700823D3C /* ProfileViewController.m in Sources */,
 				A9033651208A250700823D3C /* LogisticsViewController.m in Sources */,
@@ -1294,6 +1348,7 @@
 				A9022F45208B243700886D95 /* WLHomeCollectionViewCell.m in Sources */,
 				A903365D208A250700823D3C /* TabBarControllerConfig.m in Sources */,
 				A9033677208A250700823D3C /* FCBaseResponse.m in Sources */,
+				E7D4208C217374F100FD22F6 /* AddressBookViewController.m in Sources */,
 				A9033673208A250700823D3C /* UIView+Extension.m in Sources */,
 				A9033650208A250700823D3C /* TextFieldPartView.m in Sources */,
 				A9033662208A250700823D3C /* NSDictionary+Extension.m in Sources */,
@@ -1343,6 +1398,7 @@
 				A9033660208A250700823D3C /* NSDate+category.m in Sources */,
 				E7D4204D2170DFEA00FD22F6 /* NewHomeCellModel.m in Sources */,
 				A903365A208A250700823D3C /* FCStartApp.m in Sources */,
+				E7D4208221736BD800FD22F6 /* CustomerStatisticsModel.m in Sources */,
 				A9033671208A250700823D3C /* UIScrollView+Extension.m in Sources */,
 				A9033652208A250700823D3C /* MessageViewController.m in Sources */,
 				E7D4205F21719DFC00FD22F6 /* LMSearchBar.m in Sources */,
@@ -1551,6 +1607,7 @@
 				DEVELOPMENT_TEAM = 5UGRQ53UBT;
 				GCC_PREFIX_HEADER = Logistics/Define/PrefixHeader.pch;
 				INFOPLIST_FILE = Logistics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shubin.logistics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1570,6 +1627,7 @@
 				DEVELOPMENT_TEAM = 5UGRQ53UBT;
 				GCC_PREFIX_HEADER = Logistics/Define/PrefixHeader.pch;
 				INFOPLIST_FILE = Logistics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shubin.logistics;
 				PRODUCT_NAME = "$(TARGET_NAME)";

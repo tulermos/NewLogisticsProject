@@ -9,5 +9,5 @@
 #import "ViewController.h"
 
 @interface WebsiteMessageViewController : ViewController
-
+@property (nonatomic,assign) NSInteger status;//类型
 @end

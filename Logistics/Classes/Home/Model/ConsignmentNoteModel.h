@@ -12,22 +12,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ConsignmentNoteModel : NSObject
 
-@property (nonatomic, strong)NSString *ShiNumber;
-@property (nonatomic, strong)NSString *ShiTime;
-@property (nonatomic, strong)NSString *DelName;
-@property (nonatomic, strong)NSString *EntRecName;
-@property (nonatomic, strong)NSString *EntStartID;
-@property (nonatomic, strong)NSString *EntEndID;
-@property (nonatomic, strong)NSString *SdNumber;
-@property (nonatomic, strong)NSString *EntPathType;
-@property (nonatomic, strong)NSString *SdCube;
-@property (nonatomic, strong)NSString *SdWeight;
-@property (nonatomic, strong)NSString *ShiRate;
-@property (nonatomic, strong)NSString *ShiSum;
-@property (nonatomic, strong)NSString *ShiInsurance;
-@property (nonatomic, strong)NSString *ShiRemark;
-@property (nonatomic, strong)NSString *Company;
-@property (nonatomic, strong)NSString *Stockname;
+@property (nonatomic, copy)NSString *ShiNumber;
+@property (nonatomic, copy)NSString *ShiTime;
+@property (nonatomic, copy)NSString *DelName;
+@property (nonatomic, copy)NSString *EntRecName;
+@property (nonatomic, copy)NSString *EntStartID;
+@property (nonatomic, copy)NSString *EntEndID;
+@property (nonatomic, copy)NSString *SdNumber;
+@property (nonatomic, copy)NSString *EntPathType;
+@property (nonatomic, copy)NSString *SdCube;
+@property (nonatomic, copy)NSString *SdWeight;
+@property (nonatomic, copy)NSString *ShiRate;
+@property (nonatomic, copy)NSString *ShiSum;
+@property (nonatomic, copy)NSString *ShiInsurance;
+@property (nonatomic, copy)NSString *ShiRemark;
+@property (nonatomic, copy)NSString *Company;
+@property (nonatomic, copy)NSString *Stockname;
 /*
 "ShiNumber": "BJ-20181005-0125-2",
 "ShiTime": "20181005",

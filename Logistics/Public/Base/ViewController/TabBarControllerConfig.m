@@ -13,7 +13,7 @@
 #import "WaybillDetailViewController.h"
 #import "ProfileViewController.h"
 #import "NewHomeViewController.h"
-
+#import "AddressBookViewController.h"
 @interface TabBarControllerConfig ()<UITabBarDelegate>
 
 @property (nonatomic, readwrite, strong) CYLTabBarController *tabBarController;
@@ -51,7 +51,7 @@
     BaseNavigationController *secondNavigationController = [[BaseNavigationController alloc]
                                                             initWithRootViewController:secondViewController];
     
-    MessageViewController *thirdViewController = [[MessageViewController alloc] init];
+    AddressBookViewController *thirdViewController = [[AddressBookViewController alloc] init];
     thirdViewController.title = NSLocalizedString(@"TabBar_Message", nil);
     BaseNavigationController *thirdNavigationController = [[BaseNavigationController alloc]
                                                            initWithRootViewController:thirdViewController];

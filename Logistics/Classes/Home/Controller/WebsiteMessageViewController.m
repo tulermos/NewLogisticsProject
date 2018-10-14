@@ -30,11 +30,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    [self loadData];
+    if (_status == 1) {
+        self.title = @"网点";
+        [self loadDataWithUrl:@"company"];
+    }else
+    {
+        self.title = @"员工";
+        [self loadDataWithUrl:@"staff"];
+    }
 }
 
 - (void)setupUI {
-    self.title = NSLocalizedString(@"Home_wangdianchaxun", nil);
+//    self.title = NSLocalizedString(@"Home_wangdianchaxun", nil);
     [self.view addSubview:self.searchBar];
     [self.view addSubview:self.tableView];
     @weakify(self);
@@ -67,9 +74,9 @@
     [self sortForSectionModel:array];
 }
 
-- (void)loadData {
+- (void)loadDataWithUrl:(NSString *)url {
    
-    NSDictionary *dict = [NSDictionary requestWithUrl:@"company" param:nil];
+    NSDictionary *dict = [NSDictionary requestWithUrl:url param:nil];
     [FCHttpRequest FCNetWork:HttpRequestMethodPost url:nil model:nil cache:NO param:dict success:^(FCBaseResponse *response) {
         if ([response.json[@"state"] isEqualToString:@"success"]) {
             NSArray *models = [NSArray yy_modelArrayWithClass:[CompanyInfoModel class] json:response.json[@"data"]];

@@ -9,11 +9,14 @@
 #import "ConsignmentNoteViewController.h"
 #import "ConsignmentNoteCell.h"
 #import "ConsignmentNoteModel.h"
+#import "WaybillTableViewCell.h"
+#import "WaybillModel.h"
+#import "WaybillDetailViewController.h"
 #define ktableViewKey  @"ktableViewKey"
 @interface ConsignmentNoteViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) BaseTableView *tableView;
 
 @end
 
@@ -58,20 +61,17 @@
 {
     NSDictionary *param = [NSDictionary requestWithUrl:@"GetConsignmentData" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b"}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
-        
-        if (response.isSuccess) {
-            NSDictionary *dict = ((NSArray *)response.json).lastObject;
-            [self.dataArr removeAllObjects];
-            if ([dict[@"state"] isEqualToString:@"success"]) {
-                 [self.dataArr addObject:[ConsignmentNoteModel yy_modelWithJSON:dict[@"data"]]];
-            }
-            [self.tableView reloadData];
-        }else {
-            
+         [FCProgressHUD hideHUDForView:self.view animation:YES];
+        NSDictionary *dict = ((NSArray *)response.json).lastObject;
+        [self.tableView.dataArray removeAllObjects];
+        if ([dict[@"state"] isEqualToString:@"success"]) {
+            [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[WaybillModel class] json:dict[@"data"]]];
         }
-        
+        [self.tableView reloadData];
+        [self.tableView reloadEmptyData];
         NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
+        [FCProgressHUD hideHUDForView:self.view animation:YES];
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
@@ -80,21 +80,18 @@
 
 -(void)setUpUI
 {
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,self.navigationController.navigationBar.frame.size.height, FCWidth, FCHeight-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height) style:0];
+    _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0,self.navigationController.navigationBar.frame.size.height, FCWidth, FCHeight-self.navigationController.navigationBar.frame.size.height) style:0];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.backgroundColor = kGlobalBGColor;
+    _tableView.estimatedRowHeight = 100;
+    _tableView.rowHeight =UITableViewAutomaticDimension;
     [self.view addSubview:_tableView];
-    [_tableView registerClass:[ConsignmentNoteCell class] forCellReuseIdentifier:ktableViewKey];
-    
-    
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100;
-}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return self.tableView.dataArray.count;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -103,12 +100,22 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ConsignmentNoteCell *cell = [tableView dequeueReusableCellWithIdentifier:ktableViewKey forIndexPath:indexPath];
-//    ConsignmentNoteModel *model = _dataArr[indexPath.row];
-//    cell.model = model;
+//    ConsignmentNoteCell *cell = [tableView dequeueReusableCellWithIdentifier:ktableViewKey forIndexPath:indexPath];
+    WaybillTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"WaybillTableViewCell" owner:nil options:nil] firstObject];
+    }
+    cell.model = self.tableView.dataArray[indexPath.section];
     return cell;
+//    return cell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    WaybillModel *model = self.tableView.dataArray[indexPath.section];
+    WaybillDetailViewController *detailVc = [[WaybillDetailViewController alloc]init];
+    detailVc.EntNumber = model.EntNumber;
+    [self.navigationController pushViewController:detailVc animated:YES];
+}
 -(void)queryBtnAction:(UIButton*)btn
 {
     
