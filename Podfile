@@ -15,5 +15,6 @@ target 'Logistics' do
    pod 'LJContactManager'
    pod 'SDCycleScrollView'
    pod 'JPush', '~> 3.0.9'
+   pod 'CGXPickerView'
 
 end

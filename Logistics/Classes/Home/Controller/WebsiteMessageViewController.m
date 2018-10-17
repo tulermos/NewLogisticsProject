@@ -22,6 +22,7 @@
 @property (nonatomic, strong)BaseTableView *tableView;
 @property (nonatomic, strong)NSArray *allModels;
 @property (nonatomic, strong)NSArray *keys;
+@property (nonatomic, strong)NSMutableArray *dataArr;
 
 @end
 
@@ -29,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _dataArr = [NSMutableArray array];
     [self setupUI];
     if (_status == 1) {
         self.title = @"网点";
@@ -79,9 +81,31 @@
     NSDictionary *dict = [NSDictionary requestWithUrl:url param:nil];
     [FCHttpRequest FCNetWork:HttpRequestMethodPost url:nil model:nil cache:NO param:dict success:^(FCBaseResponse *response) {
         if ([response.json[@"state"] isEqualToString:@"success"]) {
-            NSArray *models = [NSArray yy_modelArrayWithClass:[CompanyInfoModel class] json:response.json[@"data"]];
-            [self sortForSectionModel:models];
-            self.allModels = models;
+            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
+//            NSArray *models = [NSArray yy_modelArrayWithClass:[CompanyInfoModel class] json:dict[@"staffInfo"]];
+            /*
+            @property (nonatomic, strong)NSString *companyName;
+            @property (nonatomic, strong)NSString *companyNamePY;
+            @property (nonatomic, strong)NSString *RussianName;
+            @property (nonatomic, strong)NSString *companyAddress;
+            @property (nonatomic, strong)NSString *companyLinkMan;
+            @property (nonatomic, strong)NSString *contactName;
+            @property (nonatomic, strong)NSString *contactTel;
+            @property (nonatomic, strong)NSString *companyEmail;
+            @property (nonatomic, strong)NSString *companyNumber;
+             */
+//            CompanyInfoModel *company = [CompanyInfoModel yy_modelWithJSON:<#(nonnull id)#>]
+            for (NSDictionary *bdic in dict[@"staffInfo"]) {
+                CompanyInfoModel *company  = [CompanyInfoModel new];
+                 company.companyEmail =bdic[@"email"];
+                 company.contactName =bdic[@"staffname"];
+                 company.contactTel =bdic[@"telphone"];
+                 company.companyName =bdic[@"company"];
+                [_dataArr addObject:company];
+            }
+        
+            [self sortForSectionModel:[_dataArr copy]];
+            self.allModels = [_dataArr copy];
             NSLog(@"%@",response.json);
         }
     } failure:^(FCBaseResponse *response) {
@@ -137,7 +161,7 @@
     }
     NSArray *array = self.tableView.dataArray[indexPath.section];
     CompanyInfoModel *infoModel = array[indexPath.row];
-    [cell setupName:infoModel.companyName tel:infoModel.RussianName];
+    [cell setupName:infoModel.companyName tel:infoModel.contactTel];
     return cell;
 }
 

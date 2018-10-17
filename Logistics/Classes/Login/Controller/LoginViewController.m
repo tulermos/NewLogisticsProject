@@ -95,30 +95,69 @@
 - (void)clickLogin:(UIButton *)sender {
     if (![self isValid]) return;
     NSDictionary *dict = @{
-       @"cusCode":_pwdTextField.text,
-       @"entNumber":_userTextField.text,
+       @"pwd":_pwdTextField.text,
+       @"username":_userTextField.text,
        };
     NSDictionary *param = [NSDictionary requestWithUrl:@"login" param:dict ];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:@"UserModel" cache:NO success:^(FCBaseResponse *response) {
-        
-        if (response.isSuccess) {
+        NSDictionary *dic = response.json;
+        NSLog(@"%@",dic[@"state"]);
+        if ([dic[@"state"] isEqualToString:@"success"]) {
             if (self.rememberButton.isSelected) {
                 [UserManager rememberLoginMessage:YES message:@{@"user":_userTextField.text,@"pwd":_pwdTextField.text}];
             }else {
                 [UserManager rememberLoginMessage:NO message:nil];
             }
             NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
-            UserModel *model = [UserModel yy_modelWithJSON:dict];
-            [[NSUserDefaults standardUserDefaults]setObject:dict forKey:kUserDefaultKeyUser];
-            [[NSUserDefaults standardUserDefaults]synchronize];
+            UserModel *model =  [UserModel new];
+             model.cusName = dict[@"loginInfo"][@"cusRealName"];
+             model.cusTel = dict[@"loginInfo"][@"cusTel"];
+             model.cusCode = dict[@"loginInfo"][@"userID"];
+             model.cusAlias = dict[@"loginInfo"][@"cusAlias"];
+             model.uuid = dict[@"uuid"];
+             model.other = dict[@"other"];
+             model.resCmd = dict[@"resCmd"];
+//             model.uuid = dic[@"uuid"];
+//             model.uuid = dic[@"uuid"];
+//            [[NSUserDefaults standardUserDefaults]setObject:dict[@"loginInfo"] forKey:kUserDefaultKeyUser];
+//            [[NSUserDefaults standardUserDefaults]synchronize];
             [UserManager sharedManager].user = model;
+//            [UserManager sharedManager].user.cusTel = model.cusTel;
+//            [UserManager sharedManager].user.cusCode = model.;
+//            [UserManager sharedManager].user.cusName = model.cusRealName;
+//            [UserManager sharedManager].user.cusAlias = model.cusRealName;
+//            [UserManager sharedManager].user.cusName = model.cusRealName;
             [JPushManager addAlias];
             [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationNameUpdateRootVc object:nil];
             [self rememberPwd];
-        }else {
+            
+            
+        }else{
             NSDictionary *dict = ((NSArray *)response.data).firstObject;
             [FCProgressHUD showText:dict[@"errorMsg"]];
         }
+//        if (response.isSuccess) {
+//            if (self.rememberButton.isSelected) {
+//                [UserManager rememberLoginMessage:YES message:@{@"user":_userTextField.text,@"pwd":_pwdTextField.text}];
+//            }else {
+//                [UserManager rememberLoginMessage:NO message:nil];
+//            }
+//            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
+//            UserModel *model = [UserModel yy_modelWithJSON:dict];
+//            [[NSUserDefaults standardUserDefaults]setObject:dict forKey:kUserDefaultKeyUser];
+//            [[NSUserDefaults standardUserDefaults]synchronize];
+//            [UserManager sharedManager].user = model;
+//            [JPushManager addAlias];
+//            [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationNameUpdateRootVc object:nil];
+//            [self rememberPwd];
+//            
+//            
+//            
+//            
+//        }else {
+//            NSDictionary *dict = ((NSArray *)response.data).firstObject;
+//            [FCProgressHUD showText:dict[@"errorMsg"]];
+//        }
         
         NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {

@@ -50,8 +50,18 @@
 }
 
 - (void)setupName:(NSString *)name tel:(NSString *)tel {
-    self.nameLabel.text = name;
-    self.telLabel.text = tel;
+    if (name.length) {
+         self.nameLabel.text = name;
+    }else{
+        self.nameLabel.text = @"";
+    }
+    if (tel.length) {
+        self.telLabel.text = tel;
+    }else{
+        self.telLabel.text = @"";
+    }
+   
+   
 }
 
 - (void)awakeFromNib {

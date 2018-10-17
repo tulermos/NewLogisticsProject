@@ -115,6 +115,8 @@
 		A996B3ED208F66B70013992F /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A996B3EC208F66B70013992F /* FeedbackViewController.m */; };
 		A996B3EF208F675B0013992F /* FeedbackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A996B3EE208F675B0013992F /* FeedbackViewController.storyboard */; };
 		E3FC383706E688FD0B4AB8FB /* libPods-Logistics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 834D0CAC7F6C6FB49E250B9B /* libPods-Logistics.a */; };
+		E7016E7D2174C3B6007F428C /* pickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7016E7C2174C3B6007F428C /* pickerCell.m */; };
+		E7016E802174C5D9007F428C /* AdvancedQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7016E7F2174C5D9007F428C /* AdvancedQueryViewController.m */; };
 		E7D420442170D76D00FD22F6 /* NewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420432170D76D00FD22F6 /* NewHomeViewController.m */; };
 		E7D420472170DDEB00FD22F6 /* NewHomeFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420462170DDEB00FD22F6 /* NewHomeFirstCell.m */; };
 		E7D4204A2170DF3B00FD22F6 /* FL_Button.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420492170DF3B00FD22F6 /* FL_Button.m */; };
@@ -136,6 +138,7 @@
 		E7D4208221736BD800FD22F6 /* CustomerStatisticsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4208121736BD800FD22F6 /* CustomerStatisticsModel.m */; };
 		E7D4208521736C6200FD22F6 /* CustomerStatisticsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4208421736C6200FD22F6 /* CustomerStatisticsCell.m */; };
 		E7D4208C217374F100FD22F6 /* AddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4208B217374F100FD22F6 /* AddressBookViewController.m */; };
+		E7FCAD142174EEB400E98645 /* TextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FCAD132174EEB400E98645 /* TextViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -379,6 +382,10 @@
 		A996B3EC208F66B70013992F /* FeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		A996B3EE208F675B0013992F /* FeedbackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedbackViewController.storyboard; sourceTree = "<group>"; };
 		C330CFB95FC1AFE16F2D3C67 /* Pods-Logistics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logistics.release.xcconfig"; path = "Pods/Target Support Files/Pods-Logistics/Pods-Logistics.release.xcconfig"; sourceTree = "<group>"; };
+		E7016E7B2174C3B6007F428C /* pickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pickerCell.h; sourceTree = "<group>"; };
+		E7016E7C2174C3B6007F428C /* pickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pickerCell.m; sourceTree = "<group>"; };
+		E7016E7E2174C5D9007F428C /* AdvancedQueryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedQueryViewController.h; sourceTree = "<group>"; };
+		E7016E7F2174C5D9007F428C /* AdvancedQueryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvancedQueryViewController.m; sourceTree = "<group>"; };
 		E7D420422170D76D00FD22F6 /* NewHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewHomeViewController.h; sourceTree = "<group>"; };
 		E7D420432170D76D00FD22F6 /* NewHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewHomeViewController.m; sourceTree = "<group>"; };
 		E7D420452170DDEB00FD22F6 /* NewHomeFirstCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewHomeFirstCell.h; sourceTree = "<group>"; };
@@ -421,6 +428,8 @@
 		E7D4208421736C6200FD22F6 /* CustomerStatisticsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerStatisticsCell.m; sourceTree = "<group>"; };
 		E7D4208A217374F100FD22F6 /* AddressBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookViewController.h; sourceTree = "<group>"; };
 		E7D4208B217374F100FD22F6 /* AddressBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewController.m; sourceTree = "<group>"; };
+		E7FCAD122174EEB400E98645 /* TextViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextViewCell.h; sourceTree = "<group>"; };
+		E7FCAD132174EEB400E98645 /* TextViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +512,10 @@
 				E7D4206A2171B31200FD22F6 /* ArticleNumberCell.m */,
 				E7D4208321736C6200FD22F6 /* CustomerStatisticsCell.h */,
 				E7D4208421736C6200FD22F6 /* CustomerStatisticsCell.m */,
+				E7016E7B2174C3B6007F428C /* pickerCell.h */,
+				E7016E7C2174C3B6007F428C /* pickerCell.m */,
+				E7FCAD122174EEB400E98645 /* TextViewCell.h */,
+				E7FCAD132174EEB400E98645 /* TextViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -662,6 +675,8 @@
 				E7D4207621720EEE00FD22F6 /* ReceivingRegistrationViewController.m */,
 				E7D4207821736A0300FD22F6 /* CustomerStatisticsViewController.h */,
 				E7D4207921736A0300FD22F6 /* CustomerStatisticsViewController.m */,
+				E7016E7E2174C5D9007F428C /* AdvancedQueryViewController.h */,
+				E7016E7F2174C5D9007F428C /* AdvancedQueryViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1260,11 +1275,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Logistics/Pods-Logistics-resources.sh",
+				"${PODS_ROOT}/CGXPickerView/CGXPickerView/CGXPickerView.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CGXPickerView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
@@ -1316,10 +1333,12 @@
 				A94669DB2099ACCB00CB2583 /* JPushTableViewCell.m in Sources */,
 				A903364D208A250700823D3C /* HomeViewController.m in Sources */,
 				A9022F6B208CCFDF00886D95 /* WaybillDetailPartView.m in Sources */,
+				E7016E7D2174C3B6007F428C /* pickerCell.m in Sources */,
 				A903365B208A250700823D3C /* BaseTableView.m in Sources */,
 				A9033698208A350100823D3C /* NavigationBarView.m in Sources */,
 				A9022F4B208B32F300886D95 /* WaybillQueryHeaderView.m in Sources */,
 				A90F76C72093033B00BC6A5D /* TransformDescViewController.m in Sources */,
+				E7016E802174C5D9007F428C /* AdvancedQueryViewController.m in Sources */,
 				A903365C208A250700823D3C /* BaseNavigationController.m in Sources */,
 				A9033674208A250700823D3C /* UIViewController+BackButtonHandler.m in Sources */,
 				A90F76BE2093030D00BC6A5D /* TransportViewController.m in Sources */,
@@ -1334,6 +1353,7 @@
 				A9033695208A2D0300823D3C /* RegisterViewController.m in Sources */,
 				A903367A208A250700823D3C /* UserManager.m in Sources */,
 				A9022F48208B2C9C00886D95 /* WaybillQueryViewController.m in Sources */,
+				E7FCAD142174EEB400E98645 /* TextViewCell.m in Sources */,
 				A92D71FD20906DA3000F7B7D /* WaybillQueryFooterView.m in Sources */,
 				A9022F6E208CCFF900886D95 /* WaybillDetailUnitView.m in Sources */,
 				A903367E208A250700823D3C /* EncodeTarget.m in Sources */,

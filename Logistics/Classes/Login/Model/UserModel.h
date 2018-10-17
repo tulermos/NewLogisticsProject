@@ -14,6 +14,7 @@
 @property (nonatomic, strong)NSString *cusName;
 @property (nonatomic, strong)NSString *cusCode;
 @property (nonatomic, strong)NSString *entNumber;
+@property (nonatomic, strong)NSString *userCompany;
 @property (nonatomic, strong)NSString *cusTel;
 @property (nonatomic, strong)NSString *cusAlias;
 @property (nonatomic, strong)NSString *uuid;
