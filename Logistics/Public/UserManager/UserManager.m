@@ -27,6 +27,7 @@
 
 - (void)clearUserData {
     self.user = nil;
+//    self.isLogin = NO;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefaultKeyUser];
 }
 

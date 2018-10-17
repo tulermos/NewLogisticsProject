@@ -111,22 +111,22 @@
             NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
             UserModel *model =  [UserModel new];
              model.cusName = dict[@"loginInfo"][@"cusRealName"];
-             model.cusTel = dict[@"loginInfo"][@"cusTel"];
+//             model.cusTel = dict[@"loginInfo"][@"cusTel"];
              model.cusCode = dict[@"loginInfo"][@"userID"];
              model.cusAlias = dict[@"loginInfo"][@"cusAlias"];
              model.uuid = dict[@"uuid"];
-             model.other = dict[@"other"];
+//             model.other = dict[@"other"];
              model.resCmd = dict[@"resCmd"];
-//             model.uuid = dic[@"uuid"];
-//             model.uuid = dic[@"uuid"];
-//            [[NSUserDefaults standardUserDefaults]setObject:dict[@"loginInfo"] forKey:kUserDefaultKeyUser];
-//            [[NSUserDefaults standardUserDefaults]synchronize];
+//             NSDictionary *adic = [self dicFromObject:model];
+            
+            NSDictionary *adic =  @{@"cusName":model.cusName,@"cusName":model.cusName,@"cusCode":model.cusCode,@"cusAlias":model.cusAlias,@"uuid":model.uuid,@"resCmd":model.resCmd};
+            
+            
+            [[NSUserDefaults standardUserDefaults]setObject:adic forKey:kUserDefaultKeyUser];
+             [[NSUserDefaults standardUserDefaults]synchronize];
             [UserManager sharedManager].user = model;
-//            [UserManager sharedManager].user.cusTel = model.cusTel;
-//            [UserManager sharedManager].user.cusCode = model.;
-//            [UserManager sharedManager].user.cusName = model.cusRealName;
-//            [UserManager sharedManager].user.cusAlias = model.cusRealName;
-//            [UserManager sharedManager].user.cusName = model.cusRealName;
+//            [UserManager sharedManager].isLogin = YES;
+
             [JPushManager addAlias];
             [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationNameUpdateRootVc object:nil];
             [self rememberPwd];
@@ -269,6 +269,85 @@
          [_registerButton addTarget:self action:@selector(clickRegister:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _registerButton;
+}
+- (NSDictionary *)dicFromObject:(NSObject *)object {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    unsigned int count;
+    objc_property_t *propertyList = class_copyPropertyList([object class], &count);
+    
+    for (int i = 0; i < count; i++) {
+        objc_property_t property = propertyList[i];
+        const char *cName = property_getName(property);
+        NSString *name = [NSString stringWithUTF8String:cName];
+        NSObject *value = [object valueForKey:name];//valueForKey返回的数字和字符串都是对象
+        
+        if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
+            //string , bool, int ,NSinteger
+            [dic setObject:value forKey:name];
+            
+        } else if ([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]]) {
+            //字典或字典
+            [dic setObject:[self arrayOrDicWithObject:(NSArray*)value] forKey:name];
+            
+        } else if (value == nil) {
+            //null
+            //[dic setObject:[NSNull null] forKey:name];//这行可以注释掉?????
+            
+        } else {
+            //model
+            [dic setObject:[self dicFromObject:value] forKey:name];
+        }
+    }
+    
+    return [dic copy];
+}
+//将可能存在model数组转化为普通数组
+- (id)arrayOrDicWithObject:(id)origin {
+    if ([origin isKindOfClass:[NSArray class]]) {
+        //数组
+        NSMutableArray *array = [NSMutableArray array];
+        for (NSObject *object in origin) {
+            if ([object isKindOfClass:[NSString class]] || [object isKindOfClass:[NSNumber class]]) {
+                //string , bool, int ,NSinteger
+                [array addObject:object];
+                
+            } else if ([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSDictionary class]]) {
+                //数组或字典
+                [array addObject:[self arrayOrDicWithObject:(NSArray *)object]];
+                
+            } else {
+                //model
+                [array addObject:[self dicFromObject:object]];
+            }
+        }
+        
+        return [array copy];
+        
+    } else if ([origin isKindOfClass:[NSDictionary class]]) {
+        //字典
+        NSDictionary *originDic = (NSDictionary *)origin;
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        for (NSString *key in originDic.allKeys) {
+            id object = [originDic objectForKey:key];
+            
+            if ([object isKindOfClass:[NSString class]] || [object isKindOfClass:[NSNumber class]]) {
+                //string , bool, int ,NSinteger
+                [dic setObject:object forKey:key];
+                
+            } else if ([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSDictionary class]]) {
+                //数组或字典
+                [dic setObject:[self arrayOrDicWithObject:object] forKey:key];
+                
+            } else {
+                //model
+                [dic setObject:[self dicFromObject:object] forKey:key];
+            }
+        }
+        
+        return [dic copy];
+    }
+    
+    return [NSNull null];
 }
 
 @end

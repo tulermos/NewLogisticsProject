@@ -95,13 +95,26 @@
             @property (nonatomic, strong)NSString *companyNumber;
              */
 //            CompanyInfoModel *company = [CompanyInfoModel yy_modelWithJSON:<#(nonnull id)#>]
+            if ([url isEqualToString:@"staff"]) {
             for (NSDictionary *bdic in dict[@"staffInfo"]) {
                 CompanyInfoModel *company  = [CompanyInfoModel new];
                  company.companyEmail =bdic[@"email"];
-                 company.contactName =bdic[@"staffname"];
-                 company.contactTel =bdic[@"telphone"];
-                 company.companyName =bdic[@"company"];
+//                 company.contactName =bdic[@"company"];
+                 company.companyNumber =bdic[@"telphone"];
+                 company.companyName =bdic[@"staffname"];
+//                company.companyAddress = 
                 [_dataArr addObject:company];
+              }
+            }else{
+                for (NSDictionary *bdic in dict[@"companyInfo"]) {
+                    CompanyInfoModel *company  = [CompanyInfoModel new];
+                    company.companyEmail =bdic[@"companyEmail"];
+//                    company.companyLinkMan =bdic[@"companyLinkMan"];
+                    company.companyNumber =bdic[@"companyNumber"];
+                    company.companyName =bdic[@"companyName"];
+                    company.companyAddress = bdic[@"companyAddress"];
+                    [_dataArr addObject:company];
+                }
             }
         
             [self sortForSectionModel:[_dataArr copy]];

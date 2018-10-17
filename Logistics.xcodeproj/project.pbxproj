@@ -117,6 +117,7 @@
 		E3FC383706E688FD0B4AB8FB /* libPods-Logistics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 834D0CAC7F6C6FB49E250B9B /* libPods-Logistics.a */; };
 		E7016E7D2174C3B6007F428C /* pickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7016E7C2174C3B6007F428C /* pickerCell.m */; };
 		E7016E802174C5D9007F428C /* AdvancedQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7016E7F2174C5D9007F428C /* AdvancedQueryViewController.m */; };
+		E74A260921777CA6009C9400 /* NSString+isEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = E74A260821777CA6009C9400 /* NSString+isEmpty.m */; };
 		E7D420442170D76D00FD22F6 /* NewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420432170D76D00FD22F6 /* NewHomeViewController.m */; };
 		E7D420472170DDEB00FD22F6 /* NewHomeFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420462170DDEB00FD22F6 /* NewHomeFirstCell.m */; };
 		E7D4204A2170DF3B00FD22F6 /* FL_Button.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420492170DF3B00FD22F6 /* FL_Button.m */; };
@@ -386,6 +387,8 @@
 		E7016E7C2174C3B6007F428C /* pickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pickerCell.m; sourceTree = "<group>"; };
 		E7016E7E2174C5D9007F428C /* AdvancedQueryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedQueryViewController.h; sourceTree = "<group>"; };
 		E7016E7F2174C5D9007F428C /* AdvancedQueryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvancedQueryViewController.m; sourceTree = "<group>"; };
+		E74A260721777CA6009C9400 /* NSString+isEmpty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+isEmpty.h"; sourceTree = "<group>"; };
+		E74A260821777CA6009C9400 /* NSString+isEmpty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+isEmpty.m"; sourceTree = "<group>"; };
 		E7D420422170D76D00FD22F6 /* NewHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewHomeViewController.h; sourceTree = "<group>"; };
 		E7D420432170D76D00FD22F6 /* NewHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewHomeViewController.m; sourceTree = "<group>"; };
 		E7D420452170DDEB00FD22F6 /* NewHomeFirstCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewHomeFirstCell.h; sourceTree = "<group>"; };
@@ -900,6 +903,8 @@
 			children = (
 				A9033605208A250600823D3C /* Foundation+Category */,
 				A9033622208A250600823D3C /* UIKit+Category */,
+				E74A260721777CA6009C9400 /* NSString+isEmpty.h */,
+				E74A260821777CA6009C9400 /* NSString+isEmpty.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1406,6 +1411,7 @@
 				A92D72082091724B000F7B7D /* AppUpadateModel.m in Sources */,
 				A9033661208A250700823D3C /* NSDate+Extension.m in Sources */,
 				E7D4206221719FDC00FD22F6 /* HSLimitText.m in Sources */,
+				E74A260921777CA6009C9400 /* NSString+isEmpty.m in Sources */,
 				A9033679208A250700823D3C /* FCNetWorkManager.m in Sources */,
 				A903367B208A250700823D3C /* CHAlertAction.m in Sources */,
 				A92D71F72090508A000F7B7D /* AddressBookAlertView.m in Sources */,

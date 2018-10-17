@@ -48,6 +48,6 @@
 
 #import "UIView+Frame.h"
 #import "HSLimitText.h"
-
+#import "NSString+isEmpty.h"
 
 #endif /* PrefixHeader_pch */

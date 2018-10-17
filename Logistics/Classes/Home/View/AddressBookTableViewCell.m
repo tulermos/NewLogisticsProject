@@ -50,12 +50,12 @@
 }
 
 - (void)setupName:(NSString *)name tel:(NSString *)tel {
-    if (name.length) {
+    if (![NSString isBlankString:name]) {
          self.nameLabel.text = name;
     }else{
         self.nameLabel.text = @"";
     }
-    if (tel.length) {
+    if (![NSString isBlankString:tel]) {
         self.telLabel.text = tel;
     }else{
         self.telLabel.text = @"";
