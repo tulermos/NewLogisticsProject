@@ -62,7 +62,7 @@
         make.top.equalTo(self.noteLabel.mas_bottom).offset(5);
     }];
     [_kindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.mas_left).offset(145);
+        make.left.equalTo(self.contentView.mas_left).offset(45);
         make.width.mas_equalTo(150);
         make.top.equalTo(_noteLabel.mas_bottom).offset(26);
     }];
@@ -82,6 +82,33 @@
 //    _statusLabel.text = model.ShiTime;
     
 }
+
+-(void)setMeaModel:(MeaModel *)meaModel
+{
+    _selectBtn.hidden = YES;
+    [_noteLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.mas_left).offset(15);
+        make.width.mas_equalTo(234);
+        make.height.mas_equalTo(21);
+        make.top.equalTo(self.contentView.mas_top).offset(15);
+    }];
+    [_locationLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.mas_left).offset(15);
+        make.right.equalTo(self.contentView.mas_right).offset(0);
+        make.height.mas_equalTo(18);
+        make.top.equalTo(self.noteLabel.mas_bottom).offset(5);
+    }];
+    [_statusLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.mas_left).offset(15);
+        make.width.height.mas_equalTo(16.2);
+        make.top.equalTo(self.contentView.mas_top).offset(39);
+    }];
+    _meaModel = meaModel;
+    _noteLabel.text = meaModel.MeaPackTime;
+    _dateLabel.text = meaModel.MeaNo;
+    _locationLabel.text = meaModel.MeaRemark;
+}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ConsignmentNoteModel.h"
+#import "MeaModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ArticleNumberCell : UITableViewCell
@@ -18,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UILabel *statusLabel;//方式
 @property (nonatomic,strong) UIButton *selectBtn;//选择按钮
 @property (nonatomic,strong) ConsignmentNoteModel *model;
+@property (nonatomic,strong) MeaModel *meaModel;
 @end
 
 NS_ASSUME_NONNULL_END

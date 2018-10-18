@@ -20,6 +20,7 @@
 #import "WaybillDetailViewController.h"
 #import "ReceivingRegistrationViewController.h"
 #import "CustomerStatisticsViewController.h"
+#import "MeasuringDocumentsViewController.h"
 #define kCollectionViewKey  @"kCollectionViewKey"
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,HSLimitTextDelegate>
@@ -108,7 +109,8 @@
         }else if(indexPath.item == 1) {
 
         }else if (indexPath.item == 2) {
-
+            MeasuringDocumentsViewController *vc = [MeasuringDocumentsViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if (indexPath.item == 3) {
             ConsignmentNoteViewController *noteController = [ConsignmentNoteViewController new];
             [self.navigationController pushViewController:noteController animated:YES];
