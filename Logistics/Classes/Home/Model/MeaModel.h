@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy) NSString *MeaRemark;
 
+@property (nonatomic,copy) NSString *StoID;
+@property (nonatomic,copy) NSString *OrganizationID;
+
 @end
 /*
 MeaNo    时间

@@ -49,5 +49,5 @@
 #import "UIView+Frame.h"
 #import "HSLimitText.h"
 #import "NSString+isEmpty.h"
-
+#import <MJRefresh/MJRefresh.h>
 #endif /* PrefixHeader_pch */

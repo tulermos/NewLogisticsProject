@@ -25,13 +25,16 @@
     _dataArr = [NSMutableArray array];
     self.view.backgroundColor = kGlobalViewBgColor;
     [self setUpUI];
-    [self getData];
+    [self getMeaData];
+//    [self getPackData];
+    
+ 
 }
 
 -(void)setUpUI
 {
    
-    _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0,Navigation_Height+44, FCWidth, FCHeight-Navigation_Height-44) style:0];
+    _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0,0, FCWidth, FCHeight-Navigation_Height-44) style:0];
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -58,26 +61,26 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ArticleNumberCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellId forIndexPath:indexPath];
-    ConsignmentNoteModel *model = _tableView.dataArray[indexPath.row];
-    cell.model = model;
+    MeaModel *model = _tableView.dataArray[indexPath.row];
+    cell.meaModel = model;
     cell.selectionStyle = 0;
     return cell;
 }
--(void)getData
+-(void)getMeaData
 {
-    NSDictionary *param = [NSDictionary requestWithUrl:@"GetUnMeasureDataList" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"pageindex":@(1),@"pagesize":@(15)}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"GetUnMeasureDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"pageindex":@(1),@"pagesize":@(15)}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         [FCProgressHUD hideHUDForView:self.view animation:YES];
         NSDictionary *dic = response.json;
         NSLog(@"%@",dic[@"state"]);
         if ([dic[@"state"] isEqualToString:@"success"]) {
             NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
-            for (NSDictionary *adic in dict[@"unMeaSureInfo"]) {
-                [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[MeaModel class] json:adic]];
+//            for (NSDictionary *adic in dict[@"unMeaSureInfo"]) {
+                [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[MeaModel class] json: dict[@"measureInfo"]]];
 //                MeaModel *mea = [MeaModel yy_modelWithJSON:adic];
 //                [self.dataArr addObject:mea];
 //                [self.tableView reloadDataWithArray:[self.dataArr mutableCopy]];
-            }
+//            }
            
             [self.tableView reloadData];
             [self.tableView reloadEmptyData];
@@ -90,5 +93,10 @@
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
+}
+
+-(void)getPackData
+{
+    
 }
 @end

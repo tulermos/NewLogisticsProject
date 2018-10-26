@@ -16,5 +16,6 @@ target 'Logistics' do
    pod 'SDCycleScrollView'
    pod 'JPush', '~> 3.0.9'
    pod 'CGXPickerView'
+   pod 'TFDropDownMenu'
 
 end

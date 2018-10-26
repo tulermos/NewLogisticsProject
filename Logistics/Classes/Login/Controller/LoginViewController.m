@@ -110,21 +110,23 @@
             }
             NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
             UserModel *model =  [UserModel new];
-             model.cusName = dict[@"loginInfo"][@"cusRealName"];
+             model.cusName = _userTextField.text;
 //             model.cusTel = dict[@"loginInfo"][@"cusTel"];
              model.cusCode = dict[@"loginInfo"][@"userID"];
              model.cusAlias = dict[@"loginInfo"][@"cusAlias"];
              model.uuid = dict[@"uuid"];
 //             model.other = dict[@"other"];
              model.resCmd = dict[@"resCmd"];
+            model.pwd =_pwdTextField.text;
 //             NSDictionary *adic = [self dicFromObject:model];
             
-            NSDictionary *adic =  @{@"cusName":model.cusName,@"cusName":model.cusName,@"cusCode":model.cusCode,@"cusAlias":model.cusAlias,@"uuid":model.uuid,@"resCmd":model.resCmd};
+            NSDictionary *adic =  @{@"cusName":model.cusName,@"cusName":model.cusName,@"cusCode":model.cusCode,@"cusAlias":model.cusAlias,@"uuid":model.uuid,@"resCmd":model.resCmd,@"pwd":model.pwd};
             
             
             [[NSUserDefaults standardUserDefaults]setObject:adic forKey:kUserDefaultKeyUser];
              [[NSUserDefaults standardUserDefaults]synchronize];
             [UserManager sharedManager].user = model;
+            [UserManager setUpUserInfo];
 //            [UserManager sharedManager].isLogin = YES;
 
             [JPushManager addAlias];

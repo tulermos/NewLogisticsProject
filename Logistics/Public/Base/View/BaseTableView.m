@@ -27,7 +27,7 @@
     if (self = [super initWithFrame:frame style:style]) {
         _tableViewStyle = style;
         _pageNO = 1;
-        _pageSize = 10;
+        _pageSize = 15;
         _isEmpty = NO;
         
         self.delegate = self;
@@ -51,9 +51,9 @@
                 weakSelf.pageNO = 1;
                 [weakSelf headerRequestWithData];
             }];
-            NSURL *gifImageUrl = [[NSBundle mainBundle] URLForResource:@"RefreshLoad" withExtension:@"gif"];
-            UIImage *image = [UIImage animatedImageWithAnimatedGIFURL:gifImageUrl];
-            [header setImages:@[image] forState:MJRefreshStateRefreshing];
+//            NSURL *gifImageUrl = [[NSBundle mainBundle] URLForResource:@"RefreshLoad" withExtension:@"gif"];
+//            UIImage *image = [UIImage animatedImageWithAnimatedGIFURL:gifImageUrl];
+//            [header setImages:@[image] forState:MJRefreshStateRefreshing];
             header.lastUpdatedTimeLabel.hidden= YES;
             header.gifView.mj_w = 30;
             header.gifView.mj_h = 30;
@@ -76,9 +76,9 @@
                 }
                 [weakSelf footerRequestWithData];
             }];
-            NSURL *gifImageUrl = [[NSBundle mainBundle] URLForResource:@"RefreshLoad" withExtension:@"gif"];
-            UIImage *image = [UIImage animatedImageWithAnimatedGIFURL:gifImageUrl];
-            [footer setImages:@[image] forState:MJRefreshStateRefreshing];
+//            NSURL *gifImageUrl = [[NSBundle mainBundle] URLForResource:@"RefreshLoad" withExtension:@"gif"];
+//            UIImage *image = [UIImage animatedImageWithAnimatedGIFURL:gifImageUrl];
+//            [footer setImages:@[image] forState:MJRefreshStateRefreshing];
             self.mj_footer = footer;
         }else {
             self.mj_footer = nil;

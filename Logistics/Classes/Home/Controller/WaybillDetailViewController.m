@@ -88,14 +88,18 @@
 - (void)loadData:(NSString *)entNumber {
     
     [FCProgressHUD showLoadingOn:self.view];
-    NSDictionary *dict = [NSDictionary requestWithUrl:@"shipdetail" param:@{@"cusCode":[UserManager sharedManager].user.cusCode,@"entNumber":entNumber}];
+    NSDictionary *dict = [NSDictionary requestWithUrl:@"shipdetail" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":entNumber}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:dict model:nil cache:NO success:^(FCBaseResponse *response) {
         [FCProgressHUD hideHUDForView:self.view animation:YES];
-        NSDictionary *json = ((NSArray *)response.json).lastObject;
-        if ([json[@"state"] isEqualToString:@"success"]) {
-             [self.tableView reloadDataWithArray:[self setupDetailItems:json[@"data"]]];
-            [self addHeaderView:json[@"data"]];
+//        NSDictionary *json = ((NSArray *)response.json).lastObject;
+        NSDictionary *dic = response.json;
+        NSLog(@"%@",dic[@"state"]);
+        NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
+        if ([dic[@"state"] isEqualToString:@"success"]) {
+             [self.tableView reloadDataWithArray:[self setupDetailItems:dict]];
+             [self addHeaderView:dic[@"data"]];
         }else {
+            [FCProgressHUD showText:dict[@"errorMsg"]];
             self.tableView.tableHeaderView = nil;
             [self.tableView.dataArray removeAllObjects];
             [self.tableView reloadData];
@@ -106,7 +110,7 @@
         [self.tableView.dataArray removeAllObjects];
         [self.tableView reloadData];
         [FCProgressHUD hideHUDForView:self.view animation:YES];
-        NSDictionary *dict = ((NSArray *)response.data).firstObject;
+         NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
 }

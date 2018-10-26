@@ -36,13 +36,13 @@
 {
     [_noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.mas_left).offset(15);
-        make.width.mas_equalTo(234);
+        make.width.mas_equalTo(144);
         make.height.mas_equalTo(21);
         make.top.equalTo(self.contentView.mas_top).offset(15);
     }];
     [_dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView.mas_right).offset(-15);
-        make.width.mas_equalTo(234);
+        make.left.equalTo(self.noteLabel.mas_right).offset(85);
+        make.width.mas_equalTo(200);
         make.height.mas_equalTo(18);
         make.top.equalTo(self.contentView.mas_top).offset(16);
     }];
@@ -53,11 +53,22 @@
         make.top.equalTo(self.noteLabel.mas_bottom).offset(4);
     }];
     [_receiveStateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView.mas_right).offset(-70);
+        make.top.equalTo(self.noteLabel.mas_bottom).offset(4);
+        make.left.equalTo(self.contentView.mas_left).offset(175);
         make.width.mas_equalTo(130);
         make.height.mas_equalTo(18);
     }];
 }
+
+-(void)setRRModel:(ReceivingRegistrationModel *)RRModel
+{
+     _RRModel = RRModel;
+     _noteLabel.text = RRModel.EntNumber;
+     _dateLabel.text = RRModel.EntTime;
+    _receiveLabel.text =[NSString stringWithFormat:@"收货方：%@",RRModel.EntRecName];
+     _receiveStateLabel.text = [NSString stringWithFormat:@"收货单状态：%@",RRModel.EntState];
+}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

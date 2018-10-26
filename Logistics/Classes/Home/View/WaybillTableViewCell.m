@@ -8,7 +8,7 @@
 
 #import "WaybillTableViewCell.h"
 #import "WaybillModel.h"
-
+#import "ConsignmentNoteModel.h"
 @interface WaybillTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UILabel *noLabel;
@@ -50,6 +50,19 @@
     self.sumLabel.text = [NSString stringWithFormat:@"$%@",model.DShiSum];
 }
 
+- (void)setCNModel:(ConsignmentNoteModel *)CNModel {
+    _CNModel = CNModel;
+    self.noLabel.text = CNModel.EntNumber;
+    self.timeLabel.text = CNModel.EntTime;
+    self.locationLabel.text = [NSString stringWithFormat:@"%@-%@",CNModel.EntStartID,CNModel.EntEndID];
+    self.countLabel.text = [NSString stringWithFormat:@"%@:%@%@",NSLocalizedString(@"Home_jianshu", nil),CNModel.SdNumber,NSLocalizedString(@"Home_jianshu_units", nil)];
+    self.weightLabel.text = [NSString stringWithFormat:@"%@:%@%@",NSLocalizedString(@"Home_weight", nil),CNModel.SdWeight,NSLocalizedString(@"Home_weight_units", nil)];
+    self.volumeLabel.text = [NSString stringWithFormat:@"%@:%@%@",NSLocalizedString(@"Home_lifang", nil),CNModel.SdCube,NSLocalizedString(@"Home_lifang_units", nil)];
+    self.priceTitle.text = [NSString stringWithFormat:@"%@:",NSLocalizedString(@"Home_zongfeiyong", nil)];
+    self.priceLabel.text = [NSString stringWithFormat:@"$%@",CNModel.ShiSum];
+    self.sumTitle.text = [NSString stringWithFormat:@"%@:",NSLocalizedString(@"Home_feiyong_price", nil)];
+//    self.sumLabel.text = [NSString stringWithFormat:@"$%@",CNModel.DShiSum];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state

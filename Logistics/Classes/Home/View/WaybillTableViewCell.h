@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class WaybillModel;
+
+@class ConsignmentNoteModel;
+
 @interface WaybillTableViewCell : UITableViewCell
 
 @property (nonatomic, strong)WaybillModel *model;
+
+@property (nonatomic, strong)ConsignmentNoteModel *CNModel;
 
 @end

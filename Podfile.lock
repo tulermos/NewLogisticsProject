@@ -29,6 +29,8 @@ PODS:
   - SDWebImage (4.1.2):
     - SDWebImage/Core (= 4.1.2)
   - SDWebImage/Core (4.1.2)
+  - TFDropDownMenu (1.1.0):
+    - Masonry
   - YYCache (1.0.4)
   - YYModel (1.0.4)
   - YYText (1.0.7)
@@ -45,6 +47,7 @@ DEPENDENCIES:
   - MJRefresh (~> 3.1.14)
   - SDCycleScrollView
   - SDWebImage (~> 4.1.0)
+  - TFDropDownMenu
   - YYCache (~> 1.0.4)
   - YYModel (~> 1.0.4)
   - YYText
@@ -63,6 +66,7 @@ SPEC REPOS:
     - MJRefresh
     - SDCycleScrollView
     - SDWebImage
+    - TFDropDownMenu
     - YYCache
     - YYModel
     - YYText
@@ -80,10 +84,11 @@ SPEC CHECKSUMS:
   MJRefresh: 6642e35b3227a5447b9fd5e17c552c90196c9859
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
+  TFDropDownMenu: 714ebed4d0735974720c22ed5141ee11891d0a7e
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 7f0aaf06b849ce935996979702ea7ea07b3a2112
+PODFILE CHECKSUM: 69c49cef95e36c492028ec139497261bc96a7999
 
 COCOAPODS: 1.5.3

@@ -12,11 +12,16 @@
 #import "WaybillTableViewCell.h"
 #import "WaybillModel.h"
 #import "WaybillDetailViewController.h"
+#import "WaybillQueryHeaderView.h"
+#import "ReceivingRegistrationModel.h"
+#import "WaybillQueryFooterView.h"
 #define ktableViewKey  @"ktableViewKey"
 @interface ConsignmentNoteViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) BaseTableView *tableView;
+@property (nonatomic, strong)WaybillQueryHeaderView *headerView;
+@property (nonatomic, strong)WaybillQueryFooterView *footerView;
 
 @end
 
@@ -55,21 +60,30 @@
     UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithCustomView:refreshBtn];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: query, refresh,nil]];
     [self setUpUI];
-    [self getData];
 }
--(void)getData
+- (void)loadData:(NSDictionary *)timeDict
 {
-    NSDictionary *param = [NSDictionary requestWithUrl:@"GetConsignmentData" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b"}];
+      NSDictionary *param = [NSDictionary requestWithUrl:@"GetEntDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":@"",@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize),@"StartTime":timeDict[@"start"],@"EndTime":timeDict[@"end"],@"StockID":@"",@"EntStartID":@"",@"EntEndID":@""}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
          [FCProgressHUD hideHUDForView:self.view animation:YES];
-        NSDictionary *dict = ((NSArray *)response.json).lastObject;
-        [self.tableView.dataArray removeAllObjects];
-        if ([dict[@"state"] isEqualToString:@"success"]) {
-            [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[WaybillModel class] json:dict[@"data"]]];
+        NSDictionary *dic = response.json;
+        NSLog(@"%@",dic[@"state"]);
+        if ([dic[@"state"] isEqualToString:@"success"]) {
+            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
+            [self.tableView.dataArray removeAllObjects];
+//            for (NSDictionary *adic in dict[@"entinfo"]) {
+                [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[ConsignmentNoteModel class] json:dict[@"entinfo"]]];
+                //                NSArray *models =[NSArray yy_modelArrayWithClass:[ReceivingRegistrationModel class] json:adic];
+//            }
+            
+            [self.tableView reloadData];
+            [self.tableView reloadEmptyData];
+            [self setSum];
+            
+        }else{
+            NSDictionary *dict = ((NSArray *)response.data).firstObject;
+            [FCProgressHUD showText:dict[@"errorMsg"]];
         }
-        [self.tableView reloadData];
-        [self.tableView reloadEmptyData];
-        NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
         [FCProgressHUD hideHUDForView:self.view animation:YES];
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
@@ -80,13 +94,25 @@
 
 -(void)setUpUI
 {
-    _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0,self.navigationController.navigationBar.frame.size.height, FCWidth, FCHeight-self.navigationController.navigationBar.frame.size.height) style:0];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.backgroundColor = kGlobalBGColor;
-    _tableView.estimatedRowHeight = 100;
-    _tableView.rowHeight =UITableViewAutomaticDimension;
-    [self.view addSubview:_tableView];
+    [self.view addSubview:self.headerView];
+    [self.view addSubview:self.tableView];
+    [self.view bringSubviewToFront:self.headerView];
+    
+    _headerView.frame = CGRectMake(0, FCNavigationHeight, FCWidth, 50);
+    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(FCNavigationHeight + 55);
+        make.leading.trailing.bottom.mas_equalTo(self.view);
+    }];
+    [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.bottom.trailing.mas_equalTo(self.view);
+        make.height.mas_equalTo(80);
+    }];
+    @weakify(self);
+    _headerView.timeBlock = ^(NSDictionary *dict) {
+        @strongify(self);
+        [self loadData:dict];
+    };
+    [self.headerView setDefault];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -105,7 +131,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle]loadNibNamed:@"WaybillTableViewCell" owner:nil options:nil] firstObject];
     }
-    cell.model = self.tableView.dataArray[indexPath.section];
+    cell.CNModel  = self.tableView.dataArray[indexPath.section];
     return cell;
 //    return cell;
 }
@@ -116,13 +142,49 @@
     detailVc.EntNumber = model.EntNumber;
     [self.navigationController pushViewController:detailVc animated:YES];
 }
--(void)queryBtnAction:(UIButton*)btn
-{
-    
+#pragma mark - tableView
+- (BaseTableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[BaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = kGlobalViewBgColor;
+        _tableView.estimatedRowHeight = 100;
+        _tableView.rowHeight =UITableViewAutomaticDimension;
+        _tableView.isOpenFooterRefresh = YES;
+        _tableView.isOpenHeaderRefresh = YES;
+    }
+    return _tableView;
 }
--(void)refreshBtnAction:(UIButton*)btn
-{
+- (WaybillQueryHeaderView *)headerView {
+    if (!_headerView) {
+        _headerView = [WaybillQueryHeaderView waybillQueryHeaderView];
+    }
+    return _headerView;
+}
+- (WaybillQueryFooterView *)footerView {
+    if (!_footerView) {
+        _footerView = [WaybillQueryFooterView footerView];
+    }
+    return _footerView;
+}
+- (void)setSum {
     
+    CGFloat yf = 0, js = 0,dsk = 0,zl = 0,dsyf = 0,tj = 0;
+    for (WaybillModel *model in self.tableView.dataArray) {
+        yf += model.DShiSum.floatValue;
+        js += model.Number.floatValue;
+        dsk += 0;
+        zl += model.Weight.floatValue;
+        dsyf = 0;
+        tj += model.Cube.floatValue;
+    }
+    self.footerView.yf = yf;
+    self.footerView.js = js;
+    self.footerView.dsf = dsk;
+    self.footerView.zl = zl;
+    self.footerView.dsyf = dsyf;
+    self.footerView.tj = tj;
 }
 
 @end

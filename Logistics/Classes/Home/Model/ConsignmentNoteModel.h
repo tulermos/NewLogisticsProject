@@ -28,6 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString *ShiRemark;
 @property (nonatomic, copy)NSString *Company;
 @property (nonatomic, copy)NSString *Stockname;
+@property (nonatomic, copy)NSString *EntNumber;
+@property (nonatomic, copy)NSString *EntTime;
+@property (nonatomic, copy)NSString *EntState;
+@property (nonatomic, copy)NSString *EntType;
+@property (nonatomic, copy)NSString *EntRemark;
 /*
 "ShiNumber": "BJ-20181005-0125-2",
 "ShiTime": "20181005",

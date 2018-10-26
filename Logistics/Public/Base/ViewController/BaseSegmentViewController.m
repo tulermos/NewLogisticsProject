@@ -18,6 +18,7 @@
     [super viewDidLoad];
       self.title = _titleStr;
       self.view.backgroundColor = kGlobalViewBgColor;
+    if (self.status != 3) {
     _batchBtn=[UIButton buttonWithType:(UIButtonTypeCustom)];
     [_batchBtn setTitle:@"批处理" forState:(UIControlStateNormal)];
     [_batchBtn setFrame:CGRectMake(15.0, 0.0, 70, 16)];
@@ -55,6 +56,7 @@
     UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithCustomView:refreshBtn];
     UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithCustomView:searchBtn];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:search ,refresh, batch,nil]];
+    }
     NSUInteger count = _titleArr.count;
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,Navigation_Height+44, FCWidth, FCHeight-Navigation_Height-44)];
     self.scrollView.pagingEnabled = YES;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ReceivingRegistrationModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ReceivingRegistrationCell : UITableViewCell
@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) UILabel *receiveStateLabel;//收货状态
 
+@property (nonatomic,strong)ReceivingRegistrationModel *RRModel;
 
 @end
 

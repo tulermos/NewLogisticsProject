@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NoPackViewController : UIViewController
 
+@property (nonatomic,assign) NSInteger status;
+
+-(void)getMeaData;
+
+-(void)getPackData;
+
 @end
 
 NS_ASSUME_NONNULL_END

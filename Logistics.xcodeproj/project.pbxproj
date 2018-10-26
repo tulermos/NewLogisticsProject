@@ -117,6 +117,9 @@
 		E3FC383706E688FD0B4AB8FB /* libPods-Logistics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 834D0CAC7F6C6FB49E250B9B /* libPods-Logistics.a */; };
 		E7016E7D2174C3B6007F428C /* pickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7016E7C2174C3B6007F428C /* pickerCell.m */; };
 		E7016E802174C5D9007F428C /* AdvancedQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7016E7F2174C5D9007F428C /* AdvancedQueryViewController.m */; };
+		E7140B7F21809F2E00EE244B /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7140B7E21809F2E00EE244B /* NewMessageViewController.m */; };
+		E7140B822180A10900EE244B /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7140B812180A10900EE244B /* AnnouncementViewController.m */; };
+		E7140B852180A47800EE244B /* AnnouncementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7140B842180A47800EE244B /* AnnouncementModel.m */; };
 		E74A260921777CA6009C9400 /* NSString+isEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = E74A260821777CA6009C9400 /* NSString+isEmpty.m */; };
 		E74A2653217785BE009C9400 /* JXCategoryBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = E74A260F217785BE009C9400 /* JXCategoryBaseView.m */; };
 		E74A2654217785BE009C9400 /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E74A2610217785BE009C9400 /* JXCategoryBaseCell.m */; };
@@ -153,6 +156,8 @@
 		E74A2679217888F7009C9400 /* MeasuringDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74A2678217888F7009C9400 /* MeasuringDocumentsViewController.m */; };
 		E74A267C21788E33009C9400 /* MeaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E74A267B21788E33009C9400 /* MeaModel.m */; };
 		E74A267F2178A1B1009C9400 /* PackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74A267E2178A1B1009C9400 /* PackedViewController.m */; };
+		E7A71A52217AE7AC003059B3 /* PackDocument_NoPackController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A71A51217AE7AC003059B3 /* PackDocument_NoPackController.m */; };
+		E7A71A55217AEBAF003059B3 /* PackDocument_PackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A71A54217AEBAF003059B3 /* PackDocument_PackedViewController.m */; };
 		E7D420442170D76D00FD22F6 /* NewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420432170D76D00FD22F6 /* NewHomeViewController.m */; };
 		E7D420472170DDEB00FD22F6 /* NewHomeFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420462170DDEB00FD22F6 /* NewHomeFirstCell.m */; };
 		E7D4204A2170DF3B00FD22F6 /* FL_Button.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420492170DF3B00FD22F6 /* FL_Button.m */; };
@@ -422,6 +427,12 @@
 		E7016E7C2174C3B6007F428C /* pickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pickerCell.m; sourceTree = "<group>"; };
 		E7016E7E2174C5D9007F428C /* AdvancedQueryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedQueryViewController.h; sourceTree = "<group>"; };
 		E7016E7F2174C5D9007F428C /* AdvancedQueryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvancedQueryViewController.m; sourceTree = "<group>"; };
+		E7140B7D21809F2E00EE244B /* NewMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewMessageViewController.h; sourceTree = "<group>"; };
+		E7140B7E21809F2E00EE244B /* NewMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
+		E7140B802180A10900EE244B /* AnnouncementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
+		E7140B812180A10900EE244B /* AnnouncementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
+		E7140B832180A47800EE244B /* AnnouncementModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnnouncementModel.h; sourceTree = "<group>"; };
+		E7140B842180A47800EE244B /* AnnouncementModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnnouncementModel.m; sourceTree = "<group>"; };
 		E74A260721777CA6009C9400 /* NSString+isEmpty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+isEmpty.h"; sourceTree = "<group>"; };
 		E74A260821777CA6009C9400 /* NSString+isEmpty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+isEmpty.m"; sourceTree = "<group>"; };
 		E74A260C217785BE009C9400 /* JXCategoryBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryBaseView.h; sourceTree = "<group>"; };
@@ -497,6 +508,10 @@
 		E74A267B21788E33009C9400 /* MeaModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeaModel.m; sourceTree = "<group>"; };
 		E74A267D2178A1B1009C9400 /* PackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackedViewController.h; sourceTree = "<group>"; };
 		E74A267E2178A1B1009C9400 /* PackedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackedViewController.m; sourceTree = "<group>"; };
+		E7A71A50217AE7AC003059B3 /* PackDocument_NoPackController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackDocument_NoPackController.h; sourceTree = "<group>"; };
+		E7A71A51217AE7AC003059B3 /* PackDocument_NoPackController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackDocument_NoPackController.m; sourceTree = "<group>"; };
+		E7A71A53217AEBAF003059B3 /* PackDocument_PackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackDocument_PackedViewController.h; sourceTree = "<group>"; };
+		E7A71A54217AEBAF003059B3 /* PackDocument_PackedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackDocument_PackedViewController.m; sourceTree = "<group>"; };
 		E7D420422170D76D00FD22F6 /* NewHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewHomeViewController.h; sourceTree = "<group>"; };
 		E7D420432170D76D00FD22F6 /* NewHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewHomeViewController.m; sourceTree = "<group>"; };
 		E7D420452170DDEB00FD22F6 /* NewHomeFirstCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewHomeFirstCell.h; sourceTree = "<group>"; };
@@ -796,6 +811,10 @@
 				E74A2678217888F7009C9400 /* MeasuringDocumentsViewController.m */,
 				E74A267D2178A1B1009C9400 /* PackedViewController.h */,
 				E74A267E2178A1B1009C9400 /* PackedViewController.m */,
+				E7A71A50217AE7AC003059B3 /* PackDocument_NoPackController.h */,
+				E7A71A51217AE7AC003059B3 /* PackDocument_NoPackController.m */,
+				E7A71A53217AEBAF003059B3 /* PackDocument_PackedViewController.h */,
+				E7A71A54217AEBAF003059B3 /* PackDocument_PackedViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -877,6 +896,10 @@
 				A90335DA208A250600823D3C /* MessageViewController.m */,
 				A91DCA7E2099F7E300EF78EB /* MessageDetailViewController.h */,
 				A91DCA7F2099F7E300EF78EB /* MessageDetailViewController.m */,
+				E7140B7D21809F2E00EE244B /* NewMessageViewController.h */,
+				E7140B7E21809F2E00EE244B /* NewMessageViewController.m */,
+				E7140B802180A10900EE244B /* AnnouncementViewController.h */,
+				E7140B812180A10900EE244B /* AnnouncementViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1189,6 +1212,8 @@
 			children = (
 				A94669D52099A95200CB2583 /* JPushModel.h */,
 				A94669D62099A95200CB2583 /* JPushModel.m */,
+				E7140B832180A47800EE244B /* AnnouncementModel.h */,
+				E7140B842180A47800EE244B /* AnnouncementModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1592,6 +1617,7 @@
 				A9033667208A250700823D3C /* NSString+WJ.m in Sources */,
 				A972BA99208DC9CA00CFF30C /* WaybillDetailHeaderView.m in Sources */,
 				A9033665208A250700823D3C /* NSObject+unRecognizedSelector.m in Sources */,
+				E7140B822180A10900EE244B /* AnnouncementViewController.m in Sources */,
 				A9022F5C208C1B1500886D95 /* WaybillDetailTableViewCell.m in Sources */,
 				A972BAA1208F0B1300CFF30C /* WebsiteMessageViewController.m in Sources */,
 				A903367D208A250700823D3C /* UIAlertView+CHAlertAction.m in Sources */,
@@ -1599,6 +1625,7 @@
 				A9033656208A250700823D3C /* UIScrollView+EmptyDataSet.m in Sources */,
 				A9022F63208C282500886D95 /* ProfileTableViewCell.m in Sources */,
 				A90334E6208A241D00823D3C /* main.m in Sources */,
+				E7A71A52217AE7AC003059B3 /* PackDocument_NoPackController.m in Sources */,
 				A903366D208A250700823D3C /* UIBarButtonItem+Extension.m in Sources */,
 				A94669DB2099ACCB00CB2583 /* JPushTableViewCell.m in Sources */,
 				A903364D208A250700823D3C /* HomeViewController.m in Sources */,
@@ -1616,6 +1643,7 @@
 				A9033674208A250700823D3C /* UIViewController+BackButtonHandler.m in Sources */,
 				A90F76BE2093030D00BC6A5D /* TransportViewController.m in Sources */,
 				A972BA8E208D7D9100CFF30C /* WaybillSenderItem.m in Sources */,
+				E7140B852180A47800EE244B /* AnnouncementModel.m in Sources */,
 				A972BAA4208F130B00CFF30C /* AddressBookTableViewCell.m in Sources */,
 				E7D4207A21736A0300FD22F6 /* CustomerStatisticsViewController.m in Sources */,
 				E7D420442170D76D00FD22F6 /* NewHomeViewController.m in Sources */,
@@ -1644,6 +1672,7 @@
 				E74A2657217785BE009C9400 /* JXCategoryCollectionView.m in Sources */,
 				A972BAA7208F18AE00CFF30C /* SearchBar.m in Sources */,
 				E74A265E217785BE009C9400 /* JXCategoryTitleImageCellModel.m in Sources */,
+				E7140B7F21809F2E00EE244B /* NewMessageViewController.m in Sources */,
 				A972BA8B208D7D8300CFF30C /* WaybillReceiveItem.m in Sources */,
 				A90F76D52093397900BC6A5D /* JPushManager.m in Sources */,
 				A9022F45208B243700886D95 /* WLHomeCollectionViewCell.m in Sources */,
@@ -1697,6 +1726,7 @@
 				A92D72082091724B000F7B7D /* AppUpadateModel.m in Sources */,
 				A9033661208A250700823D3C /* NSDate+Extension.m in Sources */,
 				E7D4206221719FDC00FD22F6 /* HSLimitText.m in Sources */,
+				E7A71A55217AEBAF003059B3 /* PackDocument_PackedViewController.m in Sources */,
 				E74A260921777CA6009C9400 /* NSString+isEmpty.m in Sources */,
 				E74A267F2178A1B1009C9400 /* PackedViewController.m in Sources */,
 				A9033679208A250700823D3C /* FCNetWorkManager.m in Sources */,

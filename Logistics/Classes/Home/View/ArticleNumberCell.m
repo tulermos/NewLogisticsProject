@@ -28,13 +28,12 @@
     [self.contentView addSubview:_noteLabel];
      _dateLabel = [UILabel labelWithFont:13 textColor:[UIColor colorWithHex:0x666666] text:nil];
     [self.contentView addSubview:_dateLabel];
-     _locationLabel = [UILabel labelWithFont:13 textColor:[UIColor colorWithHex:0x333333] text:nil];
+     _locationLabel = [UILabel labelWithFont:13 textColor:[UIColor colorWithHex:0x999999] text:nil];
     [self.contentView addSubview:_locationLabel];
-     _kindLabel = [UILabel labelWithFont:14 textColor:[UIColor colorWithHex:0x999999] text:nil];
+     _kindLabel = [UILabel labelWithFont:13 textColor:[UIColor colorWithHex:0x999999] text:nil];
     [self.contentView addSubview:_kindLabel];
-     _statusLabel = [UILabel labelWithFont:14 textColor:[UIColor colorWithHex:0x999999] text:nil];
+     _statusLabel = [UILabel labelWithFont:13 textColor:[UIColor colorWithHex:0x999999] text:nil];
     [self.contentView addSubview:_statusLabel];
-    [self makeConstraint];
 }
 
 -(void)makeConstraint
@@ -74,6 +73,7 @@
 }
 -(void)setModel:(ConsignmentNoteModel *)model
 {
+    [self makeConstraint];
     _model = model;
     _noteLabel.text = model.ShiNumber;
     _dateLabel.text = model.ShiTime;
@@ -85,28 +85,57 @@
 
 -(void)setMeaModel:(MeaModel *)meaModel
 {
-    _selectBtn.hidden = YES;
-    [_noteLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.mas_left).offset(15);
-        make.width.mas_equalTo(234);
-        make.height.mas_equalTo(21);
-        make.top.equalTo(self.contentView.mas_top).offset(15);
-    }];
-    [_locationLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.mas_left).offset(15);
-        make.right.equalTo(self.contentView.mas_right).offset(0);
-        make.height.mas_equalTo(18);
-        make.top.equalTo(self.noteLabel.mas_bottom).offset(5);
-    }];
-    [_statusLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+    [self makeMeaConstraint];
+//    _selectBtn.hidden = YES;
+    _meaModel = meaModel;
+    _noteLabel.text = meaModel.MeaNo;
+    _dateLabel.text = meaModel.MeaPackTime;
+    _locationLabel.text = meaModel.StoID;
+    _kindLabel.text = [NSString stringWithFormat:@"货物：%@",meaModel.CasGoods];
+    
+}
+
+
+-(void)makeMeaConstraint
+{
+    [_selectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.mas_left).offset(15);
         make.width.height.mas_equalTo(16.2);
         make.top.equalTo(self.contentView.mas_top).offset(39);
     }];
-    _meaModel = meaModel;
-    _noteLabel.text = meaModel.MeaPackTime;
-    _dateLabel.text = meaModel.MeaNo;
-    _locationLabel.text = meaModel.MeaRemark;
+    
+    [_noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.mas_left).offset(45);
+        make.width.mas_equalTo(144);
+        make.height.mas_equalTo(21);
+        make.top.equalTo(self.contentView.mas_top).offset(15);
+    }];
+    [_dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.noteLabel.mas_right).offset(50);
+        make.width.mas_equalTo(200);
+        make.height.mas_equalTo(18);
+        make.top.equalTo(self.contentView.mas_top).offset(16);
+    }];
+    [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.mas_left).offset(45);
+        make.right.equalTo(self.contentView.mas_right).offset(0);
+        make.height.mas_equalTo(18);
+        make.top.equalTo(self.noteLabel.mas_bottom).offset(5);
+    }];
+    [_kindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.mas_left).offset(45);
+        make.width.mas_equalTo(150);
+        make.height.mas_equalTo(18);
+        make.top.equalTo(_noteLabel.mas_bottom).offset(26);
+    }];
+
+  
+    [_statusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_kindLabel.mas_left).offset(40);
+        make.width.mas_equalTo(150);
+         make.height.mas_equalTo(18);
+        make.top.equalTo(self.contentView.mas_top).offset(39);
+    }];
 }
 
 

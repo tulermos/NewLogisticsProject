@@ -59,7 +59,7 @@ s_screen_navbar_height; \
 
 #define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
-
+#define WS __weak typeof(self)weakSelf = self
 /*********************常用的工具类**********************/
 #define FCHttpRequest     [FCNetWorkManager shareNetWork]
 #define kUserDefaultKeyUser @"kUserDefaultKey_user"

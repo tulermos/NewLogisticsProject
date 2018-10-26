@@ -25,7 +25,11 @@
     _dataArr = [NSMutableArray array];
     self.view.backgroundColor = kGlobalViewBgColor;
     [self setUpUI];
-    [self getData];
+    if (self.status == 1) {
+        [self getMeaData];
+    }else{
+        [self getPackData];
+    }
 }
 -(void)setUpUI
 {
@@ -62,21 +66,21 @@
     cell.selectionStyle = 0;
     return cell;
 }
--(void)getData
+-(void)getMeaData
 {
-    NSDictionary *param = [NSDictionary requestWithUrl:@"GetMeasureDataList" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"pageindex":@(1),@"pagesize":@(15)}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"GetMeasureDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"pageindex":@(1),@"pagesize":@(15)}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         [FCProgressHUD hideHUDForView:self.view animation:YES];
         NSDictionary *dic = response.json;
         NSLog(@"%@",dic[@"state"]);
         if ([dic[@"state"] isEqualToString:@"success"]) {
             NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
-            for (NSDictionary *adic in dict[@"unMeaSureInfo"]) {
-                [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[MeaModel class] json:adic]];
+//            for (NSDictionary *adic in dict[@"unMeaSureInfo"]) {
+                [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[MeaModel class] json:dict[@"unMeaSureInfo"]]];
                 //                MeaModel *mea = [MeaModel yy_modelWithJSON:adic];
                 //                [self.dataArr addObject:mea];
                 //                [self.tableView reloadDataWithArray:[self.dataArr mutableCopy]];
-            }
+//            }
             
             [self.tableView reloadData];
             [self.tableView reloadEmptyData];
@@ -90,5 +94,8 @@
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
 }
-
+-(void)getPackData
+{
+    
+}
 @end

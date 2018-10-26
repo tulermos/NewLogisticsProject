@@ -19,5 +19,6 @@
 @property (nonatomic, strong)NSString *cusAlias;
 @property (nonatomic, strong)NSString *uuid;
 @property (nonatomic, strong)NSString *other;
+@property (nonatomic, strong)NSString *pwd;
 
 @end

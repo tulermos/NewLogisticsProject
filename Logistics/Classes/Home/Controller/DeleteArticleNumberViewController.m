@@ -145,7 +145,7 @@
 //删除
 -(void)deleteBtnAction:(UIButton*)btn
 {
-    NSDictionary *param = [NSDictionary requestWithUrl:@"deletebill" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"98-1127-11"}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"deletebill" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":[UserManager sharedManager].user.entNumber}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
         NSDictionary *dic = response.json;

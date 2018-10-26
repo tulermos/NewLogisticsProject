@@ -29,7 +29,7 @@
     but.frame =CGRectMake(0,0,60,44);
     [but setTitle:@"刷新"forState:UIControlStateNormal];
     [but addTarget:self action:@selector(Next:)forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem  *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
+    UIBarButtonItem *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
     self.navigationItem.rightBarButtonItem = barBut;
 
     [self setUpUI];
@@ -69,6 +69,8 @@
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.isOpenFooterRefresh = YES;
+    _tableView.isOpenHeaderRefresh = YES;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[CustomerStatisticsCell class] forCellReuseIdentifier:kCustomerStatisticsCell];
     
@@ -97,23 +99,24 @@
 }
 -(void)getData
 {
-    NSDictionary *param = [NSDictionary requestWithUrl:@"GetCustomerData" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b"}];
+    [FCProgressHUD showLoadingOn:self.view];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"GetCustomerDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize)}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
-        
-        if (response.isSuccess) {
-            NSDictionary *dict = ((NSArray *)response.json).lastObject;
-            [self.dataArr removeAllObjects];
-            if ([dict[@"state"] isEqualToString:@"success"]) {
-                [self.dataArr addObject:[CustomerStatisticsModel yy_modelWithJSON:dict[@"data"]]];
-            }
+        NSDictionary *dic = response.json;
+        NSLog(@"%@",dic[@"state"]);
+        if ([dic[@"state"] isEqualToString:@"success"]) {
+            [FCProgressHUD hideHUDForView:self.view animation:YES];
+            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
+//            for (NSDictionary *adic in dict[@"entinfo"]) {
+                [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[CustomerStatisticsModel class] json:dict[@"customerInfo"]]];
+                //                NSArray *models =[NSArray yy_modelArrayWithClass:[ReceivingRegistrationModel class] json:adic];
+//            }
             
-           
-        }else {
+            [self.tableView reloadData];
+            [self.tableView reloadEmptyData];
+        }else{
             
         }
-        [self.tableView reloadData];
-        [self.tableView reloadEmptyData];
-        NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
         [FCProgressHUD showText:dict[@"errorMsg"]];

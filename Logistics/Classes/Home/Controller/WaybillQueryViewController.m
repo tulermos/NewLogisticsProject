@@ -139,7 +139,7 @@
         _tableView.backgroundColor = kGlobalBGColor;
         _tableView.estimatedRowHeight = 100;
         _tableView.rowHeight =UITableViewAutomaticDimension;
-        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 80, 0);
+      
     }
     return _tableView;
 }

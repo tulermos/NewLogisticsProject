@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) UIButton *batchBtn;
 
+@property (nonatomic,assign) NSInteger status;
+
 - (void)configListViewController:(UIViewController *)controller index:(NSUInteger)index;
 @end
 

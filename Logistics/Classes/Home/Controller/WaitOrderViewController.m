@@ -139,7 +139,7 @@
 //开单
 -(void)orderBtnAction:(UIButton*)btn
 {
-    NSDictionary *param = [NSDictionary requestWithUrl:@"changebill" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"PM1-171217-35"}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"changebill" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":[UserManager sharedManager].user.entNumber}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
         NSDictionary *dic = response.json;

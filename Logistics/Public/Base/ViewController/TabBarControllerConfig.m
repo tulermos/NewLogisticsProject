@@ -14,6 +14,7 @@
 #import "ProfileViewController.h"
 #import "NewHomeViewController.h"
 #import "AddressBookViewController.h"
+#import "NewMessageViewController.h"
 @interface TabBarControllerConfig ()<UITabBarDelegate>
 
 @property (nonatomic, readwrite, strong) CYLTabBarController *tabBarController;
@@ -45,8 +46,8 @@
     BaseNavigationController *firstNavigationController = [[BaseNavigationController alloc]
                                                            initWithRootViewController:firstViewController];
     
-    WaybillDetailViewController *secondViewController = [[WaybillDetailViewController alloc] init];
-    secondViewController.showTextField = YES;
+    NewMessageViewController *secondViewController = [[NewMessageViewController alloc] init];
+//    secondViewController.showTextField = YES;
     secondViewController.title = NSLocalizedString(@"TabBar_Logistics", nil);
     BaseNavigationController *secondNavigationController = [[BaseNavigationController alloc]
                                                             initWithRootViewController:secondViewController];

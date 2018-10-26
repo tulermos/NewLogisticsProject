@@ -123,9 +123,25 @@
     return 15;
 }
 - (void)loginOut {
-    [[UserManager sharedManager]clearUserData];
-    [JPushManager removeAlias];
-    [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationNameUpdateRootVc object:nil];
+    
+    NSDictionary *param = [NSDictionary requestWithUrl:@"loginout" param:@{@"username":[UserManager sharedManager].user.cusName,@"pwd":[UserManager sharedManager].user.pwd}];
+    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:@"UserModel" cache:NO success:^(FCBaseResponse *response) {
+        NSDictionary *dic = response.json;
+        NSLog(@"%@",dic[@"state"]);
+        if ([dic[@"state"] isEqualToString:@"success"]) {
+            [[UserManager sharedManager]clearUserData];
+            [JPushManager removeAlias];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationNameUpdateRootVc object:nil];
+            
+        }else{
+            NSDictionary *dict = ((NSArray *)response.data).firstObject;
+            [FCProgressHUD showText:dict[@"errorMsg"]];
+        }
+        NSLog(@"%@成功",response);
+    } failure:^(FCBaseResponse *response) {
+        NSDictionary *dict = ((NSArray *)response.data).firstObject;
+        [FCProgressHUD showText:dict[@"errorMsg"]];
+    }];
 }
 
 #pragma mark - TableView

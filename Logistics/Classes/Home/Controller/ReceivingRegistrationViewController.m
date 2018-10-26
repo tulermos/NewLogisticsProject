@@ -8,12 +8,21 @@
 
 #import "ReceivingRegistrationViewController.h"
 #import "ReceivingRegistrationCell.h"
+#import "TFDropDownMenuView.h"
+#import "ReceivingRegistrationModel.h"
+#import "WaybillQueryHeaderView.h"
+#import "WaybillDetailViewController.h"
 #define kReceivingRegistrationCell @"kReceivingRegistrationCell"
-@interface ReceivingRegistrationViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate>
+@interface ReceivingRegistrationViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate,TFDropDownMenuViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArr;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) BaseTableView *tableView;
 @property (nonatomic, strong) HSLimitText *searchBar;
 @property (nonatomic, strong) UIButton *searchBtn;
+@property (nonatomic, assign) NSInteger menuRow;
+@property (nonatomic, assign) NSInteger menuColumn;
+@property (nonatomic, assign) NSInteger pageindex;
+@property (nonatomic, assign) NSInteger pagesize;
+@property (nonatomic, strong)WaybillQueryHeaderView *headerView;
 @end
 
 @implementation ReceivingRegistrationViewController
@@ -30,69 +39,39 @@
     highSearchBtn.titleLabel.font=[UIFont systemFontOfSize:15];
     highSearchBtn.backgroundColor=[UIColor clearColor];
     [highSearchBtn addTarget:self action:@selector(highSearchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    UIButton *refreshBtn=[UIButton buttonWithType:(UIButtonTypeCustom)];
-    [refreshBtn setFrame:CGRectMake(15.0, 0.0, 45, 16)];
-    [refreshBtn setTitle:@"刷新" forState:(UIControlStateNormal)];
-    [refreshBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-    refreshBtn.titleLabel.font=[UIFont systemFontOfSize:15];
-    refreshBtn.backgroundColor=[UIColor clearColor];
-    [refreshBtn addTarget:self action:@selector(refreshBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    
     highSearchBtn.frame = CGRectMake(0, 0, 70, 16);
-    refreshBtn.frame=CGRectMake(0, 0, 35, 16);
-    
     UIBarButtonItem *highSearch = [[UIBarButtonItem alloc] initWithCustomView:highSearchBtn];
-    UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithCustomView:refreshBtn];
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: refresh, highSearch,nil]];
-    [self setUpUI];
-}
--(void)setUpUI
-{
-    HSLimitText *textView = [[HSLimitText alloc] initWithFrame:CGRectMake(12,Navigation_Height+8, FCWidth-71, 28) type:TextInputTypeTextfield];
-    textView.placeholder = @"请输入货号";
-    textView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:1];
-    textView.labPlaceHolder.textColor = [UIColor colorWithHexString:@"0x999999"];
-    textView.labPlaceHolder.font = [UIFont systemFontOfSize:15];
-    textView.textField.textColor = [UIColor blackColor];
-    textView.textField.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
-    textView.textField.returnKeyType = UIReturnKeySearch;
-    textView.delegate = self;
-    textView.textField.delegate = self;
-    // 通过init初始化的控件大多都没有尺寸
-    UIImageView *searchIcon = [[UIImageView alloc] init];
-    searchIcon.image = [UIImage imageNamed:@"sousuo"];
-    // contentMode：default is UIViewContentModeScaleToFill，要设置为UIViewContentModeCenter：使图片居中，防止图片填充整个imageView
-    searchIcon.contentMode = UIViewContentModeCenter;
-    searchIcon.size = CGSizeMake(30, 30);
-    textView.textField.leftView = searchIcon;
-    textView.textField.leftViewMode = UITextFieldViewModeAlways;
-    [self.view addSubview:textView];
-    _searchBar = textView;
-    
-    _searchBtn = [UIButton buttonWithType:0];
-    _searchBtn.frame = CGRectMake(CGRectGetMaxX(textView.frame),Navigation_Height, FCWidth-CGRectGetMaxX(textView.frame), 44);
-    [_searchBtn setTitle:@"查询" forState:0];
-    [_searchBtn setTitleColor:kGlobalMainColor forState:0];
-    _searchBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    [_searchBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:1<<6];
-    [self.view addSubview:_searchBtn];
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(textView.frame)+8, FCWidth, FCHeight-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height) style:0];
-    _tableView.backgroundColor = [UIColor whiteColor];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    [self.view addSubview:_tableView];
-    [_tableView registerClass:[ReceivingRegistrationCell class] forCellReuseIdentifier:kReceivingRegistrationCell];
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:highSearch,nil]];
+    [self setupUI];
 
+}
+-(void)setupUI
+{
+    [self.view addSubview:self.headerView];
+    [self.view addSubview:self.tableView];
+    [self.view bringSubviewToFront:self.headerView];
+    
+    _headerView.frame = CGRectMake(0, FCNavigationHeight, FCWidth, 50);
+    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(FCNavigationHeight + 55);
+        make.leading.trailing.bottom.mas_equalTo(self.view);
+    }];
+
+    @weakify(self);
+    _headerView.timeBlock = ^(NSDictionary *dict) {
+        @strongify(self);
+        [self loadData:dict];
+    };
+    [self.headerView setDefault];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 95;
+    return 70;
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.tableView.dataArray.count;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -102,63 +81,77 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ReceivingRegistrationCell *cell = [tableView dequeueReusableCellWithIdentifier:kReceivingRegistrationCell forIndexPath:indexPath];
+//    ReceivingRegistrationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
+//    if (!cell) {
+//        cell = [[[NSBundle mainBundle]loadNibNamed:@"WaybillTableViewCell" owner:nil options:nil] firstObject];
+//    }
+    cell.RRModel = self.tableView.dataArray[indexPath.row];
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    ReceivingRegistrationModel *model = self.tableView.dataArray[indexPath.section];
+    WaybillDetailViewController *detailVc = [[WaybillDetailViewController alloc]init];
+    detailVc.EntNumber = model.EntNumber;
+    [self.navigationController pushViewController:detailVc animated:YES];
 }
 //高级查询
 -(void)highSearchBtnAction:(UIButton*)btn
 {
     
 }
-//刷新
--(void)refreshBtnAction:(UIButton*)btn
+
+
+- (void)loadData:(NSDictionary *)timeDict
 {
     
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if (textField == self.searchBar.textField)
-    {
-        if (textField.text.length) {
-            [self getSearchWithText:textField.text];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"GetEntDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":@"",@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize),@"StartTime":timeDict[@"start"],@"EndTime":timeDict[@"end"],@"StockID":@"",@"EntStartID":@"",@"EntEndID":@""}];
+    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
+        [FCProgressHUD hideHUDForView:self.view animation:YES];
+        NSDictionary *dic = response.json;
+        NSLog(@"%@",dic[@"state"]);
+        if ([dic[@"state"] isEqualToString:@"success"]) {
+            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
+//            for (NSDictionary *adic in dict[@"entinfo"]) {
+                [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[ReceivingRegistrationModel class] json:dict[@"entinfo"]]];
+//                NSArray *models =[NSArray yy_modelArrayWithClass:[ReceivingRegistrationModel class] json:adic];
+//            }
+       
+            [self.tableView reloadData];
+            [self.tableView reloadEmptyData];
             
         }else{
-            
+            NSDictionary *dict = ((NSArray *)response.data).firstObject;
+            [FCProgressHUD showText:dict[@"errorMsg"]];
         }
-        
-    }
-    return YES;
-}
-
--(void)searchBtnAction:(UIButton *)btn
-{
-    if (_searchBar.textField.text.length) {
-        [self getSearchWithText:_searchBar.textField.text];
-    }
-}
-//搜索
--(void)getSearchWithText:(NSString *)text
-{
-    
-    NSDictionary *param = [NSDictionary requestWithUrl:@"deletebill" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"G333-061216-36"}];
-    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
-        
-        if (response.isSuccess) {
-            
-        }else {
-            
-        }
-        NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
 }
 
-
+#pragma mark - tableView
+- (BaseTableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[BaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = kGlobalBGColor;
+//        _tableView.estimatedRowHeight = 90;
+        _tableView.rowHeight =UITableViewAutomaticDimension;
+//        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 80, 0);
+        _tableView.isOpenFooterRefresh = YES;
+         _tableView.isOpenHeaderRefresh = YES;
+        [_tableView registerClass:[ReceivingRegistrationCell class] forCellReuseIdentifier:kReceivingRegistrationCell];
+    }
+    return _tableView;
+}
+- (WaybillQueryHeaderView *)headerView {
+    if (!_headerView) {
+        _headerView = [WaybillQueryHeaderView waybillQueryHeaderView];
+    }
+    return _headerView;
+}
 @end
+

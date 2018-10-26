@@ -8,6 +8,7 @@
 
 #import "MeasuringDocumentsViewController.h"
 #import "NoPackViewController.h"
+#import "PackedViewController.h"
 @interface MeasuringDocumentsViewController ()
 
 @end
@@ -15,10 +16,11 @@
 @implementation MeasuringDocumentsViewController
 
 - (void)viewDidLoad {
-    self.titleArr = @[@"已打包",@"未打包"];
-    self.controllerArr = @[[NoPackViewController class],[NoPackViewController class]];
+    self.titleArr = @[@"未计量",@"已计量"];
+    self.controllerArr = @[[NoPackViewController class],[PackedViewController class]];
+    self.titleStr = @"计量单据";
     [super viewDidLoad];
-  
+   
 }
 
 
