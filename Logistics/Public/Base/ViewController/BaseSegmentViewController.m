@@ -109,5 +109,19 @@
     }
     return _categoryView;
 }
-
+//批处理
+-(void)batchBtnAction:(UIButton *)btn
+{
+    
+}
+//刷新
+-(void)refreshBtnAction:(UIButton *)btn
+{
+    
+}
+//搜索
+-(void)searchBtnAction:(UIButton *)btn
+{
+    
+}
 @end

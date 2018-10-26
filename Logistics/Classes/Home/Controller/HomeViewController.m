@@ -21,6 +21,7 @@
 #import "ReceivingRegistrationViewController.h"
 #import "CustomerStatisticsViewController.h"
 #import "MeasuringDocumentsViewController.h"
+#import "PackagingDocumentsViewController.h"
 #define kCollectionViewKey  @"kCollectionViewKey"
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,HSLimitTextDelegate>
@@ -107,7 +108,8 @@
             ReceivingRegistrationViewController *vc = [ReceivingRegistrationViewController new];
             [self.navigationController pushViewController:vc animated:YES];
         }else if(indexPath.item == 1) {
-
+            PackagingDocumentsViewController *vc = [PackagingDocumentsViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if (indexPath.item == 2) {
             MeasuringDocumentsViewController *vc = [MeasuringDocumentsViewController new];
             [self.navigationController pushViewController:vc animated:YES];
@@ -223,14 +225,10 @@
 }
 - (void)getData{
  
-    NSDictionary *param = [NSDictionary requestWithUrl:@"getright" param:nil];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"getright" param:@{@"userID":[UserManager sharedManager].user.cusCode}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
-        if (response.isSuccess) {
-           
-        }else {
-           
-        }
+      
         
         NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
@@ -258,8 +256,11 @@
 //搜索
 -(void)getSearchWithText:(NSString *)text
 {
-    
-    NSDictionary *param = [NSDictionary requestWithUrl:@"shipdetail" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"KL891896-21"}];
+    if ([NSString isBlankString:_searchBar.textField.text]) {
+        [FCProgressHUD showText:@"请输入运单号"];
+        return;
+    }
+    NSDictionary *param = [NSDictionary requestWithUrl:@"shipdetail" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":_searchBar.textField.text}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
 
 //        if (response.json) {
@@ -272,7 +273,7 @@
         NSLog(@"%@",dic[@"state"]);
         if ([dic[@"state"] isEqualToString:@"success"]) {
             WaybillDetailViewController *detailVc = [[WaybillDetailViewController alloc]init];
-            detailVc.EntNumber = @"KL891896-21";
+            detailVc.EntNumber = _searchBar.textField.text;
             [self.navigationController pushViewController:detailVc animated:YES];
         }
         NSLog(@"%@成功",response);

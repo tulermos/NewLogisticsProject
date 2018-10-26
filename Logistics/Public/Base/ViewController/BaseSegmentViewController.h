@@ -28,6 +28,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) NSInteger status;
 
 - (void)configListViewController:(UIViewController *)controller index:(NSUInteger)index;
+
+//批处理
+-(void)batchBtnAction:(UIButton *)btn;
+
+//刷新
+-(void)refreshBtnAction:(UIButton *)btn;
+
+//搜索
+-(void)searchBtnAction:(UIButton *)btn;
+
 @end
 
 NS_ASSUME_NONNULL_END

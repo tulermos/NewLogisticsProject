@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ConsignmentNoteViewController : UIViewController
-
+@property (nonatomic,assign) NSInteger status;
 @end
 
 NS_ASSUME_NONNULL_END

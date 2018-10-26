@@ -15,6 +15,7 @@
 @property (nonatomic, strong) BaseTableView *tableView;
 @property (nonatomic, strong) HSLimitText *searchBar;
 @property (nonatomic, strong) UIButton *searchBtn;
+@property (nonatomic, strong) ConsignmentNoteModel*model;
 @end
 
 @implementation DeleteArticleNumberViewController
@@ -32,21 +33,10 @@
     deleteBtn.backgroundColor=[UIColor clearColor];
     [deleteBtn addTarget:self action:@selector(deleteBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    UIButton *refreshBtn=[UIButton buttonWithType:(UIButtonTypeCustom)];
-    [refreshBtn setFrame:CGRectMake(15.0, 0.0, 45, 16)];
-    [refreshBtn setTitle:@"刷新" forState:(UIControlStateNormal)];
-    [refreshBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-    refreshBtn.titleLabel.font=[UIFont systemFontOfSize:15];
-    refreshBtn.backgroundColor=[UIColor clearColor];
-    [refreshBtn addTarget:self action:@selector(refreshBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    
     deleteBtn.frame = CGRectMake(0, 0, 70, 16);
-    refreshBtn.frame=CGRectMake(0, 0, 35, 16);
     
     UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithCustomView:deleteBtn];
-    UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithCustomView:refreshBtn];
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:refresh , delete,nil]];
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: delete,nil]];
     [self setUpUI];
 //    [self getData];
 }
@@ -111,6 +101,7 @@
     ConsignmentNoteModel *model = _tableView.dataArray[indexPath.row];
     cell.model = model;
     cell.selectionStyle = 0;
+    
     return cell;
 }
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -140,12 +131,19 @@
 {
     ArticleNumberCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.selected = YES;
+    if (_dataArr.count > 0) {
+        _model = _tableView.dataArray[indexPath.row];
+    }
 
 }
 //删除
 -(void)deleteBtnAction:(UIButton*)btn
 {
-    NSDictionary *param = [NSDictionary requestWithUrl:@"deletebill" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":[UserManager sharedManager].user.entNumber}];
+    if ([NSString isBlankString:_model.EntNumber]) {
+         [FCProgressHUD showText:@"请选择运单"];
+        return;
+    }
+    NSDictionary *param = [NSDictionary requestWithUrl:@"deletebill" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":_model.EntNumber}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
         NSDictionary *dic = response.json;
@@ -200,8 +198,12 @@
 //搜索
 -(void)getSearchWithText:(NSString *)text
 {
+    if ([NSString isBlankString:_searchBar.textField.text]) {
+        [FCProgressHUD showText:@"请输入货号"];
+        return;
+    }
     [_dataArr removeAllObjects];
-    NSDictionary *param = [NSDictionary requestWithUrl:@"QueryConsignmentData" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"98-1127-11"}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"QueryConsignmentData" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":_searchBar.textField.text}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
         NSDictionary *dic = response.json;

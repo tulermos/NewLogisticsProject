@@ -12,6 +12,7 @@
 #import "ReceivingRegistrationModel.h"
 #import "WaybillQueryHeaderView.h"
 #import "WaybillDetailViewController.h"
+#import "AdvancedQueryViewController.h"
 #define kReceivingRegistrationCell @"kReceivingRegistrationCell"
 @interface ReceivingRegistrationViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate,TFDropDownMenuViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArr;
@@ -99,7 +100,15 @@
 //高级查询
 -(void)highSearchBtnAction:(UIButton*)btn
 {
-    
+    AdvancedQueryViewController *AQVC = [[AdvancedQueryViewController alloc]init];
+    AQVC.type = 1;
+    WS;
+    [AQVC returnData:^(NSMutableArray * _Nonnull dataArr) {
+        weakSelf.tableView.dataArray = dataArr;
+        [weakSelf.tableView reloadData];
+        [weakSelf.tableView reloadEmptyData];
+    }];
+    [self.navigationController pushViewController:AQVC animated:YES];
 }
 
 

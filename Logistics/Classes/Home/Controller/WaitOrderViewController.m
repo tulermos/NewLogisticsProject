@@ -9,12 +9,14 @@
 #import "WaitOrderViewController.h"
 #import "ConsignmentNoteModel.h"
 #import "ArticleNumberCell.h"
+
 #define kArticleNumberCell  @"kArticleNumberCell"
 @interface WaitOrderViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) BaseTableView *tableView;
 @property (nonatomic, strong) HSLimitText *searchBar;
 @property (nonatomic, strong) UIButton *searchBtn;
+@property (nonatomic, strong) ConsignmentNoteModel*model;
 
 @end
 
@@ -134,11 +136,20 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ArticleNumberCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selected = YES;
+    if (_dataArr.count > 0) {
+      _model = _tableView.dataArray[indexPath.row];
+    }
     
 }
 //开单
 -(void)orderBtnAction:(UIButton*)btn
 {
+    if ([NSString isBlankString:_model.EntNumber]) {
+        [FCProgressHUD showText:@"请选择运单"];
+        return;
+    }
     NSDictionary *param = [NSDictionary requestWithUrl:@"changebill" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":[UserManager sharedManager].user.entNumber}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
@@ -195,7 +206,12 @@
 -(void)getSearchWithText:(NSString *)text
 {
     
-    NSDictionary *param = [NSDictionary requestWithUrl:@"QueryConsignmentData" param:@{@"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",@"EntNumber":@"KL891896-21"}];
+    if ([NSString isBlankString:_searchBar.textField.text]) {
+        [FCProgressHUD showText:@"请输入货号"];
+        return;
+    }
+    [_dataArr removeAllObjects];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"QueryConsignmentData" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":_searchBar.textField.text}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
         NSDictionary *dic = response.json;

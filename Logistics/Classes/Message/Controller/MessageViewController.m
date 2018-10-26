@@ -31,7 +31,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadData) name:kNotificationNameJpushChange object:nil];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view).offset(FCNavigationHeight);
+        make.top.mas_equalTo(self.view).offset(10);
         make.leading.trailing.bottom.mas_equalTo(self.view);
     }];
 }

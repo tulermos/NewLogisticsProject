@@ -69,7 +69,10 @@
 
 -(void)seeBtnAction:(UIButton *)btn
 {
-    
+    if (_delegate && [_delegate respondsToSelector:@selector(seeDetail:)]) {
+        [_delegate seeDetail:_model.CusID];
+    }
+
 }
 
 

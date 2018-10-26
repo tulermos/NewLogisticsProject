@@ -15,6 +15,7 @@
 #import "WaybillQueryHeaderView.h"
 #import "ReceivingRegistrationModel.h"
 #import "WaybillQueryFooterView.h"
+#import "AdvancedQueryViewController.h"
 #define ktableViewKey  @"ktableViewKey"
 @interface ConsignmentNoteViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -40,7 +41,7 @@
     queryBtn.layer.cornerRadius=3;
     queryBtn.titleLabel.font=[UIFont systemFontOfSize:15];
     queryBtn.backgroundColor=[UIColor clearColor];
-    [queryBtn addTarget:self action:@selector(queryBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [queryBtn addTarget:self action:@selector(highSearchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
     
     UIButton *refreshBtn=[UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -61,6 +62,21 @@
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: query, refresh,nil]];
     [self setUpUI];
 }
+//高级查询
+-(void)highSearchBtnAction:(UIButton*)btn
+{
+    AdvancedQueryViewController *AQVC = [[AdvancedQueryViewController alloc]init];
+    AQVC.type = 2;
+    WS;
+    [AQVC returnData:^(NSMutableArray * _Nonnull dataArr) {
+        weakSelf.tableView.dataArray = dataArr;
+        [weakSelf.tableView reloadData];
+        [weakSelf.tableView reloadEmptyData];
+    }];
+    [self.navigationController pushViewController:AQVC animated:YES];
+}
+
+
 - (void)loadData:(NSDictionary *)timeDict
 {
       NSDictionary *param = [NSDictionary requestWithUrl:@"GetEntDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":@"",@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize),@"StartTime":timeDict[@"start"],@"EndTime":timeDict[@"end"],@"StockID":@"",@"EntStartID":@"",@"EntEndID":@""}];
@@ -94,10 +110,10 @@
 
 -(void)setUpUI
 {
+    [self.view addSubview:self.footerView];
     [self.view addSubview:self.headerView];
     [self.view addSubview:self.tableView];
     [self.view bringSubviewToFront:self.headerView];
-    
     _headerView.frame = CGRectMake(0, FCNavigationHeight, FCWidth, 50);
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(FCNavigationHeight + 55);
@@ -171,13 +187,22 @@
 - (void)setSum {
     
     CGFloat yf = 0, js = 0,dsk = 0,zl = 0,dsyf = 0,tj = 0;
-    for (WaybillModel *model in self.tableView.dataArray) {
-        yf += model.DShiSum.floatValue;
-        js += model.Number.floatValue;
+    for (ConsignmentNoteModel *model in self.tableView.dataArray) {
+        if (![NSString isBlankString:model.ShiSum]) {
+            yf += model.ShiSum.floatValue;
+        }
+        if (![NSString isBlankString:model.SdNumber]) {
+            js += model.SdNumber.floatValue;
+        }
+        if (![NSString isBlankString:model.SdWeight]) {
+            zl += model.SdWeight.floatValue;
+        }
         dsk += 0;
-        zl += model.Weight.floatValue;
         dsyf = 0;
-        tj += model.Cube.floatValue;
+        if (![NSString isBlankString:model.SdCube]) {
+            tj += model.SdCube.floatValue;
+        }
+        
     }
     self.footerView.yf = yf;
     self.footerView.js = js;

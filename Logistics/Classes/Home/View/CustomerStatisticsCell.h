@@ -11,6 +11,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol CustomerStatisticsCellDelegate <NSObject>
+
+-(void)seeDetail:(NSString *)cusId;
+
+@end
+
+
+
 @interface CustomerStatisticsCell : UITableViewCell
 @property (nonatomic,strong) UILabel *nameLabel;//
 @property (nonatomic,strong) UILabel *numLabel;//
@@ -21,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UILabel *CubeLabel;//
 @property (nonatomic,strong) UIButton *seeBtn;//
 @property (nonatomic,strong) CustomerStatisticsModel*model;
+@property (nonatomic,assign) id <CustomerStatisticsCellDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

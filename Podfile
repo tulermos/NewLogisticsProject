@@ -17,5 +17,6 @@ target 'Logistics' do
    pod 'JPush', '~> 3.0.9'
    pod 'CGXPickerView'
    pod 'TFDropDownMenu'
+   pod 'BRPickerView'
 
 end

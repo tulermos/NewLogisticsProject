@@ -9,8 +9,10 @@
 #import "CustomerStatisticsViewController.h"
 #import "CustomerStatisticsModel.h"
 #import "CustomerStatisticsCell.h"
+#import "ConsignmentNoteViewController.h"
+#import "CustomerStatisiticsDetailViewController.h"
 #define kCustomerStatisticsCell @"kCustomerStatisticsCell"
-@interface CustomerStatisticsViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate>
+@interface CustomerStatisticsViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate,CustomerStatisticsCellDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) BaseTableView *tableView;
 @property (nonatomic, strong) HSLimitText *searchBar;
@@ -95,6 +97,7 @@
     CustomerStatisticsModel *model = _tableView.dataArray[indexPath.row];
     cell.model = model;
     cell.selectionStyle = 0;
+    cell.delegate = self;
     return cell;
 }
 -(void)getData
@@ -115,14 +118,24 @@
             [self.tableView reloadData];
             [self.tableView reloadEmptyData];
         }else{
-            
+            self.tableView.tableHeaderView = nil;
+            [self.tableView.dataArray removeAllObjects];
+            [self.tableView reloadData];
+            [FCProgressHUD hideHUDForView:self.view animation:YES];
+            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
+            [FCProgressHUD showText:dict[@"errorMsg"]];
         }
     } failure:^(FCBaseResponse *response) {
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
 }
-
+-(void)seeDetail:(NSString *)cusId
+{
+    CustomerStatisiticsDetailViewController *vc = [CustomerStatisiticsDetailViewController new];
+    vc.cusId = cusId;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 @end

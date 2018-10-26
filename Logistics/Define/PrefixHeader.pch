@@ -50,4 +50,5 @@
 #import "HSLimitText.h"
 #import "NSString+isEmpty.h"
 #import <MJRefresh/MJRefresh.h>
+#import <BRPickerView.h>
 #endif /* PrefixHeader_pch */

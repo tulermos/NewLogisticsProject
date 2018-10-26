@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString *DSum;
 @property (nonatomic, copy)NSString *Sum;
 @property (nonatomic, copy)NSString *Total;
+@property (nonatomic, copy)NSString *CusID;
 
 
 @end

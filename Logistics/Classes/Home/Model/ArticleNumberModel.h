@@ -21,7 +21,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)NSString *CasPackFee;
 @property (nonatomic, strong)NSString *CasRemark;
 @property (nonatomic, strong)NSString *AddID;
-@property (nonatomic, strong)NSString *EntRecID;
+@property (nonatomic, strong)NSString *OrganizationID;
+@property (nonatomic, strong)NSString *StoID;
+@property (nonatomic, strong)NSString *EntNumber;
+@property (nonatomic, strong)NSString *CasTime;
+@property (nonatomic, strong)NSString *LisWeight;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
