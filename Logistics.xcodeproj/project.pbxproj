@@ -2197,7 +2197,7 @@
 				CODE_SIGN_ENTITLEMENTS = Logistics/Logistics.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5UGRQ53UBT;
+				DEVELOPMENT_TEAM = 95P3R6LT5M;
 				GCC_PREFIX_HEADER = Logistics/Define/PrefixHeader.pch;
 				INFOPLIST_FILE = Logistics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2217,7 +2217,7 @@
 				CODE_SIGN_ENTITLEMENTS = Logistics/Logistics.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5UGRQ53UBT;
+				DEVELOPMENT_TEAM = 95P3R6LT5M;
 				GCC_PREFIX_HEADER = Logistics/Define/PrefixHeader.pch;
 				INFOPLIST_FILE = Logistics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

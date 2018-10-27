@@ -11,8 +11,8 @@
     //test
     NSDictionary *dict_test = [NSDictionary requestWithUrl:@"cargotrack"
                                                 param:@{
-                                                        @"entNumber":@"M888-1216-39",
-                                                        @"userID":@"3cd1cd06-3d77-4efb-a78d-ad9a9cea3d80",
+                                                        @"entNumber":model.orderStr,
+                                                        @"userID":[UserManager sharedManager].user.cusCode,
                                                         }];
     
 //    NSDictionary *dict = [NSDictionary requestWithUrl:@"cargotrack"
@@ -20,6 +20,7 @@
 //                                                        @"entNumber":[UserManager sharedManager].user.entNumber,
 //                                                        @"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",
 //                                                        }];
+
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:dict_test model:nil cache:NO success:^(FCBaseResponse *response) {
 //        [FCProgressHUD hideHUDForView:self.view animation:YES];
         if ([response.json[@"state"] isEqualToString:@"success"]) {

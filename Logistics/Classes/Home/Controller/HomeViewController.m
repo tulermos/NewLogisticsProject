@@ -264,14 +264,7 @@
     }
     NSDictionary *param = [NSDictionary requestWithUrl:@"shipdetail" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":_searchBar.textField.text}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
-
-//        if (response.json) {
-//
-//        }else {
-//
-//        }\
-        id poi = dic[@"poi"];
-        NSDictionary *dic = response.json[0];
+        NSDictionary *dic = response.json;
         NSLog(@"%@",dic[@"state"]);
         if ([dic[@"state"] isEqualToString:@"success"]) {
             WaybillDetailViewController *detailVc = [[WaybillDetailViewController alloc]init];

@@ -31,18 +31,14 @@
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    UIButton *rightBarBtn0 = [UIButton buttonWithType:UIButtonTypeSystem];
-    rightBarBtn0.frame = CGRectMake(0, 0, 5, 44);
-    [rightBarBtn0 addTarget:self action:@selector(refreshRequest) forControlEvents:UIControlEventTouchUpInside];
-    
+
     UIButton *rightBarBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     [rightBarBtn setTitle:@"刷新" forState:UIControlStateNormal];
     [rightBarBtn addTarget:self action:@selector(refreshRequest) forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem *rightItem0 = [[UIBarButtonItem alloc] initWithCustomView:rightBarBtn0];
+//    UIBarButtonItem *rightItem0 = [[UIBarButtonItem alloc] initWithCustomView:rightBarBtn0];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarBtn];
-    self.navigationItem.rightBarButtonItems = @[rightItem0,rightItem];
+    self.navigationItem.rightBarButtonItems = @[rightItem];
     
     self.navigationItem.title = @"货物跟踪";
 }

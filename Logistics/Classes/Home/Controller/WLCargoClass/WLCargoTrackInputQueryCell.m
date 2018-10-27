@@ -77,6 +77,8 @@
     if ([self.delegate respondsToSelector:@selector(WLCargoTrackInputQueryCellDelegateModel:)]) {
         if (self.orderTextField.text && self.orderTextField.text.length) {
             [self.delegate WLCargoTrackInputQueryCellDelegateModel:@{@"orderStr":self.orderTextField.text}];
+        }else{
+            [FCProgressHUD showText:@"请输入货号/单号/手机号"];
         }
     }
 }

@@ -83,7 +83,7 @@
     [_searchBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:1<<6];
     [self.view addSubview:_searchBtn];
     _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(textView.frame)+8, FCWidth, FCHeight-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height) style:0];
-    _tableView.backgroundColor = [UIColor whiteColor];
+    _tableView.backgroundColor =kGlobalViewBgColor ;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
