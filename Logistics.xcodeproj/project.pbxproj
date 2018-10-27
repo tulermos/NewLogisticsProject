@@ -167,6 +167,9 @@
 		E75DDDF42183450B00EC6270 /* CustomerStatisiticsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDDF32183450B00EC6270 /* CustomerStatisiticsDetailViewController.m */; };
 		E75DDDF721836A5F00EC6270 /* AnnouncementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDDF621836A5F00EC6270 /* AnnouncementDetailViewController.m */; };
 		E75DDDFA218378B300EC6270 /* MeaEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDDF9218378B300EC6270 /* MeaEditViewController.m */; };
+		E75DDE002184193800EC6270 /* dropdownFlag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E75DDDFC2184193800EC6270 /* dropdownFlag@3x.png */; };
+		E75DDE012184193800EC6270 /* dropdownFlag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E75DDDFD2184193800EC6270 /* dropdownFlag@2x.png */; };
+		E75DDE022184193800EC6270 /* EBDropdownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDDFE2184193800EC6270 /* EBDropdownListView.m */; };
 		E7A71A52217AE7AC003059B3 /* PackDocument_NoPackController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A71A51217AE7AC003059B3 /* PackDocument_NoPackController.m */; };
 		E7A71A55217AEBAF003059B3 /* PackDocument_PackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A71A54217AEBAF003059B3 /* PackDocument_PackedViewController.m */; };
 		E7D420442170D76D00FD22F6 /* NewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420432170D76D00FD22F6 /* NewHomeViewController.m */; };
@@ -541,6 +544,10 @@
 		E75DDDF621836A5F00EC6270 /* AnnouncementDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnnouncementDetailViewController.m; sourceTree = "<group>"; };
 		E75DDDF8218378B300EC6270 /* MeaEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeaEditViewController.h; sourceTree = "<group>"; };
 		E75DDDF9218378B300EC6270 /* MeaEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeaEditViewController.m; sourceTree = "<group>"; };
+		E75DDDFC2184193800EC6270 /* dropdownFlag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdownFlag@3x.png"; sourceTree = "<group>"; };
+		E75DDDFD2184193800EC6270 /* dropdownFlag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdownFlag@2x.png"; sourceTree = "<group>"; };
+		E75DDDFE2184193800EC6270 /* EBDropdownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBDropdownListView.m; sourceTree = "<group>"; };
+		E75DDDFF2184193800EC6270 /* EBDropdownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBDropdownListView.h; sourceTree = "<group>"; };
 		E7A71A50217AE7AC003059B3 /* PackDocument_NoPackController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackDocument_NoPackController.h; sourceTree = "<group>"; };
 		E7A71A51217AE7AC003059B3 /* PackDocument_NoPackController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackDocument_NoPackController.m; sourceTree = "<group>"; };
 		E7A71A53217AEBAF003059B3 /* PackDocument_PackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackDocument_PackedViewController.h; sourceTree = "<group>"; };
@@ -1193,6 +1200,7 @@
 		A9033641208A250600823D3C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E75DDDFB2184193800EC6270 /* EBDropdownList */,
 				E7D420632171A17F00FD22F6 /* UIView+Frame.h */,
 				E7D420642171A17F00FD22F6 /* UIView+Frame.m */,
 				E7D4206121719FDC00FD22F6 /* HSLimitText.h */,
@@ -1433,6 +1441,17 @@
 			path = JXTitle;
 			sourceTree = "<group>";
 		};
+		E75DDDFB2184193800EC6270 /* EBDropdownList */ = {
+			isa = PBXGroup;
+			children = (
+				E75DDDFC2184193800EC6270 /* dropdownFlag@3x.png */,
+				E75DDDFD2184193800EC6270 /* dropdownFlag@2x.png */,
+				E75DDDFE2184193800EC6270 /* EBDropdownListView.m */,
+				E75DDDFF2184193800EC6270 /* EBDropdownListView.h */,
+			);
+			path = EBDropdownList;
+			sourceTree = "<group>";
+		};
 		E7D42086217374B400FD22F6 /* AddressBook */ = {
 			isa = PBXGroup;
 			children = (
@@ -1588,9 +1607,11 @@
 				A903368C208A25BE00823D3C /* Localizable.strings in Resources */,
 				A9022F54208B3F6F00886D95 /* WaybillTableViewCell.xib in Resources */,
 				A92D71FF20906DB1000F7B7D /* WaybillQueryFooterView.xib in Resources */,
+				E75DDE012184193800EC6270 /* dropdownFlag@2x.png in Resources */,
 				A90334E0208A241D00823D3C /* Assets.xcassets in Resources */,
 				A996B3EF208F675B0013992F /* FeedbackViewController.storyboard in Resources */,
 				A972BA96208DC83400CFF30C /* WaybillDetailHeaderView.xib in Resources */,
+				E75DDE002184193800EC6270 /* dropdownFlag@3x.png in Resources */,
 				A90334DE208A241D00823D3C /* Main.storyboard in Resources */,
 				A9033658208A250700823D3C /* bg@2x.png in Resources */,
 				A9022F65208CB83200886D95 /* ProfileHeaderView.xib in Resources */,
@@ -1826,6 +1847,7 @@
 				A9022F68208CB84500886D95 /* ProfileHeaderView.m in Sources */,
 				E75DDDF1218330B100EC6270 /* packedCell.m in Sources */,
 				A9033655208A250700823D3C /* LWDES.m in Sources */,
+				E75DDE022184193800EC6270 /* EBDropdownListView.m in Sources */,
 				A9033675208A250700823D3C /* UIViewController+Message.m in Sources */,
 				A9033676208A250700823D3C /* FCBaseNetWork.m in Sources */,
 				A903366C208A250700823D3C /* UIResponder+Responder.m in Sources */,

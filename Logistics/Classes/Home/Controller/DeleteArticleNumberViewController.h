@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DeleteArticleNumberViewController : UIViewController
+@interface DeleteArticleNumberViewController : ViewController
 
 @end
 

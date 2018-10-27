@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 typedef void (^ReturnData)(NSMutableArray *dataArr);
-@interface AdvancedQueryViewController : UIViewController
+@interface AdvancedQueryViewController : ViewController
 
 @property (nonatomic,assign) NSInteger type;
 

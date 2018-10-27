@@ -138,7 +138,7 @@
         _finishTimeTF.placeholder = @"请选择结束时间";
         __weak typeof(self) weakSelf = self;
         _finishTimeTF.tapAcitonBlock = ^{
-            [BRDatePickerView showDatePickerWithTitle:@"请选择结束时间" dateType:BRDatePickerModeDateAndTime defaultSelValue:nil minDate:[weakSelf dateFromString: weakSelf.startTimeStr] maxDate:nil isAutoSelect:YES themeColor:kGlobalMainColor resultBlock:^(NSString *selectValue) {
+            [BRDatePickerView showDatePickerWithTitle:@"请选择结束时间" dateType:BRDatePickerModeDateAndTime defaultSelValue:nil minDate:nil maxDate:[weakSelf dateFromString: weakSelf.startTimeStr] isAutoSelect:YES themeColor:kGlobalMainColor resultBlock:^(NSString *selectValue) {
                 weakSelf.finishTimeTF.text = selectValue;
                 //                weakSelf.finishTimeTF = selectValue;
             }];
@@ -232,75 +232,85 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;
 }
-////确定
-//-(void)confirmBtnAction:(UIButton *)btn
-//{
-//    if ([NSString isBlankString:_numberTF.text]) {
-//        _numberTF.text = @"";
-//    }else{
-//        _numberTF.text = _numberTF.text;
-//    }
-//
-//    if ([NSString isBlankString:_startTimeTF.text]) {
-//        _startTimeTF.text = @"2018-10-19";
-//    }else{
-//        _startTimeTF.text = _startTimeTF.text;
-//    }
-//    if ([NSString isBlankString:_finishTimeTF.text]) {
-//        _finishTimeTF.text = @"2018-10-26";
-//    }else{
-//        _finishTimeTF.text = _finishTimeTF.text;
-//    }
-//    if ([NSString isBlankString:_startSiteTF.text]) {
-//        _startSiteTF.text = @"";
-//    }else{
-//        _startSiteTF.text = _startSiteTF.text;
-//    }
-//    if ([NSString isBlankString:_warehouseTF.text]) {
-//        _warehouseTF.text = @"";
-//    }else{
-//        _warehouseTF.text =_warehouseTF.text;
-//    }
-//
-//
-//    [FCProgressHUD showLoadingOn:self.view];
-//    NSDictionary *param = [NSDictionary requestWithUrl:@"GetEntDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":_numberTF.text,@"pageindex":@(1),@"pagesize":@(15),@"StartTime":_startTimeTF.text,@"EndTime":_finishTimeTF.text,@"StockID":_warehouseTF.text,@"EntStartID":@"",@"EntEndID":@""}];
-//    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
-//        [FCProgressHUD hideHUDForView:self.view animation:YES];
-//        NSDictionary *dic = response.json;
-//        NSLog(@"%@",dic[@"state"]);
-//        if ([dic[@"state"] isEqualToString:@"success"]) {
-//            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
-//            [_dataArr addObjectsFromArray:[NSArray yy_modelArrayWithClass:[ReceivingRegistrationModel class] json:dict[@"entinfo"]]];
-//            if (self.returnData != nil) {
-//                self.returnData(_dataArr);//视图将要消失时候调用
-//            }
-//            [self.navigationController popViewControllerAnimated:YES];
-//        }else{
-//            NSDictionary *dict = ((NSArray *)response.data).firstObject;
-//            [FCProgressHUD showText:dict[@"errorMsg"]];
-//        }
-//    } failure:^(FCBaseResponse *response) {
-//        NSDictionary *dict = ((NSArray *)response.data).firstObject;
-//        [FCProgressHUD showText:dict[@"errorMsg"]];
-//    }];
-//
-//}
+//确定
+-(void)confirmBtnAction:(UIButton *)btn
+{
+    NSString *deliveryName;
+    if ([NSString isBlankString:_deliveryNameTF.text]) {
+        deliveryName = @"";
+    }else{
+        deliveryName = _deliveryNameTF.text;
+    }
+    
+    NSString *startTimeStr;
+    if ([NSString isBlankString:_startTimeTF.text]) {
+        NSDate *date=[NSDate date];
+        NSDateFormatter *format1=[[NSDateFormatter alloc] init];
+        [format1 setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        startTimeStr=[format1 stringFromDate:date];
+    }else{
+        startTimeStr = _startTimeTF.text;
+    }
+    NSString *finishStr;
+    if ([NSString isBlankString:_finishTimeTF.text]) {
+        NSDate * date = [NSDate date];
+        NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        //一周的秒数
+        NSTimeInterval time = 7 * 24 * 60 * 60;
+        //下周就把"-"去掉
+        NSDate *lastWeek = [date dateByAddingTimeInterval:-time];
+        finishStr =  [dateFormatter stringFromDate:lastWeek];
+        
+    }else{
+        finishStr = _finishTimeTF.text;
+    }
+    NSString *cityStr;
+    if ([NSString isBlankString:_cityTF.text]) {
+        cityStr = @"";
+    }else{
+        cityStr = _cityTF.text;
+    }
+  
+
+
+    [FCProgressHUD showLoadingOn:self.view];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"GetConsignmentDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"entNumber":@"",@"pageindex":@(1),@"pagesize":@(15),@"StartTime":startTimeStr,@"EndTime":finishStr,@"StockID":@"",@"EntStartID":@"",@"EntEndID":@""}];
+    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
+        [FCProgressHUD hideHUDForView:self.view animation:YES];
+        NSDictionary *dic = response.json;
+        NSLog(@"%@",dic[@"state"]);
+        if ([dic[@"state"] isEqualToString:@"success"]) {
+            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
+            [_dataArr addObjectsFromArray:[NSArray yy_modelArrayWithClass:[ReceivingRegistrationModel class] json:dict[@"entinfo"]]];
+            if (self.returnData != nil) {
+                self.returnData(_dataArr);//视图将要消失时候调用
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            NSDictionary *dict = ((NSArray *)response.data).firstObject;
+            [FCProgressHUD showText:dict[@"errorMsg"]];
+        }
+    } failure:^(FCBaseResponse *response) {
+        NSDictionary *dict = ((NSArray *)response.data).firstObject;
+        [FCProgressHUD showText:dict[@"errorMsg"]];
+    }];
+
+}
 
 -(void)returnData:(ReturnData)block
 {
     _returnData = block;
 }
-////重置
-//-(void)resetbtnAction:(UIButton *)btn
-//{
-//    _numberTF.text = @"";
-//    _startTimeTF.text = @"";
-//    _finishTimeTF.text = @"";
-//    _startSiteTF.text = @"";
-//    _cityTF.text = @"";
-//    _warehouseTF.text = @"";
-//    [_tableView reloadData];
-//}
+//重置
+-(void)resetbtnAction:(UIButton *)btn
+{
+    _goodsTimeTF.text = @"";
+    _startTimeTF.text = @"";
+    _finishTimeTF.text = @"";
+    _deliveryNameTF.text = @"";
+    _cityTF.text = @"";
+    [_tableView reloadData];
+}
 
 @end

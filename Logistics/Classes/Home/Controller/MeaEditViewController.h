@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MeaEditViewController : UIViewController
+@interface MeaEditViewController : ViewController
 
 @end
 

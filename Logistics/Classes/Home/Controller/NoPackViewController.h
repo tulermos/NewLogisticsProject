@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NoPackViewController : UIViewController
+@interface NoPackViewController : ViewController
 
 @property (nonatomic,assign) NSInteger status;
 

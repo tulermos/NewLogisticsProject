@@ -116,7 +116,7 @@
         _startTimeTF.placeholder = @"请选择开始时间";
         __weak typeof(self) weakSelf = self;
         _startTimeTF.tapAcitonBlock = ^{
-            [BRDatePickerView showDatePickerWithTitle:@"请选择开始时间" dateType:BRDatePickerModeDateAndTime defaultSelValue:weakSelf.startTimeTF.text minDate:[NSDate date] maxDate:nil isAutoSelect:YES themeColor:kGlobalMainColor resultBlock:^(NSString *selectValue) {
+            [BRDatePickerView showDatePickerWithTitle:@"请选择开始时间" dateType:BRDatePickerModeDateAndTime defaultSelValue:nil minDate:nil maxDate:[NSDate date] isAutoSelect:YES themeColor:kGlobalMainColor resultBlock:^(NSString *selectValue) {
                 weakSelf.startTimeTF.text = selectValue;
                 weakSelf.startTimeStr = selectValue;
             }];
@@ -130,7 +130,7 @@
         _finishTimeTF.placeholder = @"请选择结束时间";
         __weak typeof(self) weakSelf = self;
         _finishTimeTF.tapAcitonBlock = ^{
-            [BRDatePickerView showDatePickerWithTitle:@"请选择结束时间" dateType:BRDatePickerModeDateAndTime defaultSelValue:nil minDate:[weakSelf dateFromString: weakSelf.startTimeStr] maxDate:nil isAutoSelect:YES themeColor:kGlobalMainColor resultBlock:^(NSString *selectValue) {
+            [BRDatePickerView showDatePickerWithTitle:@"请选择结束时间" dateType:BRDatePickerModeDateAndTime defaultSelValue:weakSelf.startTimeStr minDate:nil maxDate:[weakSelf dateFromString: weakSelf.startTimeStr] isAutoSelect:YES themeColor:kGlobalMainColor resultBlock:^(NSString *selectValue) {
                 weakSelf.finishTimeTF.text = selectValue;
 //                weakSelf.finishTimeTF = selectValue;
             }];
@@ -276,42 +276,58 @@
     }else{
         _numberTF.text = _numberTF.text;
     }
-    
+    NSString *startTimeStr;
    if ([NSString isBlankString:_startTimeTF.text]) {
-        _startTimeTF.text = @"2018-10-19";
+       NSDate *date=[NSDate date];
+       NSDateFormatter *format1=[[NSDateFormatter alloc] init];
+       [format1 setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+       startTimeStr=[format1 stringFromDate:date];
    }else{
-       _startTimeTF.text = _startTimeTF.text;
+       startTimeStr = _startTimeTF.text;
    }
+    NSString *finishStr;
    if ([NSString isBlankString:_finishTimeTF.text]) {
-        _finishTimeTF.text = @"2018-10-26";
+       NSDate * date = [NSDate date];
+       NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+       [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+       //一周的秒数
+       NSTimeInterval time = 7 * 24 * 60 * 60;
+       //下周就把"-"去掉
+       NSDate *lastWeek = [date dateByAddingTimeInterval:-time];
+       finishStr =  [dateFormatter stringFromDate:lastWeek];
+  
    }else{
-        _finishTimeTF.text = _finishTimeTF.text;
+       finishStr = _finishTimeTF.text;
    }
   if ([NSString isBlankString:_startSiteTF.text]) {
         _startSiteTF.text = @"";
   }else{
        _startSiteTF.text = _startSiteTF.text;
   }
+   __block NSString *stockId;
    if ([NSString isBlankString:_warehouseTF.text]) {
-        _warehouseTF.text = @"";
+        stockId = @"";
    }else{
-        _warehouseTF.text =_warehouseTF.text;
+       [_warehouseArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+           siteModel *model = obj;
+           if ([model.stockname isEqualToString:_warehouseTF.text]) {
+               *stop = YES;
+               stockId = model.stockid;
+           }
+       }];
    }
-
  
     [FCProgressHUD showLoadingOn:self.view];
-    NSDictionary *param = [NSDictionary requestWithUrl:@"GetEntDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":_numberTF.text,@"pageindex":@(1),@"pagesize":@(15),@"StartTime":_startTimeTF.text,@"EndTime":_finishTimeTF.text,@"StockID":_warehouseTF.text,@"EntStartID":@"",@"EntEndID":@""}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"GetEntDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"entNumber":_numberTF.text,@"pageindex":@(1),@"pagesize":@(15),@"StartTime":startTimeStr,@"EndTime":finishStr,@"StockID":stockId,@"EntStartID":@"",@"EntEndID":@""}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         [FCProgressHUD hideHUDForView:self.view animation:YES];
         NSDictionary *dic = response.json;
         NSLog(@"%@",dic[@"state"]);
         if ([dic[@"state"] isEqualToString:@"success"]) {
            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
-            if (self.type == 1) {
-                 [_dataArr addObjectsFromArray:[NSArray yy_modelArrayWithClass:[ReceivingRegistrationModel class] json:dict[@"entinfo"]]];
-            }else{
-                [_dataArr addObjectsFromArray:[NSArray yy_modelArrayWithClass:[ConsignmentNoteModel class] json:dict[@"entinfo"]]];
-            }
+          
+          [_dataArr addObjectsFromArray:[NSArray yy_modelArrayWithClass:[ReceivingRegistrationModel class] json:dict[@"entinfo"]]];
+          
          
             if (self.returnData != nil) {
                 self.returnData(_dataArr);//视图将要消失时候调用

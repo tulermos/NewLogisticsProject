@@ -24,6 +24,7 @@
     self.view.backgroundColor = kGlobalViewBgColor;
     self.title = @"客户运单统计";
     [self setUpUI];
+    [self loadData];
 }
 -(void)setUpUI
 {
@@ -42,32 +43,26 @@
 }
 -(void)loadData
 {
-    NSDictionary *param = [NSDictionary requestWithUrl:@"GetCustomerShipDetail" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize),@"CusID":_cusId}];
-    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
+    [FCProgressHUD showLoadingOn:self.view];
+    NSDictionary *dict = [NSDictionary requestWithUrl:@"GetCustomerShipDetail" param:@{@"cusCode":[UserManager sharedManager].user.cusCode,@"CusID":_cusId}];
+    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:dict model:nil cache:NO success:^(FCBaseResponse *response) {
         [FCProgressHUD hideHUDForView:self.view animation:YES];
         NSDictionary *dic = response.json;
         NSLog(@"%@",dic[@"state"]);
-        if ([dic[@"state"] isEqualToString:@"success"]) {
-            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
-            [self.tableView.dataArray removeAllObjects];
-            //            for (NSDictionary *adic in dict[@"entinfo"]) {
-            [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[ConsignmentNoteModel class] json:dict[@"entinfo"]]];
-            //                NSArray *models =[NSArray yy_modelArrayWithClass:[ReceivingRegistrationModel class] json:adic];
-            //            }
-            
-            [self.tableView reloadData];
-            [self.tableView reloadEmptyData];
-            [self setSum];
-            
-        }else{
-            NSDictionary *dict = ((NSArray *)response.data).firstObject;
-            [FCProgressHUD showText:dict[@"errorMsg"]];
+        [self.tableView.dataArray removeAllObjects];
+        if ([dict[@"state"] isEqualToString:@"success"]) {
+             NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
+            [self.tableView reloadDataWithArray:[NSArray yy_modelArrayWithClass:[WaybillModel class] json:dict[@"customerShipInfo"]]];
         }
+        [self.tableView reloadData];
+        [self.tableView reloadEmptyData];
+        [self setSum];
     } failure:^(FCBaseResponse *response) {
         [FCProgressHUD hideHUDForView:self.view animation:YES];
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

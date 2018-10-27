@@ -203,7 +203,23 @@
         return;
     }
     [_dataArr removeAllObjects];
-    NSDictionary *param = [NSDictionary requestWithUrl:@"QueryConsignmentData" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":_searchBar.textField.text}];
+    NSString *startTimeStr;
+    NSDate *date=[NSDate date];
+    NSDateFormatter *format1=[[NSDateFormatter alloc] init];
+    [format1 setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    startTimeStr= [format1 stringFromDate:date];
+    NSString *finishStr;
+    NSDate * date1 = [NSDate date];
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    //一周的秒数
+    NSTimeInterval time = 7 * 24 * 60 * 60;
+    //下周就把"-"去掉
+    NSDate *lastWeek = [date1 dateByAddingTimeInterval:-time];
+    finishStr =  [dateFormatter stringFromDate:lastWeek];
+    
+    
+    NSDictionary *param = [NSDictionary requestWithUrl:@"GetConsignmentDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"entNumber":_searchBar.textField.text,@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize),@"StartTime":startTimeStr,@"EndTime":finishStr,@"StockID":@"",@"EntStartID":@"",@"EntEndID":@""}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         
         NSDictionary *dic = response.json;
@@ -211,16 +227,18 @@
         if ([dic[@"state"] isEqualToString:@"success"]) {
             NSDictionary *adic = dic[@"data"][0];
             NSLog(@"%@",adic[@"billinfo"]);
-//            _dataArr = [ConsignmentNoteModel yy_modelWithJSON:adic[@"billinfo"]];
+            //            _dataArr = [ConsignmentNoteModel yy_modelWithJSON:adic[@"billinfo"]];
             [_dataArr  addObject:[ConsignmentNoteModel yy_modelWithJSON:adic[@"billinfo"]]];
             [self.tableView reloadDataWithArray:_dataArr];
+            [self.tableView reloadEmptyData];
         }else{
             NSDictionary *dict =dic[@"data"][0];
             [FCProgressHUD showText:dict[@"errorMsg"]];
         }
-         [_tableView reloadData];
+        [_tableView reloadData];
         NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
+        [_dataArr removeAllObjects];
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];

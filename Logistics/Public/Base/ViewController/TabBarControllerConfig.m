@@ -83,9 +83,9 @@
                                                  CYLTabBarItemSelectedImage : @"shouye_xuanzhong",
                                                  };
     NSDictionary *secondTabBarItemsAttributes = @{
-                                                  CYLTabBarItemTitle : NSLocalizedString(@"TabBar_Logistics", nil),
-                                                  CYLTabBarItemImage : @"wuliu",
-                                                  CYLTabBarItemSelectedImage : @"wuliu_xuanzhong",
+                                                  CYLTabBarItemTitle : @"消息",
+                                                  CYLTabBarItemImage : @"消息",
+                                                  CYLTabBarItemSelectedImage : @"消息选中",
                                                   };
     NSDictionary *thirdTabBarItemsAttributes = @{
                                                  CYLTabBarItemTitle : NSLocalizedString(@"TabBar_Message", nil),

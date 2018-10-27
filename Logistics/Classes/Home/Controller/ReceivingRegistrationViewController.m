@@ -13,6 +13,7 @@
 #import "WaybillQueryHeaderView.h"
 #import "WaybillDetailViewController.h"
 #import "AdvancedQueryViewController.h"
+#import "shippingQueryViewController.h"
 #define kReceivingRegistrationCell @"kReceivingRegistrationCell"
 @interface ReceivingRegistrationViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate,TFDropDownMenuViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArr;
@@ -115,7 +116,7 @@
 - (void)loadData:(NSDictionary *)timeDict
 {
     
-    NSDictionary *param = [NSDictionary requestWithUrl:@"GetEntDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":@"",@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize),@"StartTime":timeDict[@"start"],@"EndTime":timeDict[@"end"],@"StockID":@"",@"EntStartID":@"",@"EntEndID":@""}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"GetEntDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"entNumber":@"",@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize),@"StartTime":timeDict[@"start"],@"EndTime":timeDict[@"end"],@"StockID":@"",@"EntStartID":@"",@"EntEndID":@""}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         [FCProgressHUD hideHUDForView:self.view animation:YES];
         NSDictionary *dic = response.json;

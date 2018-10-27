@@ -16,6 +16,7 @@
 #import "ReceivingRegistrationModel.h"
 #import "WaybillQueryFooterView.h"
 #import "AdvancedQueryViewController.h"
+#import "shippingQueryViewController.h"
 #define ktableViewKey  @"ktableViewKey"
 @interface ConsignmentNoteViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -65,7 +66,7 @@
 //高级查询
 -(void)highSearchBtnAction:(UIButton*)btn
 {
-    AdvancedQueryViewController *AQVC = [[AdvancedQueryViewController alloc]init];
+    shippingQueryViewController *AQVC = [[shippingQueryViewController alloc]init];
     AQVC.type = 2;
     WS;
     [AQVC returnData:^(NSMutableArray * _Nonnull dataArr) {
@@ -79,7 +80,7 @@
 
 - (void)loadData:(NSDictionary *)timeDict
 {
-      NSDictionary *param = [NSDictionary requestWithUrl:@"GetEntDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":@"",@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize),@"StartTime":timeDict[@"start"],@"EndTime":timeDict[@"end"],@"StockID":@"",@"EntStartID":@"",@"EntEndID":@""}];
+      NSDictionary *param = [NSDictionary requestWithUrl:@"GetConsignmentDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":@"",@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize),@"StartTime":timeDict[@"start"],@"EndTime":timeDict[@"end"],@"StockID":@"",@"EntStartID":@"",@"EntEndID":@""}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
          [FCProgressHUD hideHUDForView:self.view animation:YES];
         NSDictionary *dic = response.json;

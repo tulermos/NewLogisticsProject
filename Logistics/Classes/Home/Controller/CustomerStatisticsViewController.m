@@ -11,12 +11,14 @@
 #import "CustomerStatisticsCell.h"
 #import "ConsignmentNoteViewController.h"
 #import "CustomerStatisiticsDetailViewController.h"
+#import "EBDropdownListView.h"
 #define kCustomerStatisticsCell @"kCustomerStatisticsCell"
 @interface CustomerStatisticsViewController ()<UITableViewDelegate,UITableViewDataSource,HSLimitTextDelegate,UITextFieldDelegate,CustomerStatisticsCellDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) BaseTableView *tableView;
 @property (nonatomic, strong) HSLimitText *searchBar;
 @property (nonatomic, strong) UIButton *searchBtn;
+@property (nonatomic, assign) NSInteger type;
 @end
 
 @implementation CustomerStatisticsViewController
@@ -24,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+    
     _dataArr = [NSMutableArray array];
     self.view.backgroundColor = kGlobalViewBgColor;
     self.title = @"客户统计";
@@ -33,7 +37,7 @@
     [but addTarget:self action:@selector(Next:)forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
     self.navigationItem.rightBarButtonItem = barBut;
-
+    _type = 1;
     [self setUpUI];
     [self getData];
 }
@@ -54,10 +58,32 @@
     searchIcon.image = [UIImage imageNamed:@"sousuo"];
     // contentMode：default is UIViewContentModeScaleToFill，要设置为UIViewContentModeCenter：使图片居中，防止图片填充整个imageView
     searchIcon.contentMode = UIViewContentModeCenter;
-    searchIcon.size = CGSizeMake(30, 30);
-    textView.textField.leftView = searchIcon;
+//    searchIcon.size = CGSizeMake(30, 30);
+//    textView.textField.leftView = searchIcon;
+//    textView.textField.leftViewMode = UITextFieldViewModeAlways;
+    EBDropdownListItem *item1 = [[EBDropdownListItem alloc] initWithItem:@"1" itemName:@"客户"];
+    EBDropdownListItem *item2 = [[EBDropdownListItem alloc] initWithItem:@"2" itemName:@"业务员"];
+    
+    // 弹出框向上
+    EBDropdownListView *dropdownListView = [[EBDropdownListView alloc] initWithDataSource:@[item1, item2]];
+    dropdownListView.size =CGSizeMake(75, 30);
+    dropdownListView.selectedIndex = 0;
+//    [dropdownListView setViewBorder:0.5 borderColor:[UIColor grayColor] cornerRadius:2];
+    [self.view addSubview:dropdownListView];
+    WS;
+    [dropdownListView setDropdownListViewSelectedBlock:^(EBDropdownListView *dropdownListView) {
+        if (dropdownListView.selectedIndex == 0)
+        {
+            weakSelf.type = 1;
+        }else{
+            weakSelf.type = 2;
+        }
+        
+    }];
+    textView.textField.leftView = dropdownListView;
     textView.textField.leftViewMode = UITextFieldViewModeAlways;
     [self.view addSubview:textView];
+    
     _searchBar = textView;
     
     _searchBtn = [UIButton buttonWithType:0];
@@ -67,6 +93,7 @@
     _searchBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
     [_searchBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:1<<6];
     [self.view addSubview:_searchBtn];
+    
     _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(textView.frame)+8, FCWidth, FCHeight-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height) style:0];
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.delegate = self;
@@ -102,8 +129,26 @@
 }
 -(void)getData
 {
+    NSString *CustomStr;
+    NSString *CusPasportStr;
+    if (_type == 1) {
+        if ([NSString isBlankString:_searchBar.textField.text]) {
+            CustomStr =@"";
+        }else{
+            CustomStr =_searchBar.textField.text;
+        }
+        CusPasportStr = @"";
+    }else{
+        if ([NSString isBlankString:_searchBar.textField.text]) {
+
+            CusPasportStr =@"";
+        }else{
+            CusPasportStr =_searchBar.textField.text;
+        }
+        CustomStr = @"";
+    }
     [FCProgressHUD showLoadingOn:self.view];
-    NSDictionary *param = [NSDictionary requestWithUrl:@"GetCustomerDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize)}];
+    NSDictionary *param = [NSDictionary requestWithUrl:@"GetCustomerDataList" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"pageindex":@(self.tableView.pageNO),@"pagesize":@(self.tableView.pageSize),@"Custom":CustomStr,@"CusPasport":CusPasportStr}];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         NSDictionary *dic = response.json;
         NSLog(@"%@",dic[@"state"]);
@@ -137,5 +182,37 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(void)searchBtnAction:(UIButton *)btn
+{
 
+//    if (_type == 1) {
+//        if ([NSString isBlankString:_searchBar.textField.text]) {
+//            [FCProgressHUD showText:@"请输入客户编号"];
+//            return;
+//    }else if(_type == 2) {
+//        if ([NSString isBlankString:_searchBar.textField.text]) {
+//            [FCProgressHUD showText:@"请输入业务员编号"];
+//            return;
+//        }
+//    }
+// }
+    if ([NSString isBlankString:_searchBar.textField.text]) {
+        if (_type == 1) {
+            [FCProgressHUD showText:@"请输入客户编号"];
+        }else{
+           [FCProgressHUD showText:@"请输入业务员编号"];
+        }
+        return;
+    }else{
+    [self.tableView.dataArray removeAllObjects];
+    [self getData];
+    }
+}
+    
+-(void)Next:(id)btn
+{
+    [self.tableView.dataArray removeAllObjects];
+    [self getData];
+}
 @end
+

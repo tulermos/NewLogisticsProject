@@ -16,10 +16,11 @@
 #import "ReceivingRegistrationModel.h"
 #import "WaybillQueryFooterView.h"
 #import "AdvancedQueryViewController.h"
+#import "ViewController.h"
 #define ktableViewKey  @"ktableViewKey"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CustomerStatisiticsDetailViewController : UIViewController
+@interface CustomerStatisiticsDetailViewController : ViewController
 
 @property (nonatomic,copy) NSString *cusId;
 
