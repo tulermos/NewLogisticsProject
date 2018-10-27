@@ -4,4 +4,6 @@
 
 @interface WLCargoTrackViewController : UITableViewController
 
+@property (nonatomic, strong) NSArray *inputDataArr;
+
 @end

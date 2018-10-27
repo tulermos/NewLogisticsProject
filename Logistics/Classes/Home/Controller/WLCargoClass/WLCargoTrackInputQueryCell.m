@@ -30,6 +30,7 @@
         self.orderTextField.delegate = self;
         self.orderTextField.placeholder = @"请输入货号/手机号/单号";
         self.orderTextField.font = [UIFont systemFontOfSize:15];
+        self.orderTextField.returnKeyType = UIReturnKeySearch;
         [self.contentView addSubview:self.orderTextField];
         
         UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -23,9 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableviewDatas = [[NSMutableArray alloc] init];
-    [self.tableviewDatas addObject:@"0"];
-    [self.tableviewDatas addObject:@"1"];
+    self.tableviewDatas = [[NSMutableArray alloc] initWithArray:self.inputDataArr];
+    if (!self.tableviewDatas.count) {
+        [self.tableviewDatas addObject:@"0"];
+        [self.tableviewDatas addObject:@"1"];
+    }
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
@@ -36,7 +38,6 @@
     [rightBarBtn setTitle:@"刷新" forState:UIControlStateNormal];
     [rightBarBtn addTarget:self action:@selector(refreshRequest) forControlEvents:UIControlEventTouchUpInside];
     
-//    UIBarButtonItem *rightItem0 = [[UIBarButtonItem alloc] initWithCustomView:rightBarBtn0];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarBtn];
     self.navigationItem.rightBarButtonItems = @[rightItem];
     
@@ -118,10 +119,15 @@
 }
 
 - (void) wlQueryOrder:(NSString *)order {
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     WLCargoTrackModel *model = [[WLCargoTrackModel alloc] init];
+    model.orderStr = order;
+    [FCProgressHUD showLoadingOn:self.view];
     [WLCargoTrackModel requestQueryOrderWithModel:model
                                     SuccessHandle:^(id  _Nonnull responseObject) {
-                                        
+        [FCProgressHUD hideHUDForView:self.view animation:YES];
         if ([[responseObject valueForKey:@"state"] isEqualToString:@"success"]) {
             [self.tableviewDatas removeAllObjects];
             [self.tableviewDatas addObject:@"0"];
@@ -140,8 +146,11 @@
             [self.tableviewDatas addObject:@"0"];
             [self.tableviewDatas addObject:@"1"];
             NSLog(@"请求数据有误,展示报错!");
+            [FCProgressHUD showText:responseObject[@"errorMsg"]];
+            self.tableView.tableFooterView = [self errorFooterView];
         }
         [self wlRefreshQueryCell];
+        
     } Fail:^(NSError * _Nonnull error) {
         [self requestFail];
     }];
@@ -152,11 +161,12 @@
 }
 
 - (void) WLCargoTrackInputQueryCellDelegateModel:(NSDictionary *)responseObject {
-
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     WLCargoTrackModel *model = [[WLCargoTrackModel alloc] init];
     model.orderStr = [responseObject valueForKey:@"orderStr"];
+    [FCProgressHUD showLoadingOn:self.view];
     [WLCargoTrackModel requestQueryOrderWithModel:model SuccessHandle:^(id  _Nonnull responseObject) {
-        
+        [FCProgressHUD hideHUDForView:self.view animation:YES];
         if ([[responseObject valueForKey:@"state"] isEqualToString:@"success"]) {
             [self.tableviewDatas removeAllObjects];
             [self.tableviewDatas addObject:@"0"];
@@ -175,6 +185,8 @@
             [self.tableviewDatas addObject:@"0"];
             [self.tableviewDatas addObject:@"1"];
             NSLog(@"请求数据有误,展示报错!");
+            [FCProgressHUD showText:responseObject[@"errorMsg"]];
+            self.tableView.tableFooterView = [self errorFooterView];
         }
         [self wlRefreshQueryCell];
     } Fail:^(NSError * _Nonnull error) {
@@ -187,12 +199,23 @@
 }
 
 - (void) requestFail {
-    NSLog(@"访问失败!");
+    [FCProgressHUD showText:@"访问失败!"];
 }
 
 - (UIView *) errorFooterView {
     UIView *view = [[UIView alloc] init];
+    view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44);
+    
+    UIView *topLine = [[UIView alloc] init];
+    topLine.frame = CGRectMake(0, 0, view.width, 1);
+    topLine.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [view addSubview:topLine];
+    
     UILabel *lab = [[UILabel alloc] init];
+    lab.textAlignment = NSTextAlignmentCenter;
+    lab.frame = view.frame;
+    lab.text = @"未查询到此订单!";
+    [view addSubview:lab];
     return view;
 }
 

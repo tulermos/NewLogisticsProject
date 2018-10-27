@@ -23,6 +23,9 @@
 #import "MeasuringDocumentsViewController.h"
 #import "PackagingDocumentsViewController.h"
 #import "WLCargoTrackViewController.h"
+#import "ZFScanViewController.h"
+
+#import "WLCargoTrackModel.h"
 #define kCollectionViewKey  @"kCollectionViewKey"
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,HSLimitTextDelegate>
@@ -71,10 +74,9 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gestureRecognizer.numberOfTapsRequired = 1;
     gestureRecognizer.cancelsTouchesInView = NO;
-    [self.collectionView addGestureRecognizer:gestureRecognizer];
+//    [self.collectionView addGestureRecognizer:gestureRecognizer];
 }
--(void)hideKeyboard
-{
+-(void)hideKeyboard {
     [_searchBar.textField resignFirstResponder];
 }
 #pragma mark - UICollectionviewDataSource/delegate
@@ -171,10 +173,12 @@
         textView.textField.leftView = searchIcon;
         textView.textField.leftViewMode = UITextFieldViewModeAlways;
         [topImgView addSubview:textView];
+        topImgView.userInteractionEnabled = YES;
         _searchBar = textView;
         
         _ercodeBtn = [UIButton buttonWithType:0];
         _ercodeBtn.frame = CGRectMake(CGRectGetMaxX(textView.frame), TB_StatusBarHeightSegment, 56, 81);
+        [_ercodeBtn addTarget:self action:@selector(erCodeAction) forControlEvents:UIControlEventTouchUpInside];
         [_ercodeBtn setImage:[UIImage imageNamed:@"二维码"] forState:0];
         [topImgView addSubview:_ercodeBtn];
         
@@ -262,23 +266,70 @@
         [FCProgressHUD showText:@"请输入运单号"];
         return;
     }
+    [_searchBar.textField resignFirstResponder];
     NSDictionary *param = [NSDictionary requestWithUrl:@"shipdetail" param:@{@"userID":[UserManager sharedManager].user.cusCode,@"EntNumber":_searchBar.textField.text}];
+    [FCProgressHUD showLoadingOn:self.view];
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
+        [FCProgressHUD hideHUDForView:self.view animation:YES];
         NSDictionary *dic = response.json;
-        NSLog(@"%@",dic[@"state"]);
+//        NSLog(@"%@",dic[@"state"]);
         if ([dic[@"state"] isEqualToString:@"success"]) {
             WaybillDetailViewController *detailVc = [[WaybillDetailViewController alloc]init];
             detailVc.EntNumber = _searchBar.textField.text;
             [self.navigationController pushViewController:detailVc animated:YES];
+        }else {
+            NSDictionary *dict = ((NSArray *)response.data).firstObject;
+            [FCProgressHUD showText:dict[@"errorMsg"]];
         }
-        NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
-        NSDictionary *dict = ((NSArray *)response.data).firstObject;
-        [FCProgressHUD showText:dict[@"errorMsg"]];
+//        NSDictionary *dict = ((NSArray *)response.data).firstObject;
+//        [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
 }
 
+- (void) erCodeAction {
+    ZFScanViewController * vc = [[ZFScanViewController alloc] init];
+    vc.returnScanBarCodeValue = ^(NSString * barCodeString){
+        NSLog(@"barCodeString = %@",barCodeString);
+        [self wlQueryOrder:barCodeString];
+    };
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
-
+- (void) wlQueryOrder:(NSString *)order {
+    WLCargoTrackModel *model = [[WLCargoTrackModel alloc] init];
+    model.orderStr = order;
+    [FCProgressHUD showLoadingOn:self.view];
+    [WLCargoTrackModel requestQueryOrderWithModel:model
+                                    SuccessHandle:^(id  _Nonnull responseObject) {
+        [FCProgressHUD hideHUDForView:self.view animation:YES];
+                                        NSMutableArray *mArr = [NSMutableArray array];
+        if ([[responseObject valueForKey:@"state"] isEqualToString:@"success"]) {
+            [mArr removeAllObjects];
+            [mArr addObject:@"0"];
+            [mArr addObject:@"1"];
+            NSDictionary *dataDict = ((NSArray *)responseObject[@"data"]).firstObject;
+            NSDictionary *trackInfoDict = dataDict[@"trackinfo"];
+            [mArr addObject:trackInfoDict];
+            
+            NSArray *recordEntityArr = trackInfoDict[@"recordEntity"];
+            if (recordEntityArr) {
+                [mArr addObject:recordEntityArr];
+            }
+            WLCargoTrackViewController *vc = [[WLCargoTrackViewController alloc] init];
+            vc.inputDataArr = mArr;
+            [self.navigationController pushViewController:vc animated:YES];
+        }else {
+            [mArr removeAllObjects];
+            [mArr addObject:@"0"];
+            [mArr addObject:@"1"];
+            NSLog(@"请求数据有误,展示报错!");
+            [FCProgressHUD showText:responseObject[@"errorMsg"]];
+        }
+    } Fail:^(NSError * _Nonnull error) {
+        [FCProgressHUD hideHUDForView:self.view animation:YES];
+        [FCProgressHUD showText:@"请求失败!"];
+    }];
+}
 
 @end

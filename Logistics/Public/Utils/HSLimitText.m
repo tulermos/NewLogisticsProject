@@ -87,8 +87,8 @@
     textField.backgroundColor = [UIColor clearColor];
     textField.textColor = [UIColor grayColor];
     textField.font = [UIFont systemFontOfSize:13.0];
-    [self  addSubview:textField];
-    [textField becomeFirstResponder];
+    [self addSubview:textField];
+//    [textField becomeFirstResponder];
     self.textField = textField;
     
     UIView  *leftView  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, self.frame.size.height)];
