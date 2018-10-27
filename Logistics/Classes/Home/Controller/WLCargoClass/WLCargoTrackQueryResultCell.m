@@ -15,21 +15,21 @@
 // ----
 
 
-@property (nonatomic, strong) UILabel *inputCargoInfoLab;
+//@property (nonatomic, weak) IBOutlet UILabel *inputCargoInfoLab;
 
-@property (nonatomic, strong) UILabel *inputCargoNumLab;
+@property (nonatomic, weak) IBOutlet UILabel *inputCargoNumLab;
 
-@property (nonatomic, strong) UILabel *inputCargoOrderLab;
+@property (nonatomic, weak) IBOutlet UILabel *inputCargoOrderLab;
 
-@property (nonatomic, strong) UILabel *inputCargoTypeLab;
+@property (nonatomic, weak) IBOutlet UILabel *inputCargoTypeLab;
 
-@property (nonatomic, strong) UILabel *outputCargoInfoLab;
+//@property (nonatomic, weak) IBOutlet UILabel *outputCargoInfoLab;
 
-@property (nonatomic, strong) UILabel *outputCargoNumLab;
+@property (nonatomic, weak) IBOutlet UILabel *outputCargoNameLab;
 
-@property (nonatomic, strong) UILabel *outputCargoOrderLab;
+@property (nonatomic, weak) IBOutlet UILabel *outputCargoOrderLab;
 
-@property (nonatomic, strong) UILabel *outputCargoTypeLab;
+@property (nonatomic, weak) IBOutlet UILabel *outputCargoAddreessLab;
 
 
 // ----
@@ -51,20 +51,19 @@
         {
             WLCargoTrackQueryResultCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"WLCargoTrackQueryResultCell" owner:nil options:nil] lastObject];
             
-            if ([[model valueForKey:@"state"] isEqualToString:@"success"]) {
-                NSArray *dataArr = [model valueForKey:@"data"];
-                
-                NSDictionary *dict1 = [NSDictionary dictionaryWithDictionary:dataArr.firstObject];
-                cell.inputCargoInfoLab.text = [dict1 valueForKey:@""];
-                cell.inputCargoNumLab.text = [dict1 valueForKey:@""];
-                cell.inputCargoOrderLab.text = [dict1 valueForKey:@""];
-                cell.inputCargoTypeLab.text = [dict1 valueForKey:@""];
-                NSDictionary *dict2 = [NSDictionary dictionaryWithDictionary:dataArr.lastObject];
-                cell.outputCargoInfoLab.text = [dict2 valueForKey:@""];
-                cell.outputCargoNumLab.text = [dict2 valueForKey:@""];
-                cell.outputCargoOrderLab.text = [dict2 valueForKey:@""];
-                cell.outputCargoTypeLab.text = [dict2 valueForKey:@""];
+            NSDictionary *dict1 = [NSDictionary dictionaryWithDictionary:model];
+//                cell.inputCargoInfoLab.text = [dict1 valueForKey:@""];
+            cell.inputCargoNumLab.text = [dict1 valueForKey:@"billNumber"];
+            cell.inputCargoOrderLab.text = [dict1 valueForKey:@"billCode"];
+            cell.inputCargoTypeLab.text = [dict1 valueForKey:@"pathType"];
+//            cell.outputCargoInfoLab.text = [dict1 valueForKey:@""];
+            cell.outputCargoNameLab.text = [dict1 valueForKey:@"recName"];
+            if (![[dict1 valueForKey:@"recPhone"] isKindOfClass:[NSNull class]]) {
+                cell.outputCargoOrderLab.text = [dict1 valueForKey:@"recPhone"];
+            }else {
+                cell.outputCargoOrderLab.text = @"无";
             }
+            cell.outputCargoAddreessLab.text = [dict1 valueForKey:@"recAddress"];
             
             return cell;
         }
@@ -93,10 +92,10 @@
 //                    make.bottom.equalTo(self.contentView.mas_bottom).offset(-16);
                     make.right.equalTo(self.contentView.mas_right).offset(-16);
                 }];
-                self.middleQRImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wlqrimg"]];
+                self.middleQRImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"条形码"]];
                 [self.contentView addSubview:self.middleQRImageView];
                 [self.middleQRImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.top.equalTo(self.topTitleLabel.mas_bottom);
+                    make.top.equalTo(self.topTitleLabel.mas_bottom).offset(10);
                     make.left.equalTo(self.contentView.mas_left).offset(16);
                     make.bottom.equalTo(self.contentView.mas_bottom).offset(-16);
                     make.right.equalTo(self.contentView.mas_right).offset(-16);

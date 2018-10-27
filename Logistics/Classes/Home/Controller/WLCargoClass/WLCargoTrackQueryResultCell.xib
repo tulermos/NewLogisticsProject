@@ -11,10 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="353" id="tqN-90-ZRI" customClass="WLCargoTrackQueryResultCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tqN-90-ZRI" customClass="WLCargoTrackQueryResultCell">
             <rect key="frame" x="0.0" y="0.0" width="482" height="353"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tqN-90-ZRI" id="KYr-8d-urx">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tqN-90-ZRI" id="KYr-8d-urx">
                 <rect key="frame" x="0.0" y="0.0" width="482" height="352.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -136,6 +136,7 @@
                     <constraint firstItem="POR-wq-Nnt" firstAttribute="top" secondItem="dhm-GV-xJg" secondAttribute="bottom" constant="15" id="0Sh-nG-2Pl"/>
                     <constraint firstItem="izu-8I-jiT" firstAttribute="leading" secondItem="KYr-8d-urx" secondAttribute="leading" constant="13" id="4DS-qq-QYL"/>
                     <constraint firstItem="eD5-yW-2Se" firstAttribute="height" secondItem="65Q-h5-Jl9" secondAttribute="height" id="4iS-l2-T2e"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="eD5-yW-2Se" secondAttribute="bottom" constant="20" id="5xj-GX-Y2L"/>
                     <constraint firstItem="65Q-h5-Jl9" firstAttribute="leading" secondItem="pTp-J0-cBR" secondAttribute="leading" id="C93-8y-SVe"/>
                     <constraint firstItem="cFI-E6-Fh0" firstAttribute="leading" secondItem="pTp-J0-cBR" secondAttribute="trailing" constant="16" id="Ccr-WK-brh"/>
                     <constraint firstItem="eD5-yW-2Se" firstAttribute="leading" secondItem="65Q-h5-Jl9" secondAttribute="leading" id="Cu7-rx-lHi"/>
@@ -178,6 +179,14 @@
                     <constraint firstItem="35W-LT-avs" firstAttribute="top" secondItem="65Q-h5-Jl9" secondAttribute="top" id="wdG-1b-Zp6"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="inputCargoNumLab" destination="7O6-mc-Pb6" id="rd4-Tt-hKO"/>
+                <outlet property="inputCargoOrderLab" destination="jPf-x2-nbN" id="8FW-2k-M1U"/>
+                <outlet property="inputCargoTypeLab" destination="o0X-x9-62B" id="BPT-Nt-isK"/>
+                <outlet property="outputCargoAddreessLab" destination="rJ3-UU-AWf" id="Qs9-cz-0J2"/>
+                <outlet property="outputCargoNameLab" destination="cFI-E6-Fh0" id="ezQ-0J-KWj"/>
+                <outlet property="outputCargoOrderLab" destination="35W-LT-avs" id="yrn-y9-n5g"/>
+            </connections>
             <point key="canvasLocation" x="70.400000000000006" y="118.29085457271366"/>
         </tableViewCell>
     </objects>

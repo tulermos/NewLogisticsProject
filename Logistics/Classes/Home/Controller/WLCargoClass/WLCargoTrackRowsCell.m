@@ -5,9 +5,10 @@
 @interface WLCargoTrackRowsCell ()
 
 
-@property (nonatomic, strong) UILabel *timeLabel;
-@property (nonatomic, strong) UILabel *cityLabel;
-@property (nonatomic, strong) UILabel *addressLabel;
+@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
+@property (nonatomic, weak) IBOutlet UILabel *cityLabel;
+@property (nonatomic, weak) IBOutlet UILabel *addressLabel;
+
 
 @end
 
@@ -16,9 +17,9 @@
 + (instancetype) cellWithModel:(NSDictionary *)model ReuseIdentifier:(NSString *)reuseIdentifier; {
     WLCargoTrackRowsCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"WLCargoTrackRowsCell" owner:nil options:nil] lastObject];
     
-    cell.timeLabel.text = [model valueForKey:@""];
-    cell.cityLabel.text = [model valueForKey:@""];
-    cell.addressLabel.text = [model valueForKey:@""];
+    cell.timeLabel.text = [model valueForKey:@"Date"];
+    cell.cityLabel.text = [model valueForKey:@"Station"];
+    cell.addressLabel.text = [model valueForKey:@"Operation"];
     
     return cell;
 }

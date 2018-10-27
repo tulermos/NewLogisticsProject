@@ -29,15 +29,16 @@
         self.orderTextField.backgroundColor = [UIColor whiteColor];
         self.orderTextField.delegate = self;
         self.orderTextField.placeholder = @"请输入货号/手机号/单号";
+        self.orderTextField.font = [UIFont systemFontOfSize:15];
         [self.contentView addSubview:self.orderTextField];
         
         UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [closeBtn setImage:[UIImage imageNamed:@"关闭"] forState:UIControlStateNormal];
+        [closeBtn setImage:[UIImage imageNamed:@"搜索-关闭"] forState:UIControlStateNormal];
         [closeBtn addTarget:self action:@selector(closeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-//        self.orderTextField.rightView = closeBtn;
-        UIImageView *searchImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"搜索"]];
-        searchImg.backgroundColor = [UIColor redColor];
+        self.orderTextField.rightView = closeBtn;
+        UIImageView *searchImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Shape"]];
         self.orderTextField.leftView = searchImg;
+        self.orderTextField.leftViewMode = UITextFieldViewModeAlways;
         
         
         UIButton *queryBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -45,7 +46,7 @@
         [queryBtn addTarget:self action:@selector(queryBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:queryBtn];
         
-        [self.orderTextField  mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.orderTextField mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.contentView.mas_top).offset(10);
             make.left.equalTo(self.contentView.mas_left).offset(12);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
@@ -53,14 +54,7 @@
             make.height.mas_equalTo(28);
         }];
         
-//        [closeBtn  mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        }];
-        [searchImg  mas_makeConstraints:^(MASConstraintMaker *make) {
-            
-        }];
-        
-        [queryBtn  mas_makeConstraints:^(MASConstraintMaker *make) {
+        [queryBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.orderTextField.mas_top);
             make.left.equalTo(self.orderTextField.mas_right).offset(20);
             make.bottom.equalTo(self.orderTextField.mas_bottom);

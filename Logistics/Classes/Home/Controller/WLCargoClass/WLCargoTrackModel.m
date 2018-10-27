@@ -11,8 +11,8 @@
     //test
     NSDictionary *dict_test = [NSDictionary requestWithUrl:@"cargotrack"
                                                 param:@{
-                                                        @"entNumber":@"GM4160",
-                                                        @"userID":@"22e3fc13-a2c1-45ce-b413-efd8a403af1b",
+                                                        @"entNumber":@"M888-1216-39",
+                                                        @"userID":@"3cd1cd06-3d77-4efb-a78d-ad9a9cea3d80",
                                                         }];
     
 //    NSDictionary *dict = [NSDictionary requestWithUrl:@"cargotrack"
@@ -23,8 +23,8 @@
     [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:dict_test model:nil cache:NO success:^(FCBaseResponse *response) {
 //        [FCProgressHUD hideHUDForView:self.view animation:YES];
         if ([response.json[@"state"] isEqualToString:@"success"]) {
-            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
-            successCompletion(dict);
+//            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
+            successCompletion(response.json);
         }else {
             NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
             successCompletion(dict);

@@ -33,7 +33,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     UIButton *rightBarBtn0 = [UIButton buttonWithType:UIButtonTypeSystem];
-    rightBarBtn0.frame = CGRectMake(0, 0, 20, 44);
+    rightBarBtn0.frame = CGRectMake(0, 0, 5, 44);
     [rightBarBtn0 addTarget:self action:@selector(refreshRequest) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *rightBarBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -42,7 +42,9 @@
     
     UIBarButtonItem *rightItem0 = [[UIBarButtonItem alloc] initWithCustomView:rightBarBtn0];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarBtn];
-    self.navigationController.navigationItem.rightBarButtonItems = @[rightItem0,rightItem];
+    self.navigationItem.rightBarButtonItems = @[rightItem0,rightItem];
+    
+    self.navigationItem.title = @"货物跟踪";
 }
 
 
@@ -52,24 +54,35 @@
         {
             WLCargoTrackInputQueryCell *cell = [WLCargoTrackInputQueryCell cellWithReuseIdentifier:nil];
             cell.delegate = self;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
             break;
         case 1:
         {
             WLCargoTrackQueryResultCell *cell = [WLCargoTrackQueryResultCell cellWithCellStyle:CellStyle_Default WithModel:self.tableviewDatas[indexPath.section] ReuseIdentifier:nil];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
             break;
         case 2:
         {
             WLCargoTrackQueryResultCell *cell = [WLCargoTrackQueryResultCell cellWithCellStyle:CellStyle_Result WithModel:self.tableviewDatas[indexPath.section] ReuseIdentifier:nil];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
             break;
         default:
         {
             WLCargoTrackRowsCell *cell = [WLCargoTrackRowsCell cellWithModel:self.tableviewDatas[indexPath.section][indexPath.row] ReuseIdentifier:@"WLCargoTrackRowsCell"];
+            if (indexPath.row != 0) {
+                cell.lineImgView.backgroundColor = [UIColor colorWithRed:229.0/255.0 green:229.0/255.0 blue:229.0/255.0 alpha:1];
+                cell.cornerImgView2.image = [UIImage imageNamed:@"地址灰色.png"];
+            }else {
+                cell.cornerImgView2.image = [UIImage imageNamed:@"地址.png"];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.separatorInset = UIEdgeInsetsMake(0, [UIScreen mainScreen].bounds.size.width, 0, 0);
             return cell;
         }
             break;
@@ -92,7 +105,7 @@
     return 60;
 }
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 1) {
         [self wlQRAction];
     }
@@ -117,22 +130,22 @@
             [self.tableviewDatas removeAllObjects];
             [self.tableviewDatas addObject:@"0"];
             [self.tableviewDatas addObject:@"1"];
-            [self.tableviewDatas addObject:responseObject];
+            NSDictionary *dataDict = ((NSArray *)responseObject[@"data"]).firstObject;
+            NSDictionary *trackInfoDict = dataDict[@"trackinfo"];
+            [self.tableviewDatas addObject:trackInfoDict];
             
-            NSArray *dataArr = [responseObject valueForKey:@"data"];
-            NSMutableArray *tmpmArr = [NSMutableArray arrayWithArray:dataArr];
-            [tmpmArr removeLastObject];
-            [tmpmArr removeObjectAtIndex:0];
-            [self.tableviewDatas addObject:tmpmArr];
+            NSArray *recordEntityArr = trackInfoDict[@"recordEntity"];
+            if (recordEntityArr) {
+                [self.tableviewDatas addObject:recordEntityArr];
+            }
+            [self wlRefreshQueryCell];
         }else {
             [self.tableviewDatas removeAllObjects];
             [self.tableviewDatas addObject:@"0"];
             [self.tableviewDatas addObject:@"1"];
             NSLog(@"请求数据有误,展示报错!");
         }
-        
         [self wlRefreshQueryCell];
-        
     } Fail:^(NSError * _Nonnull error) {
         [self requestFail];
     }];
@@ -152,13 +165,15 @@
             [self.tableviewDatas removeAllObjects];
             [self.tableviewDatas addObject:@"0"];
             [self.tableviewDatas addObject:@"1"];
-            [self.tableviewDatas addObject:responseObject];
+            NSDictionary *dataDict = ((NSArray *)responseObject[@"data"]).firstObject;
+            NSDictionary *trackInfoDict = dataDict[@"trackinfo"];
+            [self.tableviewDatas addObject:trackInfoDict];
             
-            NSArray *dataArr = [responseObject valueForKey:@"data"];
-            NSMutableArray *tmpmArr = [NSMutableArray arrayWithArray:dataArr];
-            [tmpmArr removeLastObject];
-            [tmpmArr removeObjectAtIndex:0];
-            [self.tableviewDatas addObject:tmpmArr];
+            NSArray *recordEntityArr = trackInfoDict[@"recordEntity"];
+            if (recordEntityArr) {
+                [self.tableviewDatas addObject:recordEntityArr];
+            }
+            [self wlRefreshQueryCell];
         }else {
             [self.tableviewDatas removeAllObjects];
             [self.tableviewDatas addObject:@"0"];
@@ -177,6 +192,12 @@
 
 - (void) requestFail {
     NSLog(@"访问失败!");
+}
+
+- (UIView *) errorFooterView {
+    UIView *view = [[UIView alloc] init];
+    UILabel *lab = [[UILabel alloc] init];
+    return view;
 }
 
 @end
