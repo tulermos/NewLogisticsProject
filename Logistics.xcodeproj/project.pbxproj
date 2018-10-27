@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8EAD3C86217C4E5500A450C3 /* WLCargoTrackQueryResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAD3C63217C4E5500A450C3 /* WLCargoTrackQueryResultCell.xib */; };
+		8EAD3C87217C4E5500A450C3 /* WLCargoTrackQueryResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD3C65217C4E5500A450C3 /* WLCargoTrackQueryResultCell.m */; };
+		8EAD3C88217C4E5500A450C3 /* WLCargoTrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD3C66217C4E5500A450C3 /* WLCargoTrackViewController.m */; };
+		8EAD3C89217C4E5500A450C3 /* WLCargoTrackInputQueryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD3C67217C4E5500A450C3 /* WLCargoTrackInputQueryCell.m */; };
+		8EAD3C8A217C4E5500A450C3 /* WLCargoTrackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD3C68217C4E5500A450C3 /* WLCargoTrackModel.m */; };
+		8EAD3C8B217C4E5500A450C3 /* WLCargoTrackRowsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD3C69217C4E5500A450C3 /* WLCargoTrackRowsCell.m */; };
+		8EAD3C8C217C4E5500A450C3 /* WLCargoTrackRowsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAD3C6C217C4E5500A450C3 /* WLCargoTrackRowsCell.xib */; };
+		8EAD3C8D217C4E5500A450C3 /* UIImage+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD3C72217C4E5500A450C3 /* UIImage+Zirkfied.m */; };
+		8EAD3C8E217C4E5500A450C3 /* UIColor+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD3C73217C4E5500A450C3 /* UIColor+Zirkfied.m */; };
+		8EAD3C8F217C4E5500A450C3 /* ZFConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD3C77217C4E5500A450C3 /* ZFConst.m */; };
+		8EAD3C90217C4E5500A450C3 /* ZFScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD3C79217C4E5500A450C3 /* ZFScanViewController.m */; };
+		8EAD3C91217C4E5500A450C3 /* ZFMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD3C7C217C4E5500A450C3 /* ZFMaskView.m */; };
+		8EAD3C92217C4E5500A450C3 /* QRCodeScanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EAD3C7E217C4E5500A450C3 /* QRCodeScanLine@2x.png */; };
+		8EAD3C93217C4E5500A450C3 /* Down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EAD3C7F217C4E5500A450C3 /* Down@2x.png */; };
+		8EAD3C94217C4E5500A450C3 /* ScanQR3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EAD3C80217C4E5500A450C3 /* ScanQR3@2x.png */; };
+		8EAD3C95217C4E5500A450C3 /* ScanQR1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EAD3C81217C4E5500A450C3 /* ScanQR1@2x.png */; };
+		8EAD3C96217C4E5500A450C3 /* ScanQR4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EAD3C82217C4E5500A450C3 /* ScanQR4@2x.png */; };
+		8EAD3C97217C4E5500A450C3 /* Flashlight_N@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EAD3C83217C4E5500A450C3 /* Flashlight_N@2x.png */; };
+		8EAD3C98217C4E5500A450C3 /* ScanQR2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EAD3C84217C4E5500A450C3 /* ScanQR2@2x.png */; };
+		8EAD3C99217C4E5500A450C3 /* Flashlight_H@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EAD3C85217C4E5500A450C3 /* Flashlight_H@2x.png */; };
 		A9022F45208B243700886D95 /* WLHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9022F44208B243700886D95 /* WLHomeCollectionViewCell.m */; };
 		A9022F48208B2C9C00886D95 /* WaybillQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9022F47208B2C9C00886D95 /* WaybillQueryViewController.m */; };
 		A9022F4B208B32F300886D95 /* WaybillQueryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9022F4A208B32F300886D95 /* WaybillQueryHeaderView.m */; };
@@ -212,6 +232,37 @@
 
 /* Begin PBXFileReference section */
 		834D0CAC7F6C6FB49E250B9B /* libPods-Logistics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Logistics.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EAD3C62217C4E5500A450C3 /* WLCargoTrackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCargoTrackModel.h; sourceTree = "<group>"; };
+		8EAD3C63217C4E5500A450C3 /* WLCargoTrackQueryResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WLCargoTrackQueryResultCell.xib; sourceTree = "<group>"; };
+		8EAD3C64217C4E5500A450C3 /* WLCargoTrackRowsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCargoTrackRowsCell.h; sourceTree = "<group>"; };
+		8EAD3C65217C4E5500A450C3 /* WLCargoTrackQueryResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCargoTrackQueryResultCell.m; sourceTree = "<group>"; };
+		8EAD3C66217C4E5500A450C3 /* WLCargoTrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCargoTrackViewController.m; sourceTree = "<group>"; };
+		8EAD3C67217C4E5500A450C3 /* WLCargoTrackInputQueryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCargoTrackInputQueryCell.m; sourceTree = "<group>"; };
+		8EAD3C68217C4E5500A450C3 /* WLCargoTrackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCargoTrackModel.m; sourceTree = "<group>"; };
+		8EAD3C69217C4E5500A450C3 /* WLCargoTrackRowsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCargoTrackRowsCell.m; sourceTree = "<group>"; };
+		8EAD3C6A217C4E5500A450C3 /* WLCargoTrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCargoTrackViewController.h; sourceTree = "<group>"; };
+		8EAD3C6B217C4E5500A450C3 /* WLCargoTrackQueryResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCargoTrackQueryResultCell.h; sourceTree = "<group>"; };
+		8EAD3C6C217C4E5500A450C3 /* WLCargoTrackRowsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WLCargoTrackRowsCell.xib; sourceTree = "<group>"; };
+		8EAD3C6D217C4E5500A450C3 /* WLCargoTrackInputQueryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCargoTrackInputQueryCell.h; sourceTree = "<group>"; };
+		8EAD3C6F217C4E5500A450C3 /* ZFScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFScanViewController.h; sourceTree = "<group>"; };
+		8EAD3C71217C4E5500A450C3 /* UIColor+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Zirkfied.h"; sourceTree = "<group>"; };
+		8EAD3C72217C4E5500A450C3 /* UIImage+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Zirkfied.m"; sourceTree = "<group>"; };
+		8EAD3C73217C4E5500A450C3 /* UIColor+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Zirkfied.m"; sourceTree = "<group>"; };
+		8EAD3C74217C4E5500A450C3 /* UIImage+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Zirkfied.h"; sourceTree = "<group>"; };
+		8EAD3C76217C4E5500A450C3 /* ZFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFColor.h; sourceTree = "<group>"; };
+		8EAD3C77217C4E5500A450C3 /* ZFConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFConst.m; sourceTree = "<group>"; };
+		8EAD3C78217C4E5500A450C3 /* ZFConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFConst.h; sourceTree = "<group>"; };
+		8EAD3C79217C4E5500A450C3 /* ZFScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFScanViewController.m; sourceTree = "<group>"; };
+		8EAD3C7B217C4E5500A450C3 /* ZFMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFMaskView.h; sourceTree = "<group>"; };
+		8EAD3C7C217C4E5500A450C3 /* ZFMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFMaskView.m; sourceTree = "<group>"; };
+		8EAD3C7E217C4E5500A450C3 /* QRCodeScanLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodeScanLine@2x.png"; sourceTree = "<group>"; };
+		8EAD3C7F217C4E5500A450C3 /* Down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Down@2x.png"; sourceTree = "<group>"; };
+		8EAD3C80217C4E5500A450C3 /* ScanQR3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR3@2x.png"; sourceTree = "<group>"; };
+		8EAD3C81217C4E5500A450C3 /* ScanQR1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR1@2x.png"; sourceTree = "<group>"; };
+		8EAD3C82217C4E5500A450C3 /* ScanQR4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR4@2x.png"; sourceTree = "<group>"; };
+		8EAD3C83217C4E5500A450C3 /* Flashlight_N@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flashlight_N@2x.png"; sourceTree = "<group>"; };
+		8EAD3C84217C4E5500A450C3 /* ScanQR2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR2@2x.png"; sourceTree = "<group>"; };
+		8EAD3C85217C4E5500A450C3 /* Flashlight_H@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flashlight_H@2x.png"; sourceTree = "<group>"; };
 		8F6E2C70759CC793097687CF /* Pods-Logistics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logistics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Logistics/Pods-Logistics.debug.xcconfig"; sourceTree = "<group>"; };
 		A9022F43208B243700886D95 /* WLHomeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLHomeCollectionViewCell.h; sourceTree = "<group>"; };
 		A9022F44208B243700886D95 /* WLHomeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLHomeCollectionViewCell.m; sourceTree = "<group>"; };
@@ -626,6 +677,84 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8EAD3C61217C4E5500A450C3 /* WLCargoClass */ = {
+			isa = PBXGroup;
+			children = (
+				8EAD3C6A217C4E5500A450C3 /* WLCargoTrackViewController.h */,
+				8EAD3C66217C4E5500A450C3 /* WLCargoTrackViewController.m */,
+				8EAD3C62217C4E5500A450C3 /* WLCargoTrackModel.h */,
+				8EAD3C68217C4E5500A450C3 /* WLCargoTrackModel.m */,
+				8EAD3C6B217C4E5500A450C3 /* WLCargoTrackQueryResultCell.h */,
+				8EAD3C65217C4E5500A450C3 /* WLCargoTrackQueryResultCell.m */,
+				8EAD3C63217C4E5500A450C3 /* WLCargoTrackQueryResultCell.xib */,
+				8EAD3C64217C4E5500A450C3 /* WLCargoTrackRowsCell.h */,
+				8EAD3C69217C4E5500A450C3 /* WLCargoTrackRowsCell.m */,
+				8EAD3C6C217C4E5500A450C3 /* WLCargoTrackRowsCell.xib */,
+				8EAD3C6D217C4E5500A450C3 /* WLCargoTrackInputQueryCell.h */,
+				8EAD3C67217C4E5500A450C3 /* WLCargoTrackInputQueryCell.m */,
+				8EAD3C6E217C4E5500A450C3 /* ZFScan */,
+			);
+			path = WLCargoClass;
+			sourceTree = "<group>";
+		};
+		8EAD3C6E217C4E5500A450C3 /* ZFScan */ = {
+			isa = PBXGroup;
+			children = (
+				8EAD3C6F217C4E5500A450C3 /* ZFScanViewController.h */,
+				8EAD3C70217C4E5500A450C3 /* Category */,
+				8EAD3C75217C4E5500A450C3 /* Other */,
+				8EAD3C79217C4E5500A450C3 /* ZFScanViewController.m */,
+				8EAD3C7A217C4E5500A450C3 /* CustomView */,
+				8EAD3C7D217C4E5500A450C3 /* resource */,
+			);
+			path = ZFScan;
+			sourceTree = "<group>";
+		};
+		8EAD3C70217C4E5500A450C3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				8EAD3C71217C4E5500A450C3 /* UIColor+Zirkfied.h */,
+				8EAD3C72217C4E5500A450C3 /* UIImage+Zirkfied.m */,
+				8EAD3C73217C4E5500A450C3 /* UIColor+Zirkfied.m */,
+				8EAD3C74217C4E5500A450C3 /* UIImage+Zirkfied.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		8EAD3C75217C4E5500A450C3 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				8EAD3C76217C4E5500A450C3 /* ZFColor.h */,
+				8EAD3C77217C4E5500A450C3 /* ZFConst.m */,
+				8EAD3C78217C4E5500A450C3 /* ZFConst.h */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		8EAD3C7A217C4E5500A450C3 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				8EAD3C7B217C4E5500A450C3 /* ZFMaskView.h */,
+				8EAD3C7C217C4E5500A450C3 /* ZFMaskView.m */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		8EAD3C7D217C4E5500A450C3 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				8EAD3C7E217C4E5500A450C3 /* QRCodeScanLine@2x.png */,
+				8EAD3C7F217C4E5500A450C3 /* Down@2x.png */,
+				8EAD3C80217C4E5500A450C3 /* ScanQR3@2x.png */,
+				8EAD3C81217C4E5500A450C3 /* ScanQR1@2x.png */,
+				8EAD3C82217C4E5500A450C3 /* ScanQR4@2x.png */,
+				8EAD3C83217C4E5500A450C3 /* Flashlight_N@2x.png */,
+				8EAD3C84217C4E5500A450C3 /* ScanQR2@2x.png */,
+				8EAD3C85217C4E5500A450C3 /* Flashlight_H@2x.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
 		A9022F42208B240D00886D95 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -868,6 +997,7 @@
 				E75DDDF32183450B00EC6270 /* CustomerStatisiticsDetailViewController.m */,
 				E75DDDF8218378B300EC6270 /* MeaEditViewController.h */,
 				E75DDDF9218378B300EC6270 /* MeaEditViewController.m */,
+				8EAD3C61217C4E5500A450C3 /* WLCargoClass */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1583,17 +1713,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EAD3C93217C4E5500A450C3 /* Down@2x.png in Resources */,
 				A90334E3208A241D00823D3C /* LaunchScreen.storyboard in Resources */,
+				8EAD3C95217C4E5500A450C3 /* ScanQR1@2x.png in Resources */,
 				A9022F56208C0B8000886D95 /* WaybillQueryHeaderView.xib in Resources */,
+				8EAD3C92217C4E5500A450C3 /* QRCodeScanLine@2x.png in Resources */,
+				8EAD3C8C217C4E5500A450C3 /* WLCargoTrackRowsCell.xib in Resources */,
+				8EAD3C86217C4E5500A450C3 /* WLCargoTrackQueryResultCell.xib in Resources */,
+				8EAD3C98217C4E5500A450C3 /* ScanQR2@2x.png in Resources */,
 				A903368C208A25BE00823D3C /* Localizable.strings in Resources */,
+				8EAD3C96217C4E5500A450C3 /* ScanQR4@2x.png in Resources */,
 				A9022F54208B3F6F00886D95 /* WaybillTableViewCell.xib in Resources */,
 				A92D71FF20906DB1000F7B7D /* WaybillQueryFooterView.xib in Resources */,
+				8EAD3C97217C4E5500A450C3 /* Flashlight_N@2x.png in Resources */,
+				8EAD3C99217C4E5500A450C3 /* Flashlight_H@2x.png in Resources */,
 				A90334E0208A241D00823D3C /* Assets.xcassets in Resources */,
 				A996B3EF208F675B0013992F /* FeedbackViewController.storyboard in Resources */,
 				A972BA96208DC83400CFF30C /* WaybillDetailHeaderView.xib in Resources */,
 				A90334DE208A241D00823D3C /* Main.storyboard in Resources */,
 				A9033658208A250700823D3C /* bg@2x.png in Resources */,
 				A9022F65208CB83200886D95 /* ProfileHeaderView.xib in Resources */,
+				8EAD3C94217C4E5500A450C3 /* ScanQR3@2x.png in Resources */,
 				A9033686208A25A000823D3C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1674,6 +1814,7 @@
 				A9033667208A250700823D3C /* NSString+WJ.m in Sources */,
 				E75DDDE2218301EF00EC6270 /* siteModel.m in Sources */,
 				A972BA99208DC9CA00CFF30C /* WaybillDetailHeaderView.m in Sources */,
+				8EAD3C88217C4E5500A450C3 /* WLCargoTrackViewController.m in Sources */,
 				A9033665208A250700823D3C /* NSObject+unRecognizedSelector.m in Sources */,
 				E7140B822180A10900EE244B /* AnnouncementViewController.m in Sources */,
 				A9022F5C208C1B1500886D95 /* WaybillDetailTableViewCell.m in Sources */,
@@ -1745,13 +1886,16 @@
 				A9033662208A250700823D3C /* NSDictionary+Extension.m in Sources */,
 				A972BA9C208F068100CFF30C /* HelperViewController.m in Sources */,
 				A903364F208A250700823D3C /* UserModel.m in Sources */,
+				8EAD3C8B217C4E5500A450C3 /* WLCargoTrackRowsCell.m in Sources */,
 				A9033664208A250700823D3C /* NSDictionary+Shortcuts.m in Sources */,
 				E7D420592170FB7200FD22F6 /* ConsignmentNoteCell.m in Sources */,
+				8EAD3C8E217C4E5500A450C3 /* UIColor+Zirkfied.m in Sources */,
 				E7D4204A2170DF3B00FD22F6 /* FL_Button.m in Sources */,
 				A9022F52208B3B0800886D95 /* WaybillModel.m in Sources */,
 				E7D420472170DDEB00FD22F6 /* NewHomeFirstCell.m in Sources */,
 				A9033669208A250700823D3C /* UIImage+Extension.m in Sources */,
 				A9033659208A250700823D3C /* AppDelegate.m in Sources */,
+				8EAD3C89217C4E5500A450C3 /* WLCargoTrackInputQueryCell.m in Sources */,
 				A972BA91208D7DB700CFF30C /* WaybillGoodsInfoItem.m in Sources */,
 				A90F76CA2093051E00BC6A5D /* CompanyInfoModel.m in Sources */,
 				A903367C208A250700823D3C /* UIActionSheet+CHAlertAction.m in Sources */,
@@ -1776,12 +1920,14 @@
 				A903366B208A250700823D3C /* UIImage+M9Category.m in Sources */,
 				A972BA94208D7DED00CFF30C /* WaybillFinaceItem.m in Sources */,
 				A91DCA802099F7E300EF78EB /* MessageDetailViewController.m in Sources */,
+				8EAD3C91217C4E5500A450C3 /* ZFMaskView.m in Sources */,
 				A9033672208A250700823D3C /* UITextView+Placeholder.m in Sources */,
 				A9033657208A250700823D3C /* UITableView+Gzw.m in Sources */,
 				A90F76D020932A4A00BC6A5D /* SettingViewController.m in Sources */,
 				A90F76C12093031B00BC6A5D /* PriceSumViewController.m in Sources */,
 				E7140B912182E76A00EE244B /* BRTextField.m in Sources */,
 				E7D420712172057E00FD22F6 /* WaitOrderViewController.m in Sources */,
+				8EAD3C8A217C4E5500A450C3 /* WLCargoTrackModel.m in Sources */,
 				E7D420562170FB0100FD22F6 /* ReceivingRegistrationModel.m in Sources */,
 				E74A2653217785BE009C9400 /* JXCategoryBaseView.m in Sources */,
 				E74A266E217785BE009C9400 /* JXCategoryTitleCellModel.m in Sources */,
@@ -1812,12 +1958,15 @@
 				E74A2667217785BE009C9400 /* JXCategoryIndicatorView.m in Sources */,
 				E7D4208221736BD800FD22F6 /* CustomerStatisticsModel.m in Sources */,
 				A9033671208A250700823D3C /* UIScrollView+Extension.m in Sources */,
+				8EAD3C87217C4E5500A450C3 /* WLCargoTrackQueryResultCell.m in Sources */,
 				E74A265F217785BE009C9400 /* JXCategoryIndicatorLineView.m in Sources */,
 				A9033652208A250700823D3C /* MessageViewController.m in Sources */,
 				E7D4205F21719DFC00FD22F6 /* LMSearchBar.m in Sources */,
 				E7140B942182EA5900EE244B /* NSDate+BRAdd.m in Sources */,
 				E74A2659217785BE009C9400 /* JXCategoryNumberView.m in Sources */,
+				8EAD3C90217C4E5500A450C3 /* ZFScanViewController.m in Sources */,
 				E74A266C217785BE009C9400 /* JXCategoryImageCell.m in Sources */,
+				8EAD3C8F217C4E5500A450C3 /* ZFConst.m in Sources */,
 				A9022F59208C192200886D95 /* WaybillDetailViewController.m in Sources */,
 				E74A2668217785BE009C9400 /* JXCategoryDotCell.m in Sources */,
 				E7D420502170F55400FD22F6 /* ConsignmentNoteViewController.m in Sources */,
@@ -1833,6 +1982,7 @@
 				E74A265B217785BE009C9400 /* JXCategoryNumberCellModel.m in Sources */,
 				E7D4206B2171B31200FD22F6 /* ArticleNumberCell.m in Sources */,
 				A90F76CD209306F300BC6A5D /* CompanyInfoSectionModel.m in Sources */,
+				8EAD3C8D217C4E5500A450C3 /* UIImage+Zirkfied.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,6 +22,7 @@
 #import "CustomerStatisticsViewController.h"
 #import "MeasuringDocumentsViewController.h"
 #import "PackagingDocumentsViewController.h"
+#import "WLCargoTrackViewController.h"
 #define kCollectionViewKey  @"kCollectionViewKey"
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,HSLimitTextDelegate>
@@ -120,7 +121,8 @@
     }else if (indexPath.section == 1)
     {
         if (indexPath.item == 0) {
-           
+           WLCargoTrackViewController *vc = [[WLCargoTrackViewController alloc] init];
+           [self.navigationController pushViewController:vc animated:YES];
         }else if(indexPath.item == 1) {
             CustomerStatisticsViewController *vc = [CustomerStatisticsViewController new];
             [self.navigationController pushViewController:vc animated:YES];
