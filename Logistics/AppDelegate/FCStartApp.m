@@ -95,13 +95,17 @@
 
 #pragma mark - 根据token生成根控制器
 - (UIViewController *)fc_rootViewController {
+    
     if ([UserManager sharedManager].isLogin) {
         TabBarControllerConfig *tabbarVc = [[TabBarControllerConfig alloc] init];
+        
         return tabbarVc.tabBarController;
+      
     }else{
         LoginViewController *loginVc = [[LoginViewController alloc]init];
         BaseNavigationController *nav = [[BaseNavigationController alloc]initWithRootViewController:loginVc];
         return nav;
+
     }
 }
 

@@ -25,6 +25,7 @@
 @property (nonatomic, assign) NSInteger pageindex;
 @property (nonatomic, assign) NSInteger pagesize;
 @property (nonatomic, strong)WaybillQueryHeaderView *headerView;
+@property (nonatomic, strong) NSDictionary *datadic;
 @end
 
 @implementation ReceivingRegistrationViewController
@@ -63,8 +64,10 @@
     _headerView.timeBlock = ^(NSDictionary *dict) {
         @strongify(self);
         [self loadData:dict];
+        weak_self.datadic  = dict;
     };
     [self.headerView setDefault];
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -112,7 +115,6 @@
     [self.navigationController pushViewController:AQVC animated:YES];
 }
 
-
 - (void)loadData:(NSDictionary *)timeDict
 {
     
@@ -140,6 +142,7 @@
         [FCProgressHUD showText:dict[@"errorMsg"]];
     }];
 }
+
 
 #pragma mark - tableView
 - (BaseTableView *)tableView {

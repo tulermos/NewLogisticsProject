@@ -14,6 +14,7 @@
 
 @interface LoginViewController ()
 
+@property (nonatomic, strong)UIImageView *bgImg;
 @property (nonatomic, strong)UIImageView *headerIcon;
 @property (nonatomic, strong)TextFieldPartView *userTextField;
 @property (nonatomic, strong)TextFieldPartView *pwdTextField;
@@ -95,16 +96,18 @@
 - (void)clickLogin:(UIButton *)sender {
     if (![self isValid]) return;
     NSDictionary *dict = @{
-       @"pwd":_pwdTextField.text,
-       @"username":_userTextField.text,
+       @"pwd": _pwdTextField.text,
+       @"username":_userTextField.text
        };
+    
+     [FCProgressHUD showText:@"正在登录"];
     NSDictionary *param = [NSDictionary requestWithUrl:@"login" param:dict ];
-    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:@"UserModel" cache:NO success:^(FCBaseResponse *response) {
+    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         NSDictionary *dic = response.json;
         NSLog(@"%@",dic[@"state"]);
         if ([dic[@"state"] isEqualToString:@"success"]) {
             if (self.rememberButton.isSelected) {
-                [UserManager rememberLoginMessage:YES message:@{@"user":_userTextField.text,@"pwd":_pwdTextField.text}];
+                [UserManager rememberLoginMessage:YES message:@{@"user":_userTextField.text,@"pwd": _pwdTextField.text}];
             }else {
                 [UserManager rememberLoginMessage:NO message:nil];
             }
@@ -117,7 +120,7 @@
              model.uuid = dict[@"uuid"];
 //             model.other = dict[@"other"];
              model.resCmd = dict[@"resCmd"];
-            model.pwd =_pwdTextField.text;
+            model.pwd = _pwdTextField.text;
 //             NSDictionary *adic = [self dicFromObject:model];
             
             NSDictionary *adic =  @{@"cusName":model.cusName,@"cusName":model.cusName,@"cusCode":model.cusCode,@"cusAlias":model.cusAlias,@"uuid":model.uuid,@"resCmd":model.resCmd,@"pwd":model.pwd};
@@ -132,35 +135,13 @@
             [JPushManager addAlias];
             [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationNameUpdateRootVc object:nil];
             [self rememberPwd];
-            
+             [FCProgressHUD showText:@"登录成功"];
             
         }else{
             NSDictionary *dict = ((NSArray *)response.data).firstObject;
             [FCProgressHUD showText:dict[@"errorMsg"]];
         }
-//        if (response.isSuccess) {
-//            if (self.rememberButton.isSelected) {
-//                [UserManager rememberLoginMessage:YES message:@{@"user":_userTextField.text,@"pwd":_pwdTextField.text}];
-//            }else {
-//                [UserManager rememberLoginMessage:NO message:nil];
-//            }
-//            NSDictionary *dict = ((NSArray *)response.json[@"data"]).firstObject;
-//            UserModel *model = [UserModel yy_modelWithJSON:dict];
-//            [[NSUserDefaults standardUserDefaults]setObject:dict forKey:kUserDefaultKeyUser];
-//            [[NSUserDefaults standardUserDefaults]synchronize];
-//            [UserManager sharedManager].user = model;
-//            [JPushManager addAlias];
-//            [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationNameUpdateRootVc object:nil];
-//            [self rememberPwd];
-//            
-//            
-//            
-//            
-//        }else {
-//            NSDictionary *dict = ((NSArray *)response.data).firstObject;
-//            [FCProgressHUD showText:dict[@"errorMsg"]];
-//        }
-        
+
         NSLog(@"%@成功",response);
     } failure:^(FCBaseResponse *response) {
         NSDictionary *dict = ((NSArray *)response.data).firstObject;
@@ -211,6 +192,13 @@
 }
 
 #pragma mark - lazy
+- (UIImageView *)bgImg {
+    if (!_bgImg) {
+        _bgImg = [[UIImageView alloc]init];
+        _bgImg.image = [UIImage imageNamed:@"loginBgImg"];
+    }
+    return _headerIcon;
+}
 - (UIImageView *)headerIcon {
     if (!_headerIcon) {
         _headerIcon = [[UIImageView alloc]init];

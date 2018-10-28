@@ -125,7 +125,7 @@
 - (void)loginOut {
     
     NSDictionary *param = [NSDictionary requestWithUrl:@"loginout" param:@{@"username":[UserManager sharedManager].user.cusName,@"pwd":[UserManager sharedManager].user.pwd}];
-    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:@"UserModel" cache:NO success:^(FCBaseResponse *response) {
+    [FCHttpRequest requestWithMethod:HttpRequestMethodPost requestUrl:nil param:param model:nil cache:NO success:^(FCBaseResponse *response) {
         NSDictionary *dic = response.json;
         NSLog(@"%@",dic[@"state"]);
         if ([dic[@"state"] isEqualToString:@"success"]) {

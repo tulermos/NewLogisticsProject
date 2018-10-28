@@ -12,13 +12,14 @@
 #import "FCStartApp.h"
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
+#import <Bugly/Bugly.h>
 // iOS10注册APNs所需头文件
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
 // 如果需要使用idfa功能所需要引入的头文件（可选）
 #import <AdSupport/AdSupport.h>
-@interface AppDelegate ()<JPUSHRegisterDelegate>
+@interface AppDelegate ()<JPUSHRegisterDelegate,BuglyDelegate>
 
 @end
 
@@ -30,9 +31,58 @@
     [self addNotification];
     [FCStartApp appVersionUpdate];
     [self addPushSDK:launchOptions];
+    [self setupBugly];
     return YES;
 }
+- (void)setupBugly {
+    // Get the default config
+    BuglyConfig * config = [[BuglyConfig alloc] init];
+    
+    // Open the debug mode to print the sdk log message.
+    // Default value is NO, please DISABLE it in your RELEASE version.
+    //#if DEBUG
+    config.debugMode = YES;
+    //#endif
+    
+    // Open the customized log record and report, BuglyLogLevelWarn will report Warn, Error log message.
+    // Default value is BuglyLogLevelSilent that means DISABLE it.
+    // You could change the value according to you need.
+    //    config.reportLogLevel = BuglyLogLevelWarn;
+    
+    // Open the STUCK scene data in MAIN thread record and report.
+    // Default value is NO
+    config.blockMonitorEnable = YES;
+    
+    // Set the STUCK THRESHOLD time, when STUCK time > THRESHOLD it will record an event and report data when the app launched next time.
+    // Default value is 3.5 second.
+    config.blockMonitorTimeout = 1.5;
+    
+    // Set the app channel to deployment
+    config.channel = @"Bugly";
+    
+    config.delegate = self;
+    
+    config.consolelogEnable = NO;
+    config.viewControllerTrackingEnable = NO;
+    
+    // NOTE:Required
+    // Start the Bugly sdk with APP_ID and your config
+    [Bugly startWithAppId:@"ddd4a0740d"
+#if DEBUG
+        developmentDevice:YES
+#endif
+                   config:config];
+    
+    // Set the customizd tag thats config in your APP registerd on the  bugly.qq.com
+    // [Bugly setTag:1799];
+    
+    [Bugly setUserIdentifier:[NSString stringWithFormat:@"User: %@", [UIDevice currentDevice].name]];
+    
+    [Bugly setUserValue:[NSProcessInfo processInfo].processName forKey:@"Process"];
+    
 
+  
+}
 - (void)setupRootViewController {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[FCStartApp sharedInstance]fc_rootViewController];
@@ -45,6 +95,7 @@
 }
 
 - (void)updateRootVc:(NSNotification *)notify {
+
     self.window.rootViewController = [[FCStartApp sharedInstance]fc_rootViewController];
     [self.window makeKeyAndVisible];
 }

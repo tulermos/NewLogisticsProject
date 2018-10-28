@@ -190,6 +190,14 @@
 		E75DDE002184193800EC6270 /* dropdownFlag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E75DDDFC2184193800EC6270 /* dropdownFlag@3x.png */; };
 		E75DDE012184193800EC6270 /* dropdownFlag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E75DDDFD2184193800EC6270 /* dropdownFlag@2x.png */; };
 		E75DDE022184193800EC6270 /* EBDropdownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDDFE2184193800EC6270 /* EBDropdownListView.m */; };
+		E75DDE04218562CD00EC6270 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DDE03218562CD00EC6270 /* Bugly.framework */; };
+		E75DDE1521856DCD00EC6270 /* NSMutableArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDE0821856DCD00EC6270 /* NSMutableArray+Safe.m */; };
+		E75DDE1621856DCD00EC6270 /* NSMutableDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDE0A21856DCD00EC6270 /* NSMutableDictionary+Safe.m */; };
+		E75DDE1721856DCD00EC6270 /* NSMutableString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDE0F21856DCD00EC6270 /* NSMutableString+Safe.m */; };
+		E75DDE1821856DCD00EC6270 /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDE1121856DCD00EC6270 /* NSDictionary+Safe.m */; };
+		E75DDE1921856DCD00EC6270 /* NSObject+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDE1221856DCD00EC6270 /* NSObject+Swizzling.m */; };
+		E75DDE1A21856DCD00EC6270 /* NSArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDE1321856DCD00EC6270 /* NSArray+Safe.m */; };
+		E75DDE1B21856DCD00EC6270 /* NSObject+ImpChangeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DDE1421856DCD00EC6270 /* NSObject+ImpChangeTool.m */; };
 		E7A71A52217AE7AC003059B3 /* PackDocument_NoPackController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A71A51217AE7AC003059B3 /* PackDocument_NoPackController.m */; };
 		E7A71A55217AEBAF003059B3 /* PackDocument_PackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A71A54217AEBAF003059B3 /* PackDocument_PackedViewController.m */; };
 		E7D420442170D76D00FD22F6 /* NewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D420432170D76D00FD22F6 /* NewHomeViewController.m */; };
@@ -599,6 +607,21 @@
 		E75DDDFD2184193800EC6270 /* dropdownFlag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdownFlag@2x.png"; sourceTree = "<group>"; };
 		E75DDDFE2184193800EC6270 /* EBDropdownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBDropdownListView.m; sourceTree = "<group>"; };
 		E75DDDFF2184193800EC6270 /* EBDropdownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBDropdownListView.h; sourceTree = "<group>"; };
+		E75DDE03218562CD00EC6270 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
+		E75DDE0721856DCD00EC6270 /* NSMutableString+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Safe.h"; sourceTree = "<group>"; };
+		E75DDE0821856DCD00EC6270 /* NSMutableArray+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Safe.m"; sourceTree = "<group>"; };
+		E75DDE0921856DCD00EC6270 /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
+		E75DDE0A21856DCD00EC6270 /* NSMutableDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Safe.m"; sourceTree = "<group>"; };
+		E75DDE0B21856DCD00EC6270 /* NSObject+ImpChangeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ImpChangeTool.h"; sourceTree = "<group>"; };
+		E75DDE0C21856DCD00EC6270 /* NSArray+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Safe.h"; sourceTree = "<group>"; };
+		E75DDE0D21856DCD00EC6270 /* NSObject+Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Swizzling.h"; sourceTree = "<group>"; };
+		E75DDE0E21856DCD00EC6270 /* NSMutableArray+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Safe.h"; sourceTree = "<group>"; };
+		E75DDE0F21856DCD00EC6270 /* NSMutableString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Safe.m"; sourceTree = "<group>"; };
+		E75DDE1021856DCD00EC6270 /* NSMutableDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Safe.h"; sourceTree = "<group>"; };
+		E75DDE1121856DCD00EC6270 /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
+		E75DDE1221856DCD00EC6270 /* NSObject+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Swizzling.m"; sourceTree = "<group>"; };
+		E75DDE1321856DCD00EC6270 /* NSArray+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Safe.m"; sourceTree = "<group>"; };
+		E75DDE1421856DCD00EC6270 /* NSObject+ImpChangeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ImpChangeTool.m"; sourceTree = "<group>"; };
 		E7A71A50217AE7AC003059B3 /* PackDocument_NoPackController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackDocument_NoPackController.h; sourceTree = "<group>"; };
 		E7A71A51217AE7AC003059B3 /* PackDocument_NoPackController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackDocument_NoPackController.m; sourceTree = "<group>"; };
 		E7A71A53217AEBAF003059B3 /* PackDocument_PackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackDocument_PackedViewController.h; sourceTree = "<group>"; };
@@ -654,6 +677,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E75DDE04218562CD00EC6270 /* Bugly.framework in Frameworks */,
 				E3FC383706E688FD0B4AB8FB /* libPods-Logistics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1134,6 +1158,7 @@
 		A90335E4208A250600823D3C /* ThridParty */ = {
 			isa = PBXGroup;
 			children = (
+				E75DDE03218562CD00EC6270 /* Bugly.framework */,
 				E74A260A217785BE009C9400 /* JXCategoryView */,
 				E7D420482170DF3B00FD22F6 /* FL_Button.h */,
 				E7D420492170DF3B00FD22F6 /* FL_Button.m */,
@@ -1235,6 +1260,7 @@
 		A9033604208A250600823D3C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				E75DDE0621856DCD00EC6270 /* SafeTool */,
 				A9033605208A250600823D3C /* Foundation+Category */,
 				A9033622208A250600823D3C /* UIKit+Category */,
 				E74A260721777CA6009C9400 /* NSString+isEmpty.h */,
@@ -1582,6 +1608,27 @@
 			path = EBDropdownList;
 			sourceTree = "<group>";
 		};
+		E75DDE0621856DCD00EC6270 /* SafeTool */ = {
+			isa = PBXGroup;
+			children = (
+				E75DDE0721856DCD00EC6270 /* NSMutableString+Safe.h */,
+				E75DDE0821856DCD00EC6270 /* NSMutableArray+Safe.m */,
+				E75DDE0921856DCD00EC6270 /* NSDictionary+Safe.h */,
+				E75DDE0A21856DCD00EC6270 /* NSMutableDictionary+Safe.m */,
+				E75DDE0B21856DCD00EC6270 /* NSObject+ImpChangeTool.h */,
+				E75DDE0C21856DCD00EC6270 /* NSArray+Safe.h */,
+				E75DDE0D21856DCD00EC6270 /* NSObject+Swizzling.h */,
+				E75DDE0E21856DCD00EC6270 /* NSMutableArray+Safe.h */,
+				E75DDE0F21856DCD00EC6270 /* NSMutableString+Safe.m */,
+				E75DDE1021856DCD00EC6270 /* NSMutableDictionary+Safe.h */,
+				E75DDE1121856DCD00EC6270 /* NSDictionary+Safe.m */,
+				E75DDE1221856DCD00EC6270 /* NSObject+Swizzling.m */,
+				E75DDE1321856DCD00EC6270 /* NSArray+Safe.m */,
+				E75DDE1421856DCD00EC6270 /* NSObject+ImpChangeTool.m */,
+			);
+			path = SafeTool;
+			sourceTree = "<group>";
+		};
 		E7D42086217374B400FD22F6 /* AddressBook */ = {
 			isa = PBXGroup;
 			children = (
@@ -1627,6 +1674,7 @@
 				A90334D0208A241D00823D3C /* Frameworks */,
 				A90334D1208A241D00823D3C /* Resources */,
 				5D52C71AA52B57BEEA46B493 /* [CP] Copy Pods Resources */,
+				E75DDE05218569A000EC6270 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1684,13 +1732,13 @@
 				TargetAttributes = {
 					A90334D2208A241D00823D3C = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1818,6 +1866,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E75DDE05218569A000EC6270 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n#\n# Copyright 2016 Bugly, Tencent. All rights reserved.\n#\n# V1.4.0\n#\n# 2016.08.03\n#\n#\n#\n######################################################\n# 1. 脚本集成到Xcode工程的Target\n######################################################\n#\n# --- Copy the SCRIPT to the Run Script of Build Phases in the Xcode project ---\n#\n# #\nBUGLY_APP_ID=\"ddd4a0740d\"\n# #\nBUGLY_APP_KEY=\"c50ae22b-c23c-4521-9f9c-6cb5baa47ab6\"\n# #\nBUNDLE_IDENTIFIER=\"com.shubin.logistics\"\n# #\nUPLOAD_DSYM_ONLY=1\n#\n# # 脚本默认配置的版本格式为CFBundleShortVersionString(CFBundleVersion),  如果你修改默认的版本格式, 请设置此变量, 如果不想修改, 请忽略此设置\n# CUSTOMIZED_APP_VERSION=\"\"\n#\n# # Debug模式编译是否上传，1＝上传 0＝不上传，默认不上传\nUPLOAD_DEBUG_SYMBOLS=1\n#\n# # 模拟器编译是否上传，1=上传 0=不上传，默认不上传\n# UPLOAD_SIMULATOR_SYMBOLS=0\n#\n# #只有Archive操作时上传, 1=支持Archive上传 0=所有Release模式编译都上传\n# UPLOAD_ARCHIVE_ONLY=0\n#\n# #\n# source dSYMUpload.sh\n#\n# --- END OF SCRIPT ---\n#\n#\n#\n#\n#######################################################\n# 2. 脚本根据输入参数处理\n#######################################################\n#\n# #命令行下输入应用基本信息, .dSYM文件的父目录路径, 输出文件目录即可\n#\n# sh dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir>\n#\n# #\n#\n# #注意:\n# # 1. dSYMUpload.sh会调用buglySymboliOS.jar进行.dSYM解析，所以依赖Java运行时环境\n# # 2. dSYMUpload.sh和buglySymboliOS.jar的文件路径需一致\n#\n#\n\n#\n# --- CONTENT OF SCRIPT ---\n#\n\n# Bugly服务域名\nBUGLY_DSYM_UPLOAD_DOMAIN=\"api.bugly.qq.com\"\n\n# 注意jar工具的路径跟dSYMUpload.sh脚本路径一致, 请务必保证jar路径的正确性\nBUGLY_SYMBOL_JAR_PATH=\"dsymtool/buglySymboliOS.jar\"\n# 查找添加到系统目录的jar工具\nif [ ! -f \"${BUGLY_SYMBOL_JAR_PATH}\" ]; then\nBUGLY_SYMBOL_JAR_PATH=\"$HOME/bin/buglySymboliOS.jar\"\nfi\n\n# 打印错误信息\nfunction exitWithMessage(){\necho \"--------------------------------\"\necho \"${1}\"\necho \"--------------------------------\"\nexit ${2}\n}\n\n# 上传bSYMBOL文件\nfunction dSYMUpload() {\nP_APP_ID=\"$1\"\nP_APP_KEY=\"$2\"\nP_APP_BUNDLE_ID=\"$3\"\nP_APP_VERSION=\"$4\"\nP_BSYMBOL_ZIP_FILE=\"$5\"\n\n#\nP_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE##*/}\nP_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE_NAME//&/_}\nP_BSYMBOL_ZIP_FILE_NAME=\"${P_BSYMBOL_ZIP_FILE_NAME// /_}\"\n\nDSYM_UPLOAD_URL=\"https://${BUGLY_DSYM_UPLOAD_DOMAIN}/openapi/file/upload/symbol?app_id=${P_APP_ID}&app_key=${P_APP_KEY}\"\necho \"dSYM upload url: ${DSYM_UPLOAD_URL}\"\n\necho \"-----------------------------\"\nSTATUS=$(/usr/bin/curl -k \"${DSYM_UPLOAD_URL}\" --form \"api_version=1\" --form \"app_id=${P_APP_ID}\" --form \"app_key=${P_APP_KEY}\" --form \"symbolType=2\"  --form \"bundleId=${BUNDLE_IDENTIFIER}\" --form \"productVersion=${BUGLY_APP_VERSION}\" --form \"fileName=${P_BSYMBOL_ZIP_FILE_NAME}\" --form \"file=@${P_BSYMBOL_ZIP_FILE}\" --verbose)\necho \"-----------------------------\"\n\nUPLOAD_RESULT=\"FAILTURE\"\necho \"Bugly server response: ${STATUS}\"\nif [ ! \"${STATUS}\" ]; then\necho \"Error: Failed to upload the zip archive file.\"\nelif [[ \"${STATUS}\" == *\"{\\\"reponseCode\\\":\\\"0\\\"}\"* ]]; then\necho \"Success to upload the dSYM for the app [${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION}]\"\nUPLOAD_RESULT=\"SUCCESS\"\nelse\necho \"Error: Failed to upload the zip archive file to Bugly.\"\nfi\n\n#Remove temp dSYM archive\n#echo \"Remove temporary zip archive: ${DSYM_ZIP_FPATH}\"\n#/bin/rm -f \"${DSYM_ZIP_FPATH}\"\n\nif [ \"$?\" -ne 0 ]; then\nexitWithMessage \"Error: Failed to remove temporary zip archive.\" 0\nfi\n\necho \"--------------------------------\"\necho \"${UPLOAD_RESULT} - dSYM upload complete.\"\n\nif [[ \"${UPLOAD_RESULT}\" == \"FAILTURE\" ]]; then\necho \"--------------------------------\"\necho \"Failed to upload the dSYM\"\necho \"Please check the script and try it again.\"\nfi\n}\n\n# .dSYM解析为bSYMBOL文件\nfunction dSYMParse() {\nDSYM_FILE=\"$1\"\nDSYM_SYMBOL_FILE=\"$2\"\n\necho \"--------------------------------\"\necho \"Extract symbol info from .dSYM file. to ${DSYM_SYMBOL_FILE}\"\n(/usr/bin/java -Xms512m -Xmx1024m -Dfile.encoding=UTF8 -jar \"${BUGLY_SYMBOL_JAR_PATH}\" -i \"${DSYM_FILE}\" -o \"${DSYM_SYMBOL_FILE}\" ) || exitWithMessage \"Error: Failed to extract symbols.\" 1\necho \"--------------------------------\"\n\n}\n\n# 执行\nfunction run() {\n\nCONFIG_BUGLY_APP_ID=\"$1\"\nCONFIG_BUGLY_APP_KEY=\"$2\"\n\nCONFIG_BUGLY_APP_BUNDLE_IDENTIFIER=\"$3\"\nCONFIG_BUGLY_APP_VERSION=\"$4\"\nCONFIG_DSYM_SOURCE_DIR=\"$5\"\nCONFIG_DSYM_DEST_DIR=\"$6\"\nCONFIG_UPLOAD_DSYM_ONLY=\"$7\"\n\n# 检查必须参数是否设置\nif [ ! \"${CONFIG_BUGLY_APP_ID}\" ]; then\nexitWithMessage \"Error: Bugly App ID not defined. Please set 'BUGLY_APP_ID' \" 0\nfi\n\nif [[ \"${CONFIG_BUGLY_APP_ID}\" == *\"App ID\"* ]]; then\nexitWithMessage \"Error: Bugly App ID not defined.\" 0\nfi\n\nif [ ! \"${CONFIG_BUGLY_APP_KEY}\" ]; then\nexitWithMessage \"Error: Bugly App Key not defined.\" 0\nfi\n\nif [ ! \"${CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER}\" ]; then\nexitWithMessage \"Error: Bundle Identifier not defined.\" 0\nfi\n\nif [ ! \"${CONFIG_BUGLY_APP_VERSION}\" ]; then\nexitWithMessage \"Error: App Version not defined.\" 0\nfi\n\nif [ ! -e \"${CONFIG_DSYM_SOURCE_DIR}\" ]; then\nexitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_SOURCE_DIR}\" 0\nfi\n\nif [ ! \"${CONFIG_DSYM_DEST_DIR}\" ]; then\nexitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_DEST_DIR}\" 0\nfi\n\nif [ ! -e \"${CONFIG_DSYM_DEST_DIR}\" ]; then\nmkdir ${CONFIG_DSYM_DEST_DIR}\nfi\n\nDSYM_FOLDER=\"${CONFIG_DSYM_SOURCE_DIR}\"\nIFS=$'\\n'\n\necho \"Scaning dSYM FOLDER: ${DSYM_FOLDER} ...\"\nRET=\"F\"\n\n#\nfor dsymFile in $(find \"$DSYM_FOLDER\" -name '*.dSYM'); do\nRET=\"T\"\necho \"Found dSYM file: $dsymFile\"\n\nDSYM_FILE_NAME=${dsymFile##*/}\nDSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_FILE_NAME}.zip\"\nDSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_SYMBOL_ZIP_FILE_NAME// /_}\"\nDSYM_SYMBOL_ZIP_FILE=${CONFIG_DSYM_DEST_DIR}/${DSYM_SYMBOL_ZIP_FILE_NAME}\n\nif [ $CONFIG_UPLOAD_DSYM_ONLY -eq 1 ]; then\nif [ -e $DSYM_SYMBOL_ZIP_FILE ]; then\nrm -f $DSYM_SYMBOL_ZIP_FILE\nfi\n# 如果只上传dSYM，直接压缩dSYM目录\nzip -r -j $DSYM_SYMBOL_ZIP_FILE $dsymFile -x *.plist\nelse\n# 使用符号表工具来生成Symbol文件\ndSYMParse $dsymFile $DSYM_SYMBOL_ZIP_FILE\nfi\n\n# 上传\ndSYMUpload $CONFIG_BUGLY_APP_ID $CONFIG_BUGLY_APP_KEY $CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER $CONFIG_BUGLY_APP_VERSION $DSYM_SYMBOL_ZIP_FILE\ndone\n\nif [ $RET = \"F\" ]; then\nexitWithMessage \"No .dSYM found in ${DSYM_FOLDER}\" 0\nfi\n}\n\n# 在Xcode工程中执行\nfunction runInXcode(){\necho \"Uploading dSYM to Bugly in Xcode ...\"\n\necho \"Info.Plist : ${INFOPLIST_FILE}\"\n\nBUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' \"${INFOPLIST_FILE}\")\nBUNDLE_SHORT_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' \"${INFOPLIST_FILE}\")\n\n# 组装Bugly默认识别的版本信息(格式为CFBundleShortVersionString(CFBundleVersion), 例如: 1.0(1))\nif [ ! \"${CUSTOMIZED_APP_VERSION}\" ]; then\nBUGLY_APP_VERSION=\"${BUNDLE_SHORT_VERSION}(${BUNDLE_VERSION})\"\nelse\nBUGLY_APP_VERSION=\"${CUSTOMIZED_APP_VERSION}\"\nfi\n\necho \"--------------------------------\"\necho \"Prepare application information.\"\necho \"--------------------------------\"\n\necho \"Product Name: ${PRODUCT_NAME}\"\necho \"Bundle Identifier: ${BUNDLE_IDENTIFIER}\"\necho \"Version: ${BUNDLE_SHORT_VERSION}\"\necho \"Build: ${BUNDLE_VERSION}\"\n\necho \"Bugly App ID: ${BUGLY_APP_ID}\"\necho \"Bugly App key: ${BUGLY_APP_KEY}\"\necho \"Bugly App Version: ${BUGLY_APP_VERSION}\"\n\necho \"--------------------------------\"\necho \"Check the arguments ...\"\n\n##检查模拟器编译是否允许上传符号\nif [ \"$EFFECTIVE_PLATFORM_NAME\" == \"-iphonesimulator\" ]; then\nif [ $UPLOAD_SIMULATOR_SYMBOLS -eq 0 ]; then\nexitWithMessage \"Warning: Build for simulator and skipping to upload. \\nYou can modify 'UPLOAD_SIMULATOR_SYMBOLS' to 1 in the script.\" 0\nfi\nfi\n\n##检查是否是Release模式编译\nif [ \"${CONFIGURATION=}\" == \"Debug\" ]; then\nif [ $UPLOAD_DEBUG_SYMBOLS -eq 0 ]; then\nexitWithMessage \"Warning: Build for debug mode and skipping to upload. \\nYou can modify 'UPLOAD_DEBUG_SYMBOLS' to 1 in the script.\" 0\nfi\nfi\n\n##检查是否Archive操作\nif [ $UPLOAD_ARCHIVE_ONLY -eq 1 ]; then\nif [[ \"$TARGET_BUILD_DIR\" == *\"/Archive\"* ]]; then\necho \"Archive the package\"\nelse\nexitWithMessage \"Warning: Build for NOT Archive mode and skipping to upload. \\nYou can modify 'UPLOAD_ARCHIVE_ONLY' to 0 in the script.\" 0\nfi\nfi\n\n#\nrun ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${BUILD_DIR}/BuglySymbolTemp ${UPLOAD_DSYM_ONLY}\n}\n\n# 根据Xcode的环境变量判断是否处于Xcode环境\nINFO_PLIST_FILE=\"${INFOPLIST_FILE}\"\n\nBuildInXcode=\"F\"\nif [ -f \"${INFO_PLIST_FILE}\" ]; then\nBuildInXcode=\"T\"\nfi\n\nif [ $BuildInXcode = \"T\" ]; then\nrunInXcode\nelse\necho \"\\nUsage: dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir> [upload_dsym_only]\\n\"\n# 你可以在此处直接设置BuglyAppID和BuglyAppKey，排除不常变参数的输入\nBUGLY_APP_ID=\"$1\"\nBUGLY_APP_KEY=\"$2\"\nBUNDLE_IDENTIFIER=\"$3\"\nBUGLY_APP_VERSION=\"$4\"\nDWARF_DSYM_FOLDER_PATH=\"$5\"\nSYMBOL_OUTPUT_PATH=\"$6\"\nUPLOAD_DSYM_ONLY=$7\nrun ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${SYMBOL_OUTPUT_PATH} ${UPLOAD_DSYM_ONLY}\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1863,6 +1928,7 @@
 				A903365C208A250700823D3C /* BaseNavigationController.m in Sources */,
 				A9033674208A250700823D3C /* UIViewController+BackButtonHandler.m in Sources */,
 				A90F76BE2093030D00BC6A5D /* TransportViewController.m in Sources */,
+				E75DDE1621856DCD00EC6270 /* NSMutableDictionary+Safe.m in Sources */,
 				A972BA8E208D7D9100CFF30C /* WaybillSenderItem.m in Sources */,
 				E7140B852180A47800EE244B /* AnnouncementModel.m in Sources */,
 				A972BAA4208F130B00CFF30C /* AddressBookTableViewCell.m in Sources */,
@@ -1876,6 +1942,7 @@
 				A9033695208A2D0300823D3C /* RegisterViewController.m in Sources */,
 				A903367A208A250700823D3C /* UserManager.m in Sources */,
 				A9022F48208B2C9C00886D95 /* WaybillQueryViewController.m in Sources */,
+				E75DDE1B21856DCD00EC6270 /* NSObject+ImpChangeTool.m in Sources */,
 				E7FCAD142174EEB400E98645 /* TextViewCell.m in Sources */,
 				E74A2669217785BE009C9400 /* JXCategoryDotView.m in Sources */,
 				A92D71FD20906DA3000F7B7D /* WaybillQueryFooterView.m in Sources */,
@@ -1887,10 +1954,12 @@
 				A9033670208A250700823D3C /* UINavigationController+pop.m in Sources */,
 				E74A2655217785BE009C9400 /* JXCategoryBaseCellModel.m in Sources */,
 				E74A2660217785BE009C9400 /* JXCategoryIndicatorTriangleView.m in Sources */,
+				E75DDE1821856DCD00EC6270 /* NSDictionary+Safe.m in Sources */,
 				E7D4208521736C6200FD22F6 /* CustomerStatisticsCell.m in Sources */,
 				A9022F4E208B342700886D95 /* WaybillTableViewCell.m in Sources */,
 				A9033653208A250700823D3C /* ProfileViewController.m in Sources */,
 				A9033651208A250700823D3C /* LogisticsViewController.m in Sources */,
+				E75DDE1921856DCD00EC6270 /* NSObject+Swizzling.m in Sources */,
 				E74A2657217785BE009C9400 /* JXCategoryCollectionView.m in Sources */,
 				A972BAA7208F18AE00CFF30C /* SearchBar.m in Sources */,
 				E74A265E217785BE009C9400 /* JXCategoryTitleImageCellModel.m in Sources */,
@@ -1899,6 +1968,7 @@
 				A90F76D52093397900BC6A5D /* JPushManager.m in Sources */,
 				A9022F45208B243700886D95 /* WLHomeCollectionViewCell.m in Sources */,
 				A903365D208A250700823D3C /* TabBarControllerConfig.m in Sources */,
+				E75DDE1A21856DCD00EC6270 /* NSArray+Safe.m in Sources */,
 				A9033677208A250700823D3C /* FCBaseResponse.m in Sources */,
 				E7D4208C217374F100FD22F6 /* AddressBookViewController.m in Sources */,
 				A9033673208A250700823D3C /* UIView+Extension.m in Sources */,
@@ -1934,6 +2004,7 @@
 				A903366F208A250700823D3C /* UILabel+Extension.m in Sources */,
 				A9033678208A250700823D3C /* FCNetWorkError.m in Sources */,
 				E74A2666217785BE009C9400 /* JXCategoryIndicatorCell.m in Sources */,
+				E75DDE1721856DCD00EC6270 /* NSMutableString+Safe.m in Sources */,
 				E7D4207721720EEE00FD22F6 /* ReceivingRegistrationViewController.m in Sources */,
 				A903364E208A250700823D3C /* LoginViewController.m in Sources */,
 				A90F76C42093032F00BC6A5D /* PackViewController.m in Sources */,
@@ -1997,6 +2068,7 @@
 				E75DDDF1218330B100EC6270 /* packedCell.m in Sources */,
 				A9033655208A250700823D3C /* LWDES.m in Sources */,
 				E75DDE022184193800EC6270 /* EBDropdownListView.m in Sources */,
+				E75DDE1521856DCD00EC6270 /* NSMutableArray+Safe.m in Sources */,
 				A9033675208A250700823D3C /* UIViewController+Message.m in Sources */,
 				A9033676208A250700823D3C /* FCBaseNetWork.m in Sources */,
 				A903366C208A250700823D3C /* UIResponder+Responder.m in Sources */,
@@ -2194,16 +2266,22 @@
 			baseConfigurationReference = 8F6E2C70759CC793097687CF /* Pods-Logistics.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Logistics/Logistics.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = BAN43EV23F;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 95P3R6LT5M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Logistics/ThridParty",
+				);
 				GCC_PREFIX_HEADER = Logistics/Define/PrefixHeader.pch;
 				INFOPLIST_FILE = Logistics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lqhd.shubin.logistics;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shubin.logistics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = lqhdDev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2213,14 +2291,20 @@
 			baseConfigurationReference = C330CFB95FC1AFE16F2D3C67 /* Pods-Logistics.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Logistics/Logistics.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 95P3R6LT5M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Logistics/ThridParty",
+				);
 				GCC_PREFIX_HEADER = Logistics/Define/PrefixHeader.pch;
 				INFOPLIST_FILE = Logistics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lqhd.shubin.logistics;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shubin.logistics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

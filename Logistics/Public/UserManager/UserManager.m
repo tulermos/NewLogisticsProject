@@ -70,7 +70,7 @@
 }
 
 - (BOOL)isLogin {
-    if (self.user && self.user.uuid.length > 0) {
+    if (self.user && self.user.cusCode.length > 0) {
         return YES;
     }
     return NO;

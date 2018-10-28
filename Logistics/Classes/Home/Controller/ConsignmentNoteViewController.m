@@ -54,6 +54,7 @@
     refreshBtn.titleLabel.font=[UIFont systemFontOfSize:15];
     refreshBtn.backgroundColor=[UIColor clearColor];
     [refreshBtn addTarget:self action:@selector(refreshBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+
     
     queryBtn.frame = CGRectMake(0, 0, 70, 16);
     refreshBtn.frame=CGRectMake(0, 0, 35, 16);
@@ -62,6 +63,11 @@
     UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithCustomView:refreshBtn];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: query, refresh,nil]];
     [self setUpUI];
+}
+
+-(void)refreshBtnAction:(UIButton *)sender
+{
+    
 }
 //高级查询
 -(void)highSearchBtnAction:(UIButton*)btn

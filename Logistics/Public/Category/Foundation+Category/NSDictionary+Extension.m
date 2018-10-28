@@ -15,7 +15,7 @@
     [param setObject:url forKey:@"request"];
     NSMutableDictionary *objDict = [NSMutableDictionary dictionaryWithDictionary:dict];
     [objDict setObject:@"iOS" forKey:@"client"];
-    [objDict setObject:[UserManager uuid] forKey:@"uuid"];
+    [objDict setObject:[[[UIDevice currentDevice] identifierForVendor] UUIDString] forKey:@"uuid"];
     [objDict setObject:@"" forKey:@"other"];
     [objDict setObject:[[[NSBundle mainBundle] preferredLocalizations]firstObject] forKey:@"language"];
     NSMutableArray *array = [NSMutableArray array];
